@@ -95,6 +95,63 @@
                     <div id="videos">
                         <video autoplay="autoplay" id="selfVideo" class="easyrtcMirror"></video>
                         <video autoplay="autoplay" id="callerVideo"></video>
+
+
+
+
+
+                        <button id="snap" class="sexyButton">Snap Photo</button>
+                        <canvas id="canvas" width="640" height="480"></canvas>
+                        <p id="pngHolder"></p>
+                        <script>
+
+                            // Converts image to canvas; returns new canvas element
+                            function convertImageToCanvas(image) {
+                                var canvas = document.createElement("canvas");
+                                canvas.width = image.width;
+                                canvas.height = image.height;
+                                canvas.getContext("2d").drawImage(image, 0, 0);
+
+                                return canvas;
+                            }
+
+                            // Converts canvas to an image
+                            function convertCanvasToImage(canvas) {
+                                var image = new Image();
+                                image.src = canvas.toDataURL("image/png");
+                                return image;
+                            }
+
+                            // Put event listeners into place
+                            window.addEventListener("DOMContentLoaded", function () {
+                                // Grab elements, create settings, etc.
+                                var canvas = document.getElementById("canvas"),
+                                        context = canvas.getContext("2d"),
+                                        video = document.getElementById("selfVideo"),
+                                        videoObj = {"video": true},
+                                        errBack = function (error) {
+                                            console.log("Video capture error: ", error.code);
+                                        };
+
+                             // Trigger photo take
+                                document.getElementById("snap").addEventListener("click", function () {
+                                    context.drawImage(video, 0, 0, 640, 480);
+
+                                    // video -> canvas -> image
+                                    var pngHolder = document.getElementById("pngHolder");
+                                    pngHolder.removeChild(pngHolder.childNodes[0]);
+                                    var pngImage = convertCanvasToImage(canvas)
+                                    pngHolder.appendChild(pngImage);
+
+                                });
+                            }, false);
+
+                         </script>
+
+
+
+
+
                         <div id="acceptCallBox"> <!-- Should be initially hidden using CSS -->
                             <div id="acceptCallLabel"></div>
                             <button id="callAcceptButton" >Accept</button> <button id="callRejectButton">Reject</button>
