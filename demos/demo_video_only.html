@@ -125,19 +125,19 @@
                             // Put event listeners into place
                             window.addEventListener("DOMContentLoaded", function () {
 
-                                ////////////////////////////////////////////////////////////////////////////////////////
-                                // Grab elements, create settings, etc.
-                                var selfCanvas = document.getElementById("callerCanvas"),
-                                    selfContext = selfCanvas.getContext("2d"),
-                                    selfVideo = document.getElementById("selfVideo"),
-                                    selfVideoObj = {"video": true},
-                                    selfErrBack = function (error) {
-                                        console.log("Video capture error: ", error.code);
-                                     };
+//                                ////////////////////////////////////////////////////////////////////////////////////////
+//                                // Grab elements, create settings, etc.
+//                                var selfCanvas = document.getElementById("selfCanvas"),// snapshot shown in self canvas
+//                                    selfContext = selfCanvas.getContext("2d"),
+//                                    selfVideo = document.getElementById("selfVideo"),
+//                                    selfVideoObj = {"video": true},
+//                                    selfErrBack = function (error) {
+//                                        console.log("Video capture error: ", error.code);
+//                                     };
 
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 // Grab elements, create settings, etc.
-                                var callerCanvas = document.getElementById("callerCanvas"),
+                                var callerCanvas = document.getElementById("callerCanvas"),// snapshot shown in caller canvas
                                     callerContext = callerCanvas.getContext("2d"),
                                     callerVideo = document.getElementById("callerVideo"),
                                     callerVideoObj = {"video": true},
@@ -149,14 +149,14 @@
                                 // Trigger photo take
                                 document.getElementById("snap").addEventListener("click", function () {
 
-                                    ////////////////////////////////////////////////////////////////////////////////////
-                                    selfContext.drawImage(selfVideo, 0, 0, 640, 480);
-
-                                    // video -> canvas -> image
-                                    var selfPngHolder = document.getElementById("pngHolder");
-                                    selfPngHolder.removeChild(selfPngHolder.childNodes[0]);
-                                    var selfImage = convertCanvasToImage(selfCanvas)
-                                    selfPngHolder.appendChild(selfImage);
+//                                    ////////////////////////////////////////////////////////////////////////////////////
+//                                    selfContext.drawImage(selfVideo, 0, 0, 640, 480);
+//
+//                                    // video -> canvas -> image
+//                                    var selfPngHolder = document.getElementById("pngHolder");
+//                                    selfPngHolder.removeChild(selfPngHolder.childNodes[0]);
+//                                    var selfImage = convertCanvasToImage(selfCanvas)
+//                                    selfPngHolder.appendChild(selfImage);
 
                                     ////////////////////////////////////////////////////////////////////////////////////
                                     callerContext.drawImage(callerVideo, 0, 0, 640, 480);
