@@ -94,14 +94,32 @@
 
                     <div id="videos">
 
-                        <video autoplay="autoplay" id="selfVideo" class="easyrtcMirror"></video>
-                        <video autoplay="autoplay" id="callerVideo"></video>
-
-                        <button id="selfSnap"   class="sexyButton">Self Snap Photo</button>
-                        <button id="callerSnap" class="sexyButton">Caller Snap Photo</button>
-
-                        <canvas id="selfCanvas" width="640" height="480"></canvas>
-                        <canvas id="callerCanvas" width="640" height="480"></canvas>
+                        <table>
+                            <tr>
+                                <td>
+                                    <video autoplay="autoplay" id="selfVideo" class="easyrtcMirror"></video>
+                                </td>
+                                <td>
+                                    <video autoplay="autoplay" id="callerVideo"></video>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="selfSnap"   class="sexyButton">Self Snap Photo</button>
+                                </td>
+                                <td>
+                                    <button id="callerSnap" class="sexyButton">Caller Snap Photo</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <canvas id="selfCanvas" width="320" height="240"></canvas>
+                                </td>
+                                <td>
+                                    <canvas id="callerCanvas" width="320" height="240"></canvas>
+                                </td>
+                            </tr>
+                        </table>
 
                         <!-- cliu: the following can be commented out -->
                         <!--<p id="selfPngHolder"></p>-->
@@ -154,7 +172,7 @@
                                 document.getElementById("selfSnap").addEventListener("click", function () {
 
                                     ////////////////////////////////////////////////////////////////////////////////////
-                                    selfContext.drawImage(selfVideo, 0, 0, 640, 480);
+                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
 
 //                                    // video -> canvas -> image
 //                                    var selfPngHolder = document.getElementById("selfPngHolder");
@@ -165,7 +183,7 @@
 
                                 document.getElementById("callerSnap").addEventListener("click", function () {
                                     ////////////////////////////////////////////////////////////////////////////////////
-                                    callerContext.drawImage(callerVideo, 0, 0, 640, 480);
+                                    callerContext.drawImage(callerVideo, 0, 0, 320, 240);
 
 //                                    // video -> canvas -> image
 //                                    var callerPngHolder = document.getElementById("callerPngHolder");
