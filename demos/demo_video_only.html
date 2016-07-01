@@ -97,13 +97,16 @@
                         <video autoplay="autoplay" id="selfVideo" class="easyrtcMirror"></video>
                         <video autoplay="autoplay" id="callerVideo"></video>
 
-                        <button id="snap" class="sexyButton">Snap Photo</button>
+                        <button id="selfSnap"   class="sexyButton">Self Snap Photo</button>
+                        <button id="callerSnap" class="sexyButton">Caller Snap Photo</button>
 
                         <canvas id="selfCanvas" width="640" height="480"></canvas>
                         <canvas id="callerCanvas" width="640" height="480"></canvas>
 
-                        <p id="selfPngHolder"></p>
-                        <p id="callerPngHolder"></p>
+                        <!-- cliu: the following can be commented out -->
+                        <!--<p id="selfPngHolder"></p>-->
+                        <!--<p id="callerPngHolder"></p>-->
+
                         <script>
 
                             // Converts image to canvas; returns new canvas element
@@ -148,25 +151,27 @@
 
 
                                 // Trigger photo take
-                                document.getElementById("snap").addEventListener("click", function () {
+                                document.getElementById("selfSnap").addEventListener("click", function () {
 
                                     ////////////////////////////////////////////////////////////////////////////////////
                                     selfContext.drawImage(selfVideo, 0, 0, 640, 480);
 
-                                    // video -> canvas -> image
-                                    var selfPngHolder = document.getElementById("selfPngHolder");
-                                    selfPngHolder.removeChild(selfPngHolder.childNodes[0]);
-                                    var selfImage = convertCanvasToImage(selfCanvas)
-                                    selfPngHolder.appendChild(selfImage);
+//                                    // video -> canvas -> image
+//                                    var selfPngHolder = document.getElementById("selfPngHolder");
+//                                    selfPngHolder.removeChild(selfPngHolder.childNodes[0]);
+//                                    var selfImage = convertCanvasToImage(selfCanvas)
+//                                    selfPngHolder.appendChild(selfImage);
+                                });
 
+                                document.getElementById("callerSnap").addEventListener("click", function () {
                                     ////////////////////////////////////////////////////////////////////////////////////
                                     callerContext.drawImage(callerVideo, 0, 0, 640, 480);
 
-                                    // video -> canvas -> image
-                                    var callerPngHolder = document.getElementById("callerPngHolder");
-                                    callerPngHolder.removeChild(callerPngHolder.childNodes[0]);
-                                    var callerImage = convertCanvasToImage(callerCanvas)
-                                    callerPngHolder.appendChild(callerImage);
+//                                    // video -> canvas -> image
+//                                    var callerPngHolder = document.getElementById("callerPngHolder");
+//                                    callerPngHolder.removeChild(callerPngHolder.childNodes[0]);
+//                                    var callerImage = convertCanvasToImage(callerCanvas)
+//                                    callerPngHolder.appendChild(callerImage);
                                 });
                             }, false);
 
