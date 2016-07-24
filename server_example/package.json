@@ -13,6 +13,7 @@
   "dependencies" : {
     "easyrtc"   : "1.0.x",
     "express"   : "*",
+    "formidable": "^1.0.17",
     "socket.io" : "0.9.x"
   },
 

@@ -4,9 +4,38 @@ var express = require("express");           // web framework external module
 var io      = require("socket.io");         // web socket external module
 var easyrtc = require("../");           // EasyRTC external module
 
+var path = require('path');
+var formidable = require('formidable');
+var fs = require('fs');
+
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
+
+
+httpApp.post('/upload', function(req, res){
+
+    var form = new formidable.IncomingForm();
+    form.multiples = true;
+
+    form.uploadDir = path.join(__dirname, '/uploads');
+
+    form.on('file', function(field, file) {
+        fs.rename(file.path, path.join(form.uploadDir, file.name));
+    });
+
+    form.on('error', function(err) {
+        console.log('error: \n' + err);
+    });
+
+    form.on('end', function() {
+        res.end('success');
+    });
+
+    form.parse(req);
+
+});
+
 
 // Start Express http server on port 8080
 var webServer = http.createServer(httpApp).listen(8080);

@@ -105,10 +105,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button id="selfSnap"   class="sexyButton">Self Snap Photo</button>
+                                    <button id="selfSnap"        class="sexyButton">Self   Snap      </button>
+                                    <button id="selfDetect"      class="sexyButton">Self   Detect    </button>
+                                    <button id="selfRecognize"   class="sexyButton">Self   Recognize </button>
                                 </td>
                                 <td>
-                                    <button id="callerSnap" class="sexyButton">Caller Snap Photo</button>
+                                    <button id="callerSnap"      class="sexyButton">Caller Snap      </button>
+                                    <button id="callerDetect"    class="sexyButton">Caller Detect    </button>
+                                    <button id="callerRecognize" class="sexyButton">Caller Recognize </button>
                                 </td>
                             </tr>
                             <tr>
@@ -117,6 +121,14 @@
                                 </td>
                                 <td>
                                     <canvas id="callerCanvas" width="320" height="240"></canvas>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p><b id='selfJson'></b></p>
+                                </td>
+                                <td>
+                                    <p><b id='callerJson'></b></p>
                                 </td>
                             </tr>
                         </table>
@@ -142,6 +154,99 @@
                                 var image = new Image();
                                 image.src = canvas.toDataURL("image/png");
                                 return image;
+                            }
+
+                            function getBase64Image(imgElem) {
+                                // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
+                                var canvas = document.createElement("canvas");
+                                canvas.width = imgElem.clientWidth;
+                                canvas.height = imgElem.clientHeight;
+                                var ctx = canvas.getContext("2d");
+                                ctx.drawImage(imgElem, 0, 0);
+                                var dataURL = canvas.toDataURL("image/png");
+                                return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+                            }
+
+                            function getBase64Image(img, extension) {
+                                // Create an empty canvas element
+                                var canvas = document.createElement('canvas');
+
+                                canvas.width = img.naturalWidth;
+                                canvas.height = img.naturalHeight;
+
+                                // Copy the image contents to the canvas
+                                var ctx = canvas.getContext('2d');
+                                ctx.drawImage(img, 0, 0);
+
+                                // Get the data-URL formatted image
+                                // Firefox supports PNG and JPEG. You could check img.src to
+                                // guess the original format, but be aware the using 'image/jpg'
+                                // will re-encode the image.
+                                var dataURL = canvas.toDataURL('image/' + extension);
+
+                                return dataURL;
+                            }
+
+                            function dataURItoBlob(dataURI) {
+                                // convert base64/URLEncoded data component to raw binary data held in a string
+                                var byteString;
+                                if (dataURI.split(',')[0].indexOf('base64') >= 0)
+                                    byteString = atob(dataURI.split(',')[1]);
+                                else
+                                    byteString = unescape(dataURI.split(',')[1]);
+
+                                // separate out the mime component
+                                var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+                                // write the bytes of the string to a typed array
+                                var ia = new Uint8Array(byteString.length);
+                                for (var i = 0; i < byteString.length; i++) {
+                                    ia[i] = byteString.charCodeAt(i);
+                                }
+
+                                return new Blob([ia], {type:mimeString});
+                            }
+
+
+                            function uploadFile(e) {
+                                var img         = e.target,
+                                        imgPath     = img.src,
+                                        pathParts   = imgPath.split('/'),
+                                        filename    = pathParts[pathParts.length - 1],
+                                        extension   = filename.split('.')[1],
+                                        imgData     = getBase64Image(img, extension),
+                                        formData    = new FormData(),
+                                        xhttp       = new XMLHttpRequest(),
+                                        file
+
+                                file = dataURItoBlob(imgData)
+                                formData.append('uploads[]', file, filename)
+
+                                img.parentElement.classList.remove('img-error')
+                                img.parentElement.classList.add('img-uploading')
+
+                                xhttp.onreadystatechange = function() {
+                                    if (xhttp.readyState == 4) {
+                                        if(xhttp.status == 200) {
+                                            setTimeout(showSuccess.bind(this), 1500)
+                                        } else {
+                                            setTimeout(showError.bind(this), 1500)
+                                        }
+
+                                    }
+                                }.bind(this);
+
+                                xhttp.open('POST', '/upload');
+                                xhttp.send(formData);
+                            }
+
+                            function showSuccess() {
+                                this.parentElement.classList.remove('img-uploading')
+                            }
+
+                            function showError() {
+                                this.parentElement.classList.remove('img-uploading')
+                                this.parentElement.classList.add('img-error')
                             }
 
                             // Put event listeners into place
@@ -181,6 +286,76 @@
 //                                    selfPngHolder.appendChild(selfImage);
                                 });
 
+                                $('#selfDetect').click(function(){
+
+                                    var selfImage = convertCanvasToImage(selfCanvas);
+
+
+                                    alert("HELLO:"+selfImage);
+
+
+                                    var //img    = convertCanvasToImage(selfCanvas),
+                                        //imgPath     = img.src,
+                                        //pathParts   = imgPath.split('/'),
+                                        //filename    = pathParts[pathParts.length - 1],
+                                        //extension   = filename.split('.')[1],
+                                        //imgData     = getBase64Image(img, extension),
+                                        formData    = new FormData(),
+                                        xhttp       = new XMLHttpRequest(),
+                                        file
+
+                                    //alert("extension:"+extension);
+                                    //alert("filename:"+filename);
+
+
+
+                                    file = dataURItoBlob(selfImage.src)
+
+                                    alert("file:"+file);
+                                    filename = "localSelf.png";
+                                    alert("filename:"+filename);
+
+                                    formData.append('uploads[]', file, filename)
+
+                                    //alert("prepare ?");
+                                    //selfImage.parentElement.classList.remove('img-error')
+                                    //alert("prepare ??");
+                                    //selfImage.parentElement.classList.add('img-uploading')
+                                    //alert("prepare ???");
+
+                                    xhttp.onreadystatechange = function() {
+                                        if (xhttp.readyState == 4) {
+                                            if(xhttp.status == 200) {
+                                                setTimeout(showSuccess.bind(this), 1500)
+                                            } else {
+                                                setTimeout(showError.bind(this), 1500)
+                                            }
+
+                                        }
+                                    }.bind(this);
+
+                                    alert("send ?");
+
+                                    xhttp.open('POST', '/upload');
+                                    xhttp.send(formData);
+
+                                    alert("end ?");
+
+
+
+
+
+
+
+                                    //var imgData = JSON.stringify(getBase64Image(selfImage));
+                                    //alert("WORLD:"+imgData);
+
+                                })
+
+                                $('#selfRecognize').click(function(){
+                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+                                })
+
                                 document.getElementById("callerSnap").addEventListener("click", function () {
                                     ////////////////////////////////////////////////////////////////////////////////////
                                     callerContext.drawImage(callerVideo, 0, 0, 320, 240);
@@ -191,6 +366,15 @@
 //                                    var callerImage = convertCanvasToImage(callerCanvas)
 //                                    callerPngHolder.appendChild(callerImage);
                                 });
+
+                                $('#callerDetect').click(function(){
+                                    document.getElementById('callerJson').innerHTML = 'RESPONSE';
+                                })
+
+                                $('#callerRecognize').click(function(){
+                                    callerContext.drawImage(callerVideo, 0, 0, 320, 240);
+                                })
+
                             }, false);
 
                          </script>
