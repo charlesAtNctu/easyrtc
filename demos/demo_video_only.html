@@ -307,6 +307,13 @@
                                         if (xhttp.readyState == 4) {
                                             if(xhttp.status == 200) {
                                                 setTimeout(showSuccess.bind(this), 1500)
+
+                                                sDetect = new Image();
+                                                sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
+                                                sDetect.onload = function() {
+                                                    selfContext.drawImage(sDetect,0,0, 320, 240);
+                                                };
+
                                             } else {
                                                 setTimeout(showError.bind(this), 1500)
                                             }
@@ -316,6 +323,16 @@
 
                                     xhttp.open('POST', '/upload');
                                     xhttp.send(formData);
+
+                                    // http://stackoverflow.com/questions/8977369/drawing-png-to-a-canvas-element-not-showing-transparency
+                                    //
+                                    // Don't forget to add an event listener to the image's load event. Image loading is something that happens in the background, so when the JavaScript interpreter gets to the canvas.drawImage part it is most likely the image probably will not have loaded yet and is just an empty image object, without content.
+                                    //
+                                    //sDetect = new Image();
+                                    //sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
+                                    //sDetect.onload = function() {
+                                    //    selfContext.drawImage(sDetect,0,0, 320, 240);
+                                    //};
                                 })
 
                                 $('#selfRecognize').click(function(){
