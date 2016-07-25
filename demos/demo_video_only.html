@@ -288,40 +288,20 @@
 
                                 $('#selfDetect').click(function(){
 
+                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+
                                     var selfImage = convertCanvasToImage(selfCanvas);
 
-
-                                    alert("HELLO:"+selfImage);
-
-
-                                    var //img    = convertCanvasToImage(selfCanvas),
-                                        //imgPath     = img.src,
-                                        //pathParts   = imgPath.split('/'),
-                                        //filename    = pathParts[pathParts.length - 1],
-                                        //extension   = filename.split('.')[1],
-                                        //imgData     = getBase64Image(img, extension),
-                                        formData    = new FormData(),
+                                    var formData    = new FormData(),
                                         xhttp       = new XMLHttpRequest(),
-                                        file
+                                        file        = dataURItoBlob(selfImage.src)
 
-                                    //alert("extension:"+extension);
-                                    //alert("filename:"+filename);
-
-
-
-                                    file = dataURItoBlob(selfImage.src)
-
-                                    alert("file:"+file);
                                     filename = "localSelf.png";
-                                    alert("filename:"+filename);
 
                                     formData.append('uploads[]', file, filename)
 
-                                    //alert("prepare ?");
                                     //selfImage.parentElement.classList.remove('img-error')
-                                    //alert("prepare ??");
                                     //selfImage.parentElement.classList.add('img-uploading')
-                                    //alert("prepare ???");
 
                                     xhttp.onreadystatechange = function() {
                                         if (xhttp.readyState == 4) {
@@ -334,22 +314,8 @@
                                         }
                                     }.bind(this);
 
-                                    alert("send ?");
-
                                     xhttp.open('POST', '/upload');
                                     xhttp.send(formData);
-
-                                    alert("end ?");
-
-
-
-
-
-
-
-                                    //var imgData = JSON.stringify(getBase64Image(selfImage));
-                                    //alert("WORLD:"+imgData);
-
                                 })
 
                                 $('#selfRecognize').click(function(){
@@ -378,6 +344,11 @@
                             }, false);
 
                          </script>
+
+
+
+
+
 
 
 

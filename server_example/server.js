@@ -12,10 +12,12 @@ var fs = require('fs');
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 httpApp.post('/upload', function(req, res){
 
     var form = new formidable.IncomingForm();
+
     form.multiples = true;
 
     form.uploadDir = path.join(__dirname, '/uploads');
@@ -36,6 +38,7 @@ httpApp.post('/upload', function(req, res){
 
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Start Express http server on port 8080
 var webServer = http.createServer(httpApp).listen(8080);
