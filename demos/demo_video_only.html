@@ -249,6 +249,56 @@
                                 this.parentElement.classList.add('img-error')
                             }
 
+                            function sendEvent(context, video, canvas, filename, resultingfilepath) {
+                                context.drawImage(video, 0, 0, 320, 240);
+
+                                var image = convertCanvasToImage(canvas);
+
+                                var formData    = new FormData(),
+                                    xhttp       = new XMLHttpRequest(),
+                                    file        = dataURItoBlob(image.src)
+
+                                //filename = "localDetect.png";
+
+                                formData.append('uploads[]', file, filename)
+
+                                //image.parentElement.classList.remove('img-error')
+                                //image.parentElement.classList.add('img-uploading')
+
+                                xhttp.onreadystatechange = function() {
+                                    if (xhttp.readyState == 4) {
+                                        if(xhttp.status == 200) {
+                                            setTimeout(showSuccess.bind(this), 1500)
+
+                                            sDetect = new Image();
+                                            sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
+                                            sDetect.onload = function() {
+                                                context.drawImage(sDetect,0,0, 320, 240);
+                                            };
+
+                                        } else {
+                                            setTimeout(showError.bind(this), 1500)
+                                        }
+
+                                    }
+                                }.bind(this);
+
+                                xhttp.open('POST', '/upload');
+                                xhttp.send(formData);
+
+                                // http://stackoverflow.com/questions/8977369/drawing-png-to-a-canvas-element-not-showing-transparency
+                                //
+                                // Don't forget to add an event listener to the image's load event. Image loading is something that happens in the background, so when the JavaScript interpreter gets to the canvas.drawImage part it is most likely the image probably will not have loaded yet and is just an empty image object, without content.
+                                //
+                                //sDetect = new Image();
+                                //sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
+                                //sDetect.onload = function() {
+                                //    selfContext.drawImage(sDetect,0,0, 320, 240);
+                                //};
+
+
+                            }
+
                             // Put event listeners into place
                             window.addEventListener("DOMContentLoaded", function () {
 
@@ -276,86 +326,102 @@
                                 // Trigger photo take
                                 document.getElementById("selfSnap").addEventListener("click", function () {
 
-                                    ////////////////////////////////////////////////////////////////////////////////////
-                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+                                    sendEvent(selfContext, selfVideo, selfCanvas, "localSnap.png", "latest/localSnap.png");
 
-//                                    // video -> canvas -> image
-//                                    var selfPngHolder = document.getElementById("selfPngHolder");
-//                                    selfPngHolder.removeChild(selfPngHolder.childNodes[0]);
-//                                    var selfImage = convertCanvasToImage(selfCanvas)
-//                                    selfPngHolder.appendChild(selfImage);
+//                                    ////////////////////////////////////////////////////////////////////////////////////
+//                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+//
+////                                    // video -> canvas -> image
+////                                    var selfPngHolder = document.getElementById("selfPngHolder");
+////                                    selfPngHolder.removeChild(selfPngHolder.childNodes[0]);
+////                                    var selfImage = convertCanvasToImage(selfCanvas)
+////                                    selfPngHolder.appendChild(selfImage);
                                 });
 
                                 $('#selfDetect').click(function(){
 
-                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+                                    sendEvent(selfContext, selfVideo, selfCanvas, "localDetect.png", "latest/localDetect.png");
 
-                                    var selfImage = convertCanvasToImage(selfCanvas);
-
-                                    var formData    = new FormData(),
-                                        xhttp       = new XMLHttpRequest(),
-                                        file        = dataURItoBlob(selfImage.src)
-
-                                    filename = "localSelf.png";
-
-                                    formData.append('uploads[]', file, filename)
-
-                                    //selfImage.parentElement.classList.remove('img-error')
-                                    //selfImage.parentElement.classList.add('img-uploading')
-
-                                    xhttp.onreadystatechange = function() {
-                                        if (xhttp.readyState == 4) {
-                                            if(xhttp.status == 200) {
-                                                setTimeout(showSuccess.bind(this), 1500)
-
-                                                sDetect = new Image();
-                                                sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
-                                                sDetect.onload = function() {
-                                                    selfContext.drawImage(sDetect,0,0, 320, 240);
-                                                };
-
-                                            } else {
-                                                setTimeout(showError.bind(this), 1500)
-                                            }
-
-                                        }
-                                    }.bind(this);
-
-                                    xhttp.open('POST', '/upload');
-                                    xhttp.send(formData);
-
-                                    // http://stackoverflow.com/questions/8977369/drawing-png-to-a-canvas-element-not-showing-transparency
-                                    //
-                                    // Don't forget to add an event listener to the image's load event. Image loading is something that happens in the background, so when the JavaScript interpreter gets to the canvas.drawImage part it is most likely the image probably will not have loaded yet and is just an empty image object, without content.
-                                    //
-                                    //sDetect = new Image();
-                                    //sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
-                                    //sDetect.onload = function() {
-                                    //    selfContext.drawImage(sDetect,0,0, 320, 240);
-                                    //};
+//                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+//
+//                                    var selfImage = convertCanvasToImage(selfCanvas);
+//
+//                                    var formData    = new FormData(),
+//                                        xhttp       = new XMLHttpRequest(),
+//                                        file        = dataURItoBlob(selfImage.src)
+//
+//                                    filename = "localDetect.png";
+//
+//                                    formData.append('uploads[]', file, filename)
+//
+//                                    //selfImage.parentElement.classList.remove('img-error')
+//                                    //selfImage.parentElement.classList.add('img-uploading')
+//
+//                                    xhttp.onreadystatechange = function() {
+//                                        if (xhttp.readyState == 4) {
+//                                            if(xhttp.status == 200) {
+//                                                setTimeout(showSuccess.bind(this), 1500)
+//
+//                                                sDetect = new Image();
+//                                                sDetect.src = "local/detects/localDetect.png"; // can also be a remote URL e.g. http://
+//                                                sDetect.onload = function() {
+//                                                    selfContext.drawImage(sDetect,0,0, 320, 240);
+//                                                };
+//
+//                                            } else {
+//                                                setTimeout(showError.bind(this), 1500)
+//                                            }
+//
+//                                        }
+//                                    }.bind(this);
+//
+//                                    xhttp.open('POST', '/upload');
+//                                    xhttp.send(formData);
+//
+//                                    // http://stackoverflow.com/questions/8977369/drawing-png-to-a-canvas-element-not-showing-transparency
+//                                    //
+//                                    // Don't forget to add an event listener to the image's load event. Image loading is something that happens in the background, so when the JavaScript interpreter gets to the canvas.drawImage part it is most likely the image probably will not have loaded yet and is just an empty image object, without content.
+//                                    //
+//                                    //sDetect = new Image();
+//                                    //sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
+//                                    //sDetect.onload = function() {
+//                                    //    selfContext.drawImage(sDetect,0,0, 320, 240);
+//                                    //};
                                 })
 
                                 $('#selfRecognize').click(function(){
-                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+
+                                    sendEvent(selfContext, selfVideo, selfCanvas, "localRecognize.png", "latest/localRecognize.png");
+
+//                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
                                 })
 
                                 document.getElementById("callerSnap").addEventListener("click", function () {
-                                    ////////////////////////////////////////////////////////////////////////////////////
-                                    callerContext.drawImage(callerVideo, 0, 0, 320, 240);
 
-//                                    // video -> canvas -> image
-//                                    var callerPngHolder = document.getElementById("callerPngHolder");
-//                                    callerPngHolder.removeChild(callerPngHolder.childNodes[0]);
-//                                    var callerImage = convertCanvasToImage(callerCanvas)
-//                                    callerPngHolder.appendChild(callerImage);
+                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteSnap.png", "latest/remoteSnap.png");
+
+//                                    ////////////////////////////////////////////////////////////////////////////////////
+//                                    callerContext.drawImage(callerVideo, 0, 0, 320, 240);
+//
+////                                    // video -> canvas -> image
+////                                    var callerPngHolder = document.getElementById("callerPngHolder");
+////                                    callerPngHolder.removeChild(callerPngHolder.childNodes[0]);
+////                                    var callerImage = convertCanvasToImage(callerCanvas)
+////                                    callerPngHolder.appendChild(callerImage);
                                 });
 
                                 $('#callerDetect').click(function(){
-                                    document.getElementById('callerJson').innerHTML = 'RESPONSE';
+
+                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteDetect.png", "latest/remoteDetect.png");
+
+                                    //document.getElementById('callerJson').innerHTML = 'RESPONSE';
                                 })
 
                                 $('#callerRecognize').click(function(){
-                                    callerContext.drawImage(callerVideo, 0, 0, 320, 240);
+
+                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteRecognize.png", "latest/remoteRecognize.png");
+
+                                    //callerContext.drawImage(callerVideo, 0, 0, 320, 240);
                                 })
 
                             }, false);
