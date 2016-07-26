@@ -257,7 +257,7 @@
                                 this.parentElement.classList.add('img-error')
                             }
 
-                            function sendEvent(context, video, canvas, filename, resultingfilepath) {
+                            function sendEvent(context, video, canvas, filename, resultingfilepath, imageElem) {
                                 context.drawImage(video, 0, 0, 320, 240);
 
                                 var image = convertCanvasToImage(canvas);
@@ -285,7 +285,7 @@
 //                                                console.info("resetting the source ... :)")
 
                                                 d = new Date();
-                                                $('#selfImage').attr("src", sDetect.src + "?" + d.getTime());
+                                                imageElem.attr("src", sDetect.src + "?" + d.getTime());
 
                                                 //canvas.width = canvas.width;
                                                 //context.clearRect(0, 0, canvas.width, canvas.height);
@@ -372,7 +372,7 @@
                                 // Trigger photo take
                                 document.getElementById("selfSnap").addEventListener("click", function () {
 
-                                    sendEvent(selfContext, selfVideo, selfCanvas, "localSnap.png", "latest/localSnap.png");
+                                    sendEvent(selfContext, selfVideo, selfCanvas, "localSnap.png", "latest/localSnap.png", $('#selfImage'));
 
 //                                    ////////////////////////////////////////////////////////////////////////////////////
 //                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
@@ -386,7 +386,7 @@
 
                                 $('#selfDetect').click(function(){
 
-                                    sendEvent(selfContext, selfVideo, selfCanvas, "localDetect.png", "latest/localDetect.png");
+                                    sendEvent(selfContext, selfVideo, selfCanvas, "localDetect.png", "latest/localDetect.png", $('#selfImage'));
 
 //                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
 //
@@ -437,14 +437,14 @@
 
                                 $('#selfRecognize').click(function(){
 
-                                    sendEvent(selfContext, selfVideo, selfCanvas, "localRecognize.png", "latest/localRecognize.png");
+                                    sendEvent(selfContext, selfVideo, selfCanvas, "localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
 
 //                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
                                 })
 
                                 document.getElementById("callerSnap").addEventListener("click", function () {
 
-                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteSnap.png", "latest/remoteSnap.png");
+                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteSnap.png", "latest/remoteSnap.png", $('#callerImage'));
 
 //                                    ////////////////////////////////////////////////////////////////////////////////////
 //                                    callerContext.drawImage(callerVideo, 0, 0, 320, 240);
@@ -458,14 +458,14 @@
 
                                 $('#callerDetect').click(function(){
 
-                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteDetect.png", "latest/remoteDetect.png");
+                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteDetect.png", "latest/remoteDetect.png", $('#callerImage'));
 
                                     //document.getElementById('callerJson').innerHTML = 'RESPONSE';
                                 })
 
                                 $('#callerRecognize').click(function(){
 
-                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteRecognize.png", "latest/remoteRecognize.png");
+                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteRecognize.png", "latest/remoteRecognize.png", $('#callerImage'));
 
                                     //callerContext.drawImage(callerVideo, 0, 0, 320, 240);
                                 })
