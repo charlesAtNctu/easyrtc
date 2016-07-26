@@ -125,6 +125,14 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <img id="selfImage" width="320" height="240"></img>
+                                </td>
+                                <td>
+                                    <img id="callerImage" width="320" height="240"></img>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <p><b id='selfJson'></b></p>
                                 </td>
                                 <td>
@@ -273,11 +281,34 @@
                                             sDetect = new Image();
                                             sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
                                             sDetect.onload = function() {
-                                                context.drawImage(sDetect,0,0, 320, 240);
+
+//                                                console.info("resetting the source ... :)")
+
+                                                d = new Date();
+                                                $('#selfImage').attr("src", sDetect.src + "?" + d.getTime());
+
+                                                //canvas.width = canvas.width;
+                                                //context.clearRect(0, 0, canvas.width, canvas.height);
+                                                //context.drawImage(sDetect,0,0, 320, 240);
                                             };
 
                                         } else {
                                             setTimeout(showError.bind(this), 1500)
+
+
+//                                            sDetect = new Image();
+//                                            sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
+//                                            sDetect.onload = function() {
+//
+//                                                console.info("resetting the source ... :)")
+//
+//                                                d = new Date();
+//                                                $('#selfImage').attr("src", sDetect.src + "?" + d.getTime());
+//
+//                                                //canvas.width = canvas.width;
+//                                                //context.clearRect(0, 0, canvas.width, canvas.height);
+//                                                //context.drawImage(sDetect,0,0, 320, 240);
+//                                            };
                                         }
 
                                     }
@@ -285,6 +316,21 @@
 
                                 xhttp.open('POST', '/upload');
                                 xhttp.send(formData);
+
+
+//                                sDetect = new Image();
+//                                sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
+//                                sDetect.onload = function() {
+//
+//                                    console.info("resetting the source ... :)")
+//
+//                                    d = new Date();
+//                                    $('#selfImage').attr("src", sDetect.src + "?" + d.getTime());
+//
+//                                    //canvas.width = canvas.width;
+//                                    //context.clearRect(0, 0, canvas.width, canvas.height);
+//                                    //context.drawImage(sDetect,0,0, 320, 240);
+//                                };
 
                                 // http://stackoverflow.com/questions/8977369/drawing-png-to-a-canvas-element-not-showing-transparency
                                 //
