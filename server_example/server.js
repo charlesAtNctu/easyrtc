@@ -8,6 +8,8 @@ var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
 
+const child_process = require('child_process');
+
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
@@ -26,15 +28,45 @@ httpApp.post('/upload', function(req, res){
         fs.rename(file.path, path.join(form.uploadDir, file.name));
     });
 
-    form.on('error', function(err) {
-        console.log('error: \n' + err);
+
+
+    var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ',
+        function (error, stdout, stderr) {
+            if (error) {
+                console.log(error.stack);
+                console.log('Error code: '+error.code);
+                console.log('Signal received: '+error.signal);
+            }
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + stderr);
+        });
+
+    workerProcess.on('exit', function (code) {
+        console.log('Child process exited with exit code '+code);
+
+        form.on('error', function(err) {
+            console.log('error: \n' + err);
+        });
+
+        form.on('end', function() {
+            res.end('success');
+        });
+
+        form.parse(req);
+
     });
 
-    form.on('end', function() {
-        res.end('success');
-    });
 
-    form.parse(req);
+
+    // form.on('error', function(err) {
+    //     console.log('error: \n' + err);
+    // });
+    //
+    // form.on('end', function() {
+    //     res.end('success');
+    // });
+    //
+    // form.parse(req);
 
 });
 
