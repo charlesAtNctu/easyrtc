@@ -387,6 +387,13 @@
                                 $('#selfDetect').click(function(){
 
                                     sendEvent(selfContext, selfVideo, selfCanvas, "localDetect.png", "latest/localDetect.png", $('#selfImage'));
+
+                                    //window.location.reload(true);
+
+
+                                    ddd = new Date();
+                                    $('#selfImage').attr("src", "latest/localDetect.png?" + ddd.getTime());
+
                                     //sendEvent(selfContext, selfVideo, selfCanvas, "localDetect.png", "latest/localDetect.png", $('#selfImage'));// testing ...
 
 //                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
