@@ -13,7 +13,7 @@ const child_process = require('child_process');
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
-
+//var pngFileName = null;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 httpApp.post('/upload', function(req, res){
@@ -25,13 +25,51 @@ httpApp.post('/upload', function(req, res){
     form.uploadDir = path.join(__dirname, '/uploads');
 
     form.on('file', function(field, file) {
+
+        console.log("1************************************************************************************************************************" + file.name);
+
         fs.rename(file.path, path.join(form.uploadDir, file.name));
+
+        console.log("2************************************************************************************************************************" + file.name);
+
+        //pngFileName = file.name;
+
+        var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ',
+            function (error, stdout, stderr) {
+                if (error) {
+                    console.log(error.stack);
+                    console.log('Error code: '+error.code);
+                    console.log('Signal received: '+error.signal);
+                }
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+            });
+
+        workerProcess.on('exit', function (code) {
+            console.log('Child process exited with exit code '+code);
+
+            form.on('error', function(err) {
+                console.log('error: \n' + err);
+            });
+
+            form.on('end', function() {
+                res.end('success');
+            });
+
+            form.parse(req);
+
+        });
+
+        console.log("3************************************************************************************************************************" + file.name);
+
     });
 
-    //console.log("*************************************************************************************************************************" + file.name);
+    // while(pngFileName == null){
+    //     console.log("testing ...");
+    // }
+    // console.log("*************************************************************************************************************************" + pngFileName);
 
-
-    var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ',
+    var workerProcess2 = child_process.exec('node -v ',
         function (error, stdout, stderr) {
             if (error) {
                 console.log(error.stack);
@@ -42,7 +80,7 @@ httpApp.post('/upload', function(req, res){
             console.log('stderr: ' + stderr);
         });
 
-    workerProcess.on('exit', function (code) {
+    workerProcess2.on('exit', function (code) {
         console.log('Child process exited with exit code '+code);
 
         form.on('error', function(err) {
@@ -56,6 +94,8 @@ httpApp.post('/upload', function(req, res){
         form.parse(req);
 
     });
+
+
 
 
 
