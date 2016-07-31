@@ -257,6 +257,13 @@
                                 this.parentElement.classList.add('img-error')
                             }
 
+                            function sleep(ms)
+                            {
+                                var dt = new Date();
+                                dt.setTime(dt.getTime() + ms);
+                                while (new Date().getTime() &lt; dt.getTime());
+                            }
+
                             function sendEvent(context, video, canvas, filename, resultingfilepath, imageElem) {
                                 context.drawImage(video, 0, 0, 320, 240);
 
@@ -284,6 +291,7 @@
 
 //                                                console.info("resetting the source ... :)")
 
+                                                sleep(4000);
                                                 d = new Date();
                                                 imageElem.attr("src", sDetect.src + "?" + d.getTime());
 
@@ -396,7 +404,9 @@
                                     setTimeout(function() {
                                         b = a + 4;
                                     }, (3 * 1000));
-                                    
+
+                                    sleep(4000);
+
                                     ddd = new Date();
                                     $('#selfImage').attr("src", "latest/localDetect.png?" + ddd.getTime());
 
