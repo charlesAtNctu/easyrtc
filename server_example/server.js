@@ -28,7 +28,7 @@ httpApp.post('/upload', function(req, res){
         fs.rename(file.path, path.join(form.uploadDir, file.name));
     });
 
-    console.log("*************************************************************************************************************************" + file.name);
+    //console.log("*************************************************************************************************************************" + file.name);
 
 
     var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ',
