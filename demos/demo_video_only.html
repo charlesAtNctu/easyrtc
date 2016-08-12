@@ -113,22 +113,22 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button id="selfSnap"        class="sexyButton">Self   Snap      </button>
-                                    <button id="selfDetect"      class="sexyButton">Self   Detect    </button>
+                                    <button id="selfSnap"        class="sexyButton">Self   Snap            </button>
+                                    <button id="selfDetect"      class="sexyButton">Self Snap + Self Detect</button>
                                     <button id="selfRecognize"   class="sexyButton">Self   Recognize </button>
                                 </td>
                                 <td>
-                                    <button id="callerSnap"      class="sexyButton">Caller Snap      </button>
-                                    <button id="callerDetect"    class="sexyButton">Caller Detect    </button>
+                                    <button id="callerSnap"      class="sexyButton">Caller Snap                </button>
+                                    <button id="callerDetect"    class="sexyButton">Caller Snap + Caller Detect</button>
                                     <button id="callerRecognize" class="sexyButton">Caller Recognize </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Below is from Self Snap button.
+                                    Below is from [Self Snap] button.
                                 </td>
                                 <td>
-                                    Below is from Caller Snap button.
+                                    Below is from [Caller Snap] button.
                                 </td>
                             </tr>
                             <tr>
@@ -141,10 +141,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Below is from Self Detect button.
+                                    Below is from [Self Snap + Self Detect] button.
                                 </td>
                                 <td>
-                                    Below is from Caller Detect button.
+                                    Below is from [Caller Snap + Caller Detect] button.
                                 </td>
                             </tr>
                             <tr>
@@ -157,10 +157,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Below is from Self Recognize button.
+                                    Below is from [Self Recognize] button.
                                 </td>
                                 <td>
-                                    Below is from Caller Recognize button.
+                                    Below is from [Caller Recognize] button.
                                 </td>
                             </tr>
                             <tr>
@@ -171,14 +171,14 @@
                                     <img id="callerImage2" width="320" height="240"></img>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <p><b id='selfJson'></b></p>
-                                </td>
-                                <td>
-                                    <p><b id='callerJson'></b></p>
-                                </td>
-                            </tr>
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--<p><b id='selfJson'></b></p>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<p><b id='callerJson'></b></p>-->
+                                <!--</td>-->
+                            <!--</tr>-->
                         </table>
 
                         <script>
@@ -386,19 +386,19 @@
                             }, false);
 
                             setInterval(function() {
-                                $(  '#selfImage' ).attr("src",  "latest/localDetect.png?" + new Date().getTime());
+                                $(  '#selfImage' ).attr("src",     "latest/localDetect.png?" + new Date().getTime());
                             }, 500);
 
                             setInterval(function() {
-                                $('#callerImage' ).attr("src", "latest/remoteDetect.png?" + new Date().getTime());
+                                $('#callerImage' ).attr("src",    "latest/remoteDetect.png?" + new Date().getTime());
                             }, 500);
 
                             setInterval(function() {
-                                $(  '#selfImage2').attr("src",  "latest/localDetect.png?" + new Date().getTime());
+                                $(  '#selfImage2').attr("src",  "latest/localRecognize.png?" + new Date().getTime());
                             }, 500);
 
                             setInterval(function() {
-                                $('#callerImage2').attr("src", "latest/remoteDetect.png?" + new Date().getTime());
+                                $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
                             }, 500);
 
                          </script>
