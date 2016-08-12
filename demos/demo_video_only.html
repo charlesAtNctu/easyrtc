@@ -315,8 +315,7 @@
                                             sDetect = new Image();
                                             sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
                                             sDetect.onload = function() {
-
-//                                                console.info("resetting the source ... :)")
+                                                //console.info("resetting the source ... :)")
 
                                                 d = new Date();
                                                 imageElem.attr("src", sDetect.src + "?" + d.getTime());
@@ -390,17 +389,17 @@
                                 $(  '#selfImage' ).attr("src",  "latest/localDetect.png?" + new Date().getTime());
                             }, 500);
 
-                            setInterval(function() {
-                                $('#callerImage' ).attr("src", "latest/remoteDetect.png?" + new Date().getTime());
-                            }, 500);
-
-                            setInterval(function() {
-                                $(  '#selfImage2').attr("src",  "latest/localDetect.png?" + new Date().getTime());
-                            }, 500);
-
-                            setInterval(function() {
-                                $('#callerImage2').attr("src", "latest/remoteDetect.png?" + new Date().getTime());
-                            }, 500);
+//                            setInterval(function() {
+//                                $('#callerImage' ).attr("src", "latest/remoteDetect.png?" + new Date().getTime());
+//                            }, 500);
+//
+//                            setInterval(function() {
+//                                $(  '#selfImage2').attr("src",  "latest/localDetect.png?" + new Date().getTime());
+//                            }, 500);
+//
+//                            setInterval(function() {
+//                                $('#callerImage2').attr("src", "latest/remoteDetect.png?" + new Date().getTime());
+//                            }, 500);
 
                          </script>
 
