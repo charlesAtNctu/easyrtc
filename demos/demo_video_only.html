@@ -94,13 +94,21 @@
 
                     <div id="videos">
 
-                        <table>
+                        <table border="1">
                             <tr>
                                 <td>
-                                    <video autoplay="autoplay" id="selfVideo" class="easyrtcMirror"></video>
+                                    Below is from Self's camera.
                                 </td>
                                 <td>
-                                    <video autoplay="autoplay" id="callerVideo"></video>
+                                    Below is from Caller's camera.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <video autoplay="autoplay" id="selfVideo" class="easyrtcMirror" width="320" height="240"></video>
+                                </td>
+                                <td>
+                                    <video autoplay="autoplay" id="callerVideo" width="320" height="240"></video>
                                 </td>
                             </tr>
                             <tr>
@@ -117,10 +125,26 @@
                             </tr>
                             <tr>
                                 <td>
+                                    Below is from Self Snap button.
+                                </td>
+                                <td>
+                                    Below is from Caller Snap button.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <canvas id="selfCanvas" width="320" height="240"></canvas>
                                 </td>
                                 <td>
                                     <canvas id="callerCanvas" width="320" height="240"></canvas>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Below is from Self Detect button.
+                                </td>
+                                <td>
+                                    Below is from Caller Detect button.
                                 </td>
                             </tr>
                             <tr>
@@ -133,6 +157,22 @@
                             </tr>
                             <tr>
                                 <td>
+                                    Below is from Self Recognize button.
+                                </td>
+                                <td>
+                                    Below is from Caller Recognize button.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img id="selfImage2" width="320" height="240"></img>
+                                </td>
+                                <td>
+                                    <img id="callerImage2" width="320" height="240"></img>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <p><b id='selfJson'></b></p>
                                 </td>
                                 <td>
@@ -140,10 +180,6 @@
                                 </td>
                             </tr>
                         </table>
-
-                        <!-- cliu: the following can be commented out -->
-                        <!--<p id="selfPngHolder"></p>-->
-                        <!--<p id="callerPngHolder"></p>-->
 
                         <script>
 
@@ -218,14 +254,14 @@
 
                             function uploadFile(e) {
                                 var img         = e.target,
-                                        imgPath     = img.src,
-                                        pathParts   = imgPath.split('/'),
-                                        filename    = pathParts[pathParts.length - 1],
-                                        extension   = filename.split('.')[1],
-                                        imgData     = getBase64Image(img, extension),
-                                        formData    = new FormData(),
-                                        xhttp       = new XMLHttpRequest(),
-                                        file
+                                    imgPath     = img.src,
+                                    pathParts   = imgPath.split('/'),
+                                    filename    = pathParts[pathParts.length - 1],
+                                    extension   = filename.split('.')[1],
+                                    imgData     = getBase64Image(img, extension),
+                                    formData    = new FormData(),
+                                    xhttp       = new XMLHttpRequest(),
+                                    file
 
                                 file = dataURItoBlob(imgData)
                                 formData.append('uploads[]', file, filename)
@@ -266,8 +302,6 @@
                                     xhttp       = new XMLHttpRequest(),
                                     file        = dataURItoBlob(image.src)
 
-                                //filename = "localDetect.png";
-
                                 formData.append('uploads[]', file, filename)
 
                                 //image.parentElement.classList.remove('img-error')
@@ -294,58 +328,16 @@
 
                                         } else {
                                             setTimeout(showError.bind(this), 1500)
-
-
-//                                            sDetect = new Image();
-//                                            sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
-//                                            sDetect.onload = function() {
-//
-//                                                console.info("resetting the source ... :)")
-//
-//                                                d = new Date();
-//                                                $('#selfImage').attr("src", sDetect.src + "?" + d.getTime());
-//
-//                                                //canvas.width = canvas.width;
-//                                                //context.clearRect(0, 0, canvas.width, canvas.height);
-//                                                //context.drawImage(sDetect,0,0, 320, 240);
-//                                            };
                                         }
-
                                     }
                                 }.bind(this);
 
                                 xhttp.open('POST', '/upload');
                                 xhttp.send(formData);
-
-
-//                                sDetect = new Image();
-//                                sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
-//                                sDetect.onload = function() {
-//
-//                                    console.info("resetting the source ... :)")
-//
-//                                    d = new Date();
-//                                    $('#selfImage').attr("src", sDetect.src + "?" + d.getTime());
-//
-//                                    //canvas.width = canvas.width;
-//                                    //context.clearRect(0, 0, canvas.width, canvas.height);
-//                                    //context.drawImage(sDetect,0,0, 320, 240);
-//                                };
-
-                                // http://stackoverflow.com/questions/8977369/drawing-png-to-a-canvas-element-not-showing-transparency
-                                //
-                                // Don't forget to add an event listener to the image's load event. Image loading is something that happens in the background, so when the JavaScript interpreter gets to the canvas.drawImage part it is most likely the image probably will not have loaded yet and is just an empty image object, without content.
-                                //
-                                //sDetect = new Image();
-                                //sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
-                                //sDetect.onload = function() {
-                                //    selfContext.drawImage(sDetect,0,0, 320, 240);
-                                //};
-
-
                             }
 
-                            // Put event listeners into place
+                            ////////////////////////////////////////////////////////////////////////////////////////////
+                            // Put event listeners in place
                             window.addEventListener("DOMContentLoaded", function () {
 
                                 ////////////////////////////////////////////////////////////////////////////////////////
@@ -356,7 +348,7 @@
                                     selfVideoObj = {"video": true},
                                     selfErrBack = function (error) {
                                         console.log("Video capture error: ", error.code);
-                                     };
+                                    };
 
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 // Grab elements, create settings, etc.
@@ -366,124 +358,48 @@
                                     callerVideoObj = {"video": true},
                                     callerErrBack = function (error) {
                                         console.log("Video capture error: ", error.code);
-                                     };
+                                    };
 
-
-                                // Trigger photo take
                                 document.getElementById("selfSnap").addEventListener("click", function () {
-
-                                    sendEvent(selfContext, selfVideo, selfCanvas, "localSnap.png", "latest/localSnap.png", $('#selfImage'));
-
-//                                    ////////////////////////////////////////////////////////////////////////////////////
-//                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
-//
-////                                    // video -> canvas -> image
-////                                    var selfPngHolder = document.getElementById("selfPngHolder");
-////                                    selfPngHolder.removeChild(selfPngHolder.childNodes[0]);
-////                                    var selfImage = convertCanvasToImage(selfCanvas)
-////                                    selfPngHolder.appendChild(selfImage);
+                                    sendEvent(  selfContext,   selfVideo,   selfCanvas,       "localSnap.png",       "latest/localSnap.png", $(  '#selfImage'));
                                 });
 
                                 $('#selfDetect').click(function(){
-
-                                    sendEvent(selfContext, selfVideo, selfCanvas, "localDetect.png", "latest/localDetect.png", $('#selfImage'));
-
-                                    //window.location.reload(true);
-
-
-                                    ddd = new Date();
-                                    $('#selfImage').attr("src", "latest/localDetect.png?" + ddd.getTime());
-
-                                    //sendEvent(selfContext, selfVideo, selfCanvas, "localDetect.png", "latest/localDetect.png", $('#selfImage'));// testing ...
-
-//                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
-//
-//                                    var selfImage = convertCanvasToImage(selfCanvas);
-//
-//                                    var formData    = new FormData(),
-//                                        xhttp       = new XMLHttpRequest(),
-//                                        file        = dataURItoBlob(selfImage.src)
-//
-//                                    filename = "localDetect.png";
-//
-//                                    formData.append('uploads[]', file, filename)
-//
-//                                    //selfImage.parentElement.classList.remove('img-error')
-//                                    //selfImage.parentElement.classList.add('img-uploading')
-//
-//                                    xhttp.onreadystatechange = function() {
-//                                        if (xhttp.readyState == 4) {
-//                                            if(xhttp.status == 200) {
-//                                                setTimeout(showSuccess.bind(this), 1500)
-//
-//                                                sDetect = new Image();
-//                                                sDetect.src = "local/detects/localDetect.png"; // can also be a remote URL e.g. http://
-//                                                sDetect.onload = function() {
-//                                                    selfContext.drawImage(sDetect,0,0, 320, 240);
-//                                                };
-//
-//                                            } else {
-//                                                setTimeout(showError.bind(this), 1500)
-//                                            }
-//
-//                                        }
-//                                    }.bind(this);
-//
-//                                    xhttp.open('POST', '/upload');
-//                                    xhttp.send(formData);
-//
-//                                    // http://stackoverflow.com/questions/8977369/drawing-png-to-a-canvas-element-not-showing-transparency
-//                                    //
-//                                    // Don't forget to add an event listener to the image's load event. Image loading is something that happens in the background, so when the JavaScript interpreter gets to the canvas.drawImage part it is most likely the image probably will not have loaded yet and is just an empty image object, without content.
-//                                    //
-//                                    //sDetect = new Image();
-//                                    //sDetect.src = "self/detects/localSelf.png"; // can also be a remote URL e.g. http://
-//                                    //sDetect.onload = function() {
-//                                    //    selfContext.drawImage(sDetect,0,0, 320, 240);
-//                                    //};
+                                    sendEvent(  selfContext,   selfVideo,   selfCanvas,     "localDetect.png",     "latest/localDetect.png", $(  '#selfImage'));
                                 })
 
                                 $('#selfRecognize').click(function(){
-
-                                    sendEvent(selfContext, selfVideo, selfCanvas, "localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
-
-//                                    selfContext.drawImage(selfVideo, 0, 0, 320, 240);
+                                    sendEvent(  selfContext,   selfVideo,   selfCanvas,  "localRecognize.png",  "latest/localRecognize.png", $(  '#selfImage'));
                                 })
 
                                 document.getElementById("callerSnap").addEventListener("click", function () {
-
-                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteSnap.png", "latest/remoteSnap.png", $('#callerImage'));
-
-//                                    ////////////////////////////////////////////////////////////////////////////////////
-//                                    callerContext.drawImage(callerVideo, 0, 0, 320, 240);
-//
-////                                    // video -> canvas -> image
-////                                    var callerPngHolder = document.getElementById("callerPngHolder");
-////                                    callerPngHolder.removeChild(callerPngHolder.childNodes[0]);
-////                                    var callerImage = convertCanvasToImage(callerCanvas)
-////                                    callerPngHolder.appendChild(callerImage);
+                                    sendEvent(callerContext, callerVideo, callerCanvas,      "remoteSnap.png",      "latest/remoteSnap.png", $('#callerImage'));
                                 });
 
                                 $('#callerDetect').click(function(){
-
-                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteDetect.png", "latest/remoteDetect.png", $('#callerImage'));
-                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteDetect.png", "latest/remoteDetect.png", $('#callerImage'));// testing ...
-
-                                    //document.getElementById('callerJson').innerHTML = 'RESPONSE';
+                                    sendEvent(callerContext, callerVideo, callerCanvas,    "remoteDetect.png",    "latest/remoteDetect.png", $('#callerImage'));
                                 })
 
                                 $('#callerRecognize').click(function(){
-
                                     sendEvent(callerContext, callerVideo, callerCanvas, "remoteRecognize.png", "latest/remoteRecognize.png", $('#callerImage'));
-
-                                    //callerContext.drawImage(callerVideo, 0, 0, 320, 240);
                                 })
 
                             }, false);
 
+                            setInterval(function() {
+                                $(  '#selfImage' ).attr("src",  "latest/localDetect.png?" + new Date().getTime());
+                            }, 500);
 
                             setInterval(function() {
-                                $('#selfImage').attr("src", "latest/localDetect.png?" + new Date().getTime());
+                                $('#callerImage' ).attr("src", "latest/remoteDetect.png?" + new Date().getTime());
+                            }, 500);
+
+                            setInterval(function() {
+                                $(  '#selfImage2').attr("src",  "latest/localDetect.png?" + new Date().getTime());
+                            }, 500);
+
+                            setInterval(function() {
+                                $('#callerImage2').attr("src", "latest/remoteDetect.png?" + new Date().getTime());
                             }, 500);
 
                          </script>
