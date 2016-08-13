@@ -18,6 +18,8 @@ httpApp.use(express.static(__dirname + "/static/"));
 
 httpApp.post('/upload', function(req, res){
 
+    // TODO: get action ...
+
     var form = new formidable.IncomingForm();
 
     form.multiples = true;
@@ -69,31 +71,31 @@ httpApp.post('/upload', function(req, res){
     // }
     // console.log("*************************************************************************************************************************" + pngFileName);
 
-    var workerProcess2 = child_process.exec('node -v ',
-        function (error, stdout, stderr) {
-            if (error) {
-                console.log(error.stack);
-                console.log('Error code: '+error.code);
-                console.log('Signal received: '+error.signal);
-            }
-            console.log('stdout: ' + stdout);
-            console.log('stderr: ' + stderr);
-        });
-
-    workerProcess2.on('exit', function (code) {
-        console.log('Child process exited with exit code '+code);
-
-        form.on('error', function(err) {
-            console.log('error: \n' + err);
-        });
-
-        form.on('end', function() {
-            res.end('success');
-        });
-
-        form.parse(req);
-
-    });
+    // var workerProcess2 = child_process.exec('node -v ',
+    //     function (error, stdout, stderr) {
+    //         if (error) {
+    //             console.log(error.stack);
+    //             console.log('Error code: '+error.code);
+    //             console.log('Signal received: '+error.signal);
+    //         }
+    //         console.log('stdout: ' + stdout);
+    //         console.log('stderr: ' + stderr);
+    //     });
+    //
+    // workerProcess2.on('exit', function (code) {
+    //     console.log('Child process exited with exit code '+code);
+    //
+    //     form.on('error', function(err) {
+    //         console.log('error: \n' + err);
+    //     });
+    //
+    //     form.on('end', function() {
+    //         res.end('success');
+    //     });
+    //
+    //     form.parse(req);
+    //
+    // });
 
 
 
