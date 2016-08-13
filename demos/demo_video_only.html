@@ -113,14 +113,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button id="selfSnap"        class="sexyButton">Self   Snap            </button>
+                                    <button id="selfSnap"        class="sexyButton">Self Snap            </button>
                                     <button id="selfDetect"      class="sexyButton">Self Snap + Self Detect</button>
-                                    <button id="selfRecognize"   class="sexyButton">Self   Recognize </button>
+                                    <button id="selfRecognize"   class="sexyButton">Self Recognize </button>
+                                    <input  id="selfId"          type="text">
                                 </td>
                                 <td>
                                     <button id="callerSnap"      class="sexyButton">Caller Snap                </button>
                                     <button id="callerDetect"    class="sexyButton">Caller Snap + Caller Detect</button>
                                     <button id="callerRecognize" class="sexyButton">Caller Recognize </button>
+                                    <input  id="callerId"        type="text">
                                 </td>
                             </tr>
                             <tr>
@@ -293,7 +295,7 @@
                                 this.parentElement.classList.add('img-error')
                             }
 
-                            function sendEvent(context, video, canvas, filename, resultingfilepath, imageElem) {
+                            function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {
                                 context.drawImage(video, 0, 0, 320, 240);
 
                                 var image = convertCanvasToImage(canvas);
@@ -360,30 +362,51 @@
                                     };
 
                                 document.getElementById("selfSnap").addEventListener("click", function () {
-                                    sendEvent(  selfContext,   selfVideo,   selfCanvas,       "localSnap.png",       "latest/localSnap.png", $(  '#selfImage'));
+                                    sendEvent('',  selfContext,   selfVideo,   selfCanvas,       "localSnap.png",       "latest/localSnap.png", $(  '#selfImage'));
                                 });
 
                                 $('#selfDetect').click(function(){
-                                    sendEvent(  selfContext,   selfVideo,   selfCanvas,     "localDetect.png",     "latest/localDetect.png", $(  '#selfImage'));
+                                    sendEvent('',  selfContext,   selfVideo,   selfCanvas,     "localDetect.png",     "latest/localDetect.png", $(  '#selfImage'));
                                 })
 
                                 $('#selfRecognize').click(function(){
-                                    sendEvent(  selfContext,   selfVideo,   selfCanvas,  "localRecognize.png",  "latest/localRecognize.png", $(  '#selfImage'));
+
+                                    // if non-empty when click, train it.
+                                    // if empty when click, do recognition.
+                                    //
+                                    var selfId=document.getElementById('selfId').value;
+                                    //alert(selfId);
+                                    sendEvent(selfId, selfContext,   selfVideo,   selfCanvas,  "localRecognize.png",  "latest/localRecognize.png", $(  '#selfImage'));
+                                    document.getElementById('selfId').value = '';
+                                    //alert(selfId);
+
                                 })
 
                                 document.getElementById("callerSnap").addEventListener("click", function () {
-                                    sendEvent(callerContext, callerVideo, callerCanvas,      "remoteSnap.png",      "latest/remoteSnap.png", $('#callerImage'));
+                                    sendEvent('', callerContext, callerVideo, callerCanvas,      "remoteSnap.png",      "latest/remoteSnap.png", $('#callerImage'));
                                 });
 
                                 $('#callerDetect').click(function(){
-                                    sendEvent(callerContext, callerVideo, callerCanvas,    "remoteDetect.png",    "latest/remoteDetect.png", $('#callerImage'));
+                                    sendEvent('', callerContext, callerVideo, callerCanvas,    "remoteDetect.png",    "latest/remoteDetect.png", $('#callerImage'));
                                 })
 
                                 $('#callerRecognize').click(function(){
-                                    sendEvent(callerContext, callerVideo, callerCanvas, "remoteRecognize.png", "latest/remoteRecognize.png", $('#callerImage'));
+
+                                    // if non-empty when click, train it
+                                    // if empty when click, do recognition.
+                                    //
+                                    var callerId=document.getElementById('callerId').value;
+                                    //alert(callerId);
+                                    sendEvent(callerId, callerContext, callerVideo, callerCanvas, "remoteRecognize.png", "latest/remoteRecognize.png", $('#callerImage'));
+                                    document.getElementById('callerId').value = '';
+                                    //alert(callerId);
+
                                 })
 
                             }, false);
+
+
+
 
                             setInterval(function() {
                                 $(  '#selfImage' ).attr("src",     "latest/localDetect.png?" + new Date().getTime());
