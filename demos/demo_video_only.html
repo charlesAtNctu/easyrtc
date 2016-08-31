@@ -126,17 +126,29 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td>
                                     <button id="selfSnap"        class="sexyButton">Self Snap            </button>
-                                    <button id="selfDetect"      class="sexyButton">Self Snap + Self Detect</button>
+                                    <button id="selfDetect"      class="sexyButton">Self Snap/Detect</button>
                                     <button id="selfRecognize"   class="sexyButton">Self Recognize </button>
-                                    <input  id="selfId"          type="text">
                                 </td>
-                                <td colspan="2">
+                                <td>
+                                    <!--<form>-->
+                                        <label>Group Id:</label><input  id="selfGroupId"  type="text"><br>
+                                        <label>User Id:</label><input  id="selfId"       type="text"><br>
+                                        <button id="selfTraining" class="sexyButton">Collect Image</button>
+                                    <!--</form>-->
+                                </td>
+                                <td>
                                     <button id="callerSnap"      class="sexyButton">Caller Snap                </button>
-                                    <button id="callerDetect"    class="sexyButton">Caller Snap + Caller Detect</button>
+                                    <button id="callerDetect"    class="sexyButton">Caller Snap/Detect</button>
                                     <button id="callerRecognize" class="sexyButton">Caller Recognize </button>
-                                    <input  id="callerId"        type="text">
+                                </td>
+                                <td>
+                                    <!--<form>-->
+                                        <label>Group Id:</label><input  id="callerGroupId"  type="text"><br>
+                                        <label>User Id:</label><input  id="callerId"       type="text"><br>
+                                        <button id="callerTraining" class="sexyButton">Collect Image</button>
+                                    <!--</form>-->
                                 </td>
                             </tr>
                             <tr>
@@ -309,7 +321,7 @@
                                 this.parentElement.classList.add('img-error')
                             }
 
-                            function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {
+                            function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
                                 context.drawImage(video, 0, 0, 320, 240);
 
                                 var image = convertCanvasToImage(canvas);
@@ -317,6 +329,48 @@
                                 var formData    = new FormData(),
                                     xhttp       = new XMLHttpRequest(),
                                     file        = dataURItoBlob(image.src)
+
+                                formData.append('uploads[]', file, filename)
+
+                                //image.parentElement.classList.remove('img-error')
+                                //image.parentElement.classList.add('img-uploading')
+
+                                xhttp.onreadystatechange = function() {
+                                    if (xhttp.readyState == 4) {
+                                        if(xhttp.status == 200) {
+                                            setTimeout(showSuccess.bind(this), 1500)
+
+                                            sDetect = new Image();
+                                            sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
+                                            sDetect.onload = function() {
+                                                //console.info("resetting the source ... :)")
+
+                                                d = new Date();
+                                                imageElem.attr("src", sDetect.src + "?" + d.getTime());
+
+                                                //canvas.width = canvas.width;
+                                                //context.clearRect(0, 0, canvas.width, canvas.height);
+                                                //context.drawImage(sDetect,0,0, 320, 240);
+                                            };
+
+                                        } else {
+                                            setTimeout(showError.bind(this), 1500)
+                                        }
+                                    }
+                                }.bind(this);
+
+                                xhttp.open('POST', '/upload');
+                                xhttp.send(formData);
+                            }
+
+                            function sendEvent2(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
+                                context.drawImage(video, 0, 0, 320, 240);
+
+                                var image = convertCanvasToImage(canvas);
+
+                                var formData    = new FormData(),
+                                        xhttp       = new XMLHttpRequest(),
+                                        file        = dataURItoBlob(image.src)
 
                                 formData.append('uploads[]', file, filename)
 
@@ -424,6 +478,28 @@
                                     document.getElementById('selfId').value = '';
                                     //alert(selfId);
 
+                                })
+
+                                $('#selfTraining').click(function () {
+                                    //alert($('#selfGroupId').val());
+                                    //alert($('#selfId').val());
+
+                                    if($('#selfGroupId').val().trim().length > 0){
+                                        if($('#selfId').val().trim().length > 0){
+                                            for (var i = 0; i < 10; i++) {
+                                                var self_training_file_name = $('#selfGroupId').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
+                                                //alert(self_training_file_name);
+
+                                                // TODO: sendEvent2()
+                                            }
+                                        } else {
+                                            alert("Please enter the user id.");
+                                        }
+                                    } else {
+                                        alert("Please enter the group id.");
+                                    }
+                                    $('#selfGroupId').val('');
+                                    $('#selfId').val('');
                                 })
 
                                 document.getElementById("callerSnap").addEventListener("click", function () {
