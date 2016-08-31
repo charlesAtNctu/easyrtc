@@ -135,7 +135,7 @@
                                     <!--<form>-->
                                         <label>Group Id:</label><input  id="selfGroupId"  type="text"><br>
                                         <label>User Id:</label><input  id="selfId"       type="text"><br>
-                                        <button id="selfTraining" class="sexyButton">Collect Image</button>
+                                        <button id="selfTraining" class="sexyButton">Take Pictures</button>
                                     <!--</form>-->
                                 </td>
                                 <td>
@@ -147,7 +147,7 @@
                                     <!--<form>-->
                                         <label>Group Id:</label><input  id="callerGroupId"  type="text"><br>
                                         <label>User Id:</label><input  id="callerId"       type="text"><br>
-                                        <button id="callerTraining" class="sexyButton">Collect Image</button>
+                                        <button id="callerTraining" class="sexyButton">Take Pictures</button>
                                     <!--</form>-->
                                 </td>
                             </tr>
@@ -440,7 +440,8 @@
                              */
                             function sleep(delay) {
                                 var start = new Date().getTime();
-                                while (new Date().getTime() < start + delay);
+                                while (new Date().getTime() < start + delay){
+                                }
                             }
 
                             ////////////////////////////////////////////////////////////////////////////////////////////
@@ -494,9 +495,8 @@
 
                                     if($('#selfGroupId').val().trim().length > 0){
                                         if($('#selfId').val().trim().length > 0){
-
                                             for (var i = 0; i < 10; i++) {
-                                                sleep(200);
+                                                sleep(500);
                                                 var self_training_file_name = $('#selfGroupId').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                                                 //alert(self_training_file_name);
                                                 sendEvent2(selfContext,   selfVideo,   selfCanvas,  self_training_file_name,  "latest/" + self_training_file_name, $('#selfImage'));
