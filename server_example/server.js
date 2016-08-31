@@ -16,6 +16,16 @@ httpApp.use(express.static(__dirname + "/static/"));
 //var pngFileName = null;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Note: set the latest picture to the default !!!
+var latestFolderAbsPath = path.join(__dirname, '../demos/latest/');
+var defaultLatestFolderAbsPath = latestFolderAbsPath + 'default/';
+fs.createReadStream(defaultLatestFolderAbsPath+'localSnap.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localSnap.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'localDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localDetect.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteSnap.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteSnap.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteDetect.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.png'));
+
 httpApp.post('/upload', function(req, res){
 
     // TODO: get action ...
