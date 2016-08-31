@@ -135,7 +135,7 @@
                                     <!--<form>-->
                                         <label>Group Id:</label><input  id="selfGroupId"  type="text"><br>
                                         <label>User Id:</label><input  id="selfId"       type="text"><br>
-                                        <button id="selfTraining" class="sexyButton">Take Pictures</button>
+                                        <button id="selfTraining" class="sexyButton">Take PictureSss...</button>
                                     <!--</form>-->
                                 </td>
                                 <td>
@@ -147,7 +147,7 @@
                                     <!--<form>-->
                                         <label>Group Id:</label><input  id="callerGroupId"  type="text"><br>
                                         <label>User Id:</label><input  id="callerId"       type="text"><br>
-                                        <button id="callerTraining" class="sexyButton">Take Pictures</button>
+                                        <button id="callerTraining" class="sexyButton">Take PictureSss...</button>
                                     <!--</form>-->
                                 </td>
                             </tr>
@@ -495,7 +495,7 @@
 
                                     if($('#selfGroupId').val().trim().length > 0){
                                         if($('#selfId').val().trim().length > 0){
-                                            for (var i = 0; i < 10; i++) {
+                                            for (var i = 0; i < 100; i++) {// Note: We are sending 100 of pictures for training ...
                                                 sleep(500);
                                                 var self_training_file_name = $('#selfGroupId').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                                                 //alert(self_training_file_name);
