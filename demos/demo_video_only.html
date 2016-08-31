@@ -337,6 +337,36 @@
                                 xhttp.send(formData);
                             }
 
+                            Date.prototype.YYYYMMDDHHMMSSMS = function () {
+                                var yyyy = this.getFullYear().toString();
+                                var MM = pad(this.getMonth() + 1,2);
+                                var dd = pad(this.getDate(), 2);
+                                var hh = pad(this.getHours(), 2);
+                                var mm = pad(this.getMinutes(), 2)
+                                var ss = pad(this.getSeconds(), 2)
+                                var ms = pad(this.getMilliseconds(), 3)
+
+                                return yyyy + MM + dd+  hh + mm + ss + ms;
+                            };
+
+                            function getDate() {
+                                //d = new Date();
+                                //alert(d.YYYYMMDDHHMMSSMS());
+                                alert((new Date()).YYYYMMDDHHMMSSMS());
+                            }
+
+                            function pad(number, length) {
+                                var str = '' + number;
+                                while (str.length < length) {
+                                    str = '0' + str;
+                                }
+                                return str;
+                            }
+
+                            function getTimestamp(){
+                                return (new Date()).YYYYMMDDHHMMSSMS();
+                            }
+
                             ////////////////////////////////////////////////////////////////////////////////////////////
                             // Put event listeners in place
                             window.addEventListener("DOMContentLoaded", function () {
