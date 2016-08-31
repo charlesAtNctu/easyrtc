@@ -363,7 +363,7 @@
                                 xhttp.send(formData);
                             }
 
-                            function sendEvent2(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
+                            function sendEvent2(context, video, canvas, filename, resultingfilepath, imageElem) {
                                 context.drawImage(video, 0, 0, 320, 240);
 
                                 var image = convertCanvasToImage(canvas);
@@ -489,8 +489,7 @@
                                             for (var i = 0; i < 10; i++) {
                                                 var self_training_file_name = $('#selfGroupId').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                                                 //alert(self_training_file_name);
-
-                                                // TODO: sendEvent2()
+                                                sendEvent2(selfContext,   selfVideo,   selfCanvas,  self_training_file_name,  "latest/" + self_training_file_name, $('#selfImage'));
                                             }
                                         } else {
                                             alert("Please enter the user id.");
