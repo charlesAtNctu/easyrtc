@@ -435,6 +435,14 @@
                                 return (new Date()).YYYYMMDDHHMMSSMS();
                             }
 
+                            /**
+                             * Delay for a number of milliseconds
+                             */
+                            function sleep(delay) {
+                                var start = new Date().getTime();
+                                while (new Date().getTime() < start + delay);
+                            }
+
                             ////////////////////////////////////////////////////////////////////////////////////////////
                             // Put event listeners in place
                             window.addEventListener("DOMContentLoaded", function () {
@@ -486,7 +494,9 @@
 
                                     if($('#selfGroupId').val().trim().length > 0){
                                         if($('#selfId').val().trim().length > 0){
+
                                             for (var i = 0; i < 10; i++) {
+                                                sleep(200);
                                                 var self_training_file_name = $('#selfGroupId').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                                                 //alert(self_training_file_name);
                                                 sendEvent2(selfContext,   selfVideo,   selfCanvas,  self_training_file_name,  "latest/" + self_training_file_name, $('#selfImage'));
