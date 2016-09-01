@@ -495,6 +495,11 @@
                                 }
                             }
 
+                            var isLocalDetectClicked     = false;
+                            var isLocalRecognizeClicked  = false;
+                            var isRemoteDetectClicked    = false;
+                            var isRemoteRecognizeClicked = false;
+
                             ////////////////////////////////////////////////////////////////////////////////////////////
                             // Put event listeners in place
                             window.addEventListener("DOMContentLoaded", function () {
@@ -527,6 +532,7 @@
 
                                 $('#selfDetect').click(function(){
                                     sendEvent('',  selfContext,   selfVideo,   selfCanvas,     "localDetect.png",     "latest/localDetect.png", $(  '#selfImage'));
+                                    isLocalDetectClicked = true;
                                 })
 
                                 $('#selfRecognize').click(function(){
@@ -540,6 +546,7 @@
                                     document.getElementById('selfId').value = '';
                                     //alert(selfId);
 
+                                    isLocalRecognizeClicked = true;
                                 })
 
                                 $('#selfTraining').click(function () {
@@ -570,6 +577,7 @@
 
                                 $('#callerDetect').click(function(){
                                     sendEvent('', callerContext, callerVideo, callerCanvas,    "remoteDetect.png",    "latest/remoteDetect.png", $('#callerImage'));
+                                    isRemoteDetectClicked = true;
                                 })
 
                                 $('#callerRecognize').click(function(){
@@ -583,7 +591,17 @@
                                     document.getElementById('callerId').value = '';
                                     //alert(callerId);
 
+                                    isRemoteRecognizeClicked = true;
                                 })
+
+
+
+
+
+
+
+
+
 
                                 $('#getCookie').click(function(){
                                     //alert("get cookie");
@@ -601,21 +619,43 @@
 
 
 
+
+
+
+
+
+
                             setInterval(function() {
-                                $(  '#selfImage' ).attr("src",     "latest/localDetect.png?" + new Date().getTime());
+                                if(isLocalDetectClicked){
+                                    $('#selfImage').attr("src", "latest/"+getCookie()+"_localDetect.png?" + new Date().getTime());
+                                } else {
+                                    $('#selfImage').attr("src", "latest/localDetect.png?" + new Date().getTime());
+                                }
                             }, 500);
 
                             // Note: can comment it out if too slow ...
                             setInterval(function() {
-                                $('#callerImage' ).attr("src",    "latest/remoteDetect.png?" + new Date().getTime());
+                                if(isRemoteDetectClicked){
+                                    $('#callerImage').attr("src", "latest/"+getCookie()+"_remoteDetect.png?" + new Date().getTime());
+                                } else {
+                                    $('#callerImage').attr("src", "latest/remoteDetect.png?" + new Date().getTime());
+                                }
                             }, 500);
 
                             setInterval(function() {
-                                $(  '#selfImage2').attr("src",  "latest/localRecognize.png?" + new Date().getTime());
+                                if(isLocalRecognizeClicked){
+                                    $('#selfImage2').attr("src", "latest/"+getCookie()+"_localRecognize.png?" + new Date().getTime());
+                                } else {
+                                    $('#selfImage2').attr("src", "latest/localRecognize.png?" + new Date().getTime());
+                                }
                             }, 500);
 
                             setInterval(function() {
-                                $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+                                if(isRemoteRecognizeClicked) {
+                                    $('#callerImage2').attr("src", "latest/"+getCookie()+"_remoteRecognize.png?" + new Date().getTime());
+                                } else {
+                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+                                }
                             }, 500);
 
                          </script>
