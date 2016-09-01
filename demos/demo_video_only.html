@@ -349,6 +349,8 @@
                                         if(xhttp.status == 200) {
                                             setTimeout(showSuccess.bind(this), 1500)
 
+                                            // Chu-Chi: below necessary ?
+
                                             sDetect = new Image();
                                             sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
                                             sDetect.onload = function() {
@@ -390,6 +392,8 @@
                                     if (xhttp.readyState == 4) {
                                         if(xhttp.status == 200) {
                                             setTimeout(showSuccess.bind(this), 1500)
+
+                                            // Chu-Chi: below necessary ?
 
                                             sDetect = new Image();
                                             sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
@@ -527,11 +531,11 @@
                                     };
 
                                 document.getElementById("selfSnap").addEventListener("click", function () {
-                                    sendEvent('',  selfContext,   selfVideo,   selfCanvas,       "localSnap.png",       "latest/localSnap.png", $(  '#selfImage'));
+                                    sendEvent('',  selfContext,   selfVideo,   selfCanvas,       getCookie()+"_localSnap.png",       "latest/localSnap.png", $(  '#selfImage'));
                                 });
 
                                 $('#selfDetect').click(function(){
-                                    sendEvent('',  selfContext,   selfVideo,   selfCanvas,     "localDetect.png",     "latest/localDetect.png", $(  '#selfImage'));
+                                    sendEvent('',  selfContext,   selfVideo,   selfCanvas,     getCookie()+"_localDetect.png",     "latest/localDetect.png", $(  '#selfImage'));
                                     isLocalDetectClicked = true;
                                 })
 
@@ -542,7 +546,7 @@
                                     //
                                     var selfId=document.getElementById('selfId').value;
                                     //alert(selfId);
-                                    sendEvent(selfId, selfContext,   selfVideo,   selfCanvas,  "localRecognize.png",  "latest/localRecognize.png", $(  '#selfImage'));
+                                    sendEvent(selfId, selfContext,   selfVideo,   selfCanvas,  getCookie()+"_localRecognize.png",  "latest/localRecognize.png", $(  '#selfImage'));
                                     document.getElementById('selfId').value = '';
                                     //alert(selfId);
 
@@ -572,11 +576,11 @@
                                 })
 
                                 document.getElementById("callerSnap").addEventListener("click", function () {
-                                    sendEvent('', callerContext, callerVideo, callerCanvas,      "remoteSnap.png",      "latest/remoteSnap.png", $('#callerImage'));
+                                    sendEvent('', callerContext, callerVideo, callerCanvas,      getCookie()+"_remoteSnap.png",      "latest/remoteSnap.png", $('#callerImage'));
                                 });
 
                                 $('#callerDetect').click(function(){
-                                    sendEvent('', callerContext, callerVideo, callerCanvas,    "remoteDetect.png",    "latest/remoteDetect.png", $('#callerImage'));
+                                    sendEvent('', callerContext, callerVideo, callerCanvas,    getCookie()+"_remoteDetect.png",    "latest/remoteDetect.png", $('#callerImage'));
                                     isRemoteDetectClicked = true;
                                 })
 
@@ -587,7 +591,7 @@
                                     //
                                     var callerId=document.getElementById('callerId').value;
                                     //alert(callerId);
-                                    sendEvent(callerId, callerContext, callerVideo, callerCanvas, "remoteRecognize.png", "latest/remoteRecognize.png", $('#callerImage'));
+                                    sendEvent(callerId, callerContext, callerVideo, callerCanvas, getCookie()+"_remoteRecognize.png", "latest/remoteRecognize.png", $('#callerImage'));
                                     document.getElementById('callerId').value = '';
                                     //alert(callerId);
 
