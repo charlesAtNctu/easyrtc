@@ -133,8 +133,8 @@
                                 </td>
                                 <td>
                                     <!--<form>-->
-                                        <label>Group Id:</label><input  id="selfGroupId"  type="text"><br>
-                                        <label>User Id:</label><input  id="selfId"       type="text"><br>
+                                        <label>User Name    :</label><input  id="selfId"   type="text"><br>
+                                        <label>User Password:</label><input  id="selfPwd"  type="text"><br>
                                         <button id="selfTraining" class="sexyButton">Take PictureSss...</button>
                                     <!--</form>-->
                                 </td>
@@ -145,8 +145,8 @@
                                 </td>
                                 <td>
                                     <!--<form>-->
-                                        <label>Group Id:</label><input  id="callerGroupId"  type="text"><br>
-                                        <label>User Id:</label><input  id="callerId"       type="text"><br>
+                                        <label>User Name    :</label><input  id="callerId"   type="text"><br>
+                                        <label>User Password:</label><input  id="callerPwd"  type="text"><br>
                                         <button id="callerTraining" class="sexyButton">Take PictureSss...</button>
                                     <!--</form>-->
                                 </td>
@@ -560,14 +560,15 @@
                                 })
 
                                 $('#selfTraining').click(function () {
-                                    //alert($('#selfGroupId').val());
+                                    //alert($('#selfPwd').val());
                                     //alert($('#selfId').val());
 
-                                    if($('#selfGroupId').val().trim().length > 0){
+                                    if($('#selfPwd').val().trim().length > 0){
                                         if($('#selfId').val().trim().length > 0){
                                             for (var i = 0; i < 100; i++) {// Note: We are sending 100 of pictures for training ...
                                                 sleep(100);// Note: Taking a picture every .1 second. Hence, 100 * .1 = 10 second in total ...
-                                                var self_training_file_name = $('#selfGroupId').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
+                                                //var self_training_file_name = $('#selfPwd').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
+                                                var self_training_file_name = "face_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                                                 //alert(self_training_file_name);
                                                 sendEvent2(selfContext,   selfVideo,   selfCanvas,  self_training_file_name,  "latest/" + self_training_file_name, $('#selfImage'));
                                             }
@@ -577,7 +578,7 @@
                                     } else {
                                         alert("Please enter the group id.");
                                     }
-                                    $('#selfGroupId').val('');
+                                    $('#selfPwd').val('');
                                     $('#selfId').val('');
                                 })
 
