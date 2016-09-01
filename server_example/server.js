@@ -48,7 +48,7 @@ httpApp.post('/upload', function(req, res){
 
         if(file.name == 'localDetect.png') {
 
-            var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ',
+            var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ' + file.name,
                 function (error, stdout, stderr) {
                     if (error) {
                         console.log(error.stack);
@@ -77,7 +77,7 @@ httpApp.post('/upload', function(req, res){
 
         if(file.name == 'remoteDetect.png') {
 
-            var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ',
+            var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ' + file.name,
                 function (error, stdout, stderr) {
                     if (error) {
                         console.log(error.stack);
