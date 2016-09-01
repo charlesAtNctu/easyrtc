@@ -504,6 +504,12 @@
                             var isRemoteDetectClicked    = false;
                             var isRemoteRecognizeClicked = false;
 
+                            if(getCookie() == undefined){
+                                //alert("dce_chuchi_cookie_id="+getCookie());
+                                writeCookie();
+                                //alert("dce_chuchi_cookie_id="+getCookie());
+                            }
+
                             ////////////////////////////////////////////////////////////////////////////////////////////
                             // Put event listeners in place
                             window.addEventListener("DOMContentLoaded", function () {
