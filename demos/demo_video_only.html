@@ -207,6 +207,16 @@
                                     <!--<p><b id='callerJson'></b></p>-->
                                 <!--</td>-->
                             <!--</tr>-->
+                            <tr>
+                                <td colspan="4">
+                                    <button id="setCookie" class="sexyButton">Reset Cookie</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <button id="getCookie" class="sexyButton">Show Cookie</button>
+                                </td>
+                            </tr>
                         </table>
 
                         <script>
@@ -443,9 +453,53 @@
                                 }
                             }
 
+                            function deleteCookie()
+                            {
+                                var now = new Date();
+                                now.setMonth( now.getMonth() - 1 );
+
+                                var allcookies = document.cookie;
+                                cookiearray = allcookies.split(';');
+
+                                for(var i=0; i<cookiearray.length; i++){
+                                    name = cookiearray[i].split('=')[0];
+                                    value = cookiearray[i].split('=')[1];
+
+                                    document.cookie = name + "=" + value + ";";
+                                    document.cookie = "expires=" + now.toUTCString() + ";";
+                                }
+                            }
+
+                            function writeCookie()
+                            {
+                                var now = new Date();
+                                now.setMonth( now.getMonth() + 1 );
+
+                                cookievalue= escape(getTimestamp()) + ";";
+                                document.cookie="dce_chuchi_cookie_id=" + cookievalue;
+                                document.cookie = "expires=" + now.toUTCString() + ";"
+                            }
+
+                            function getCookie()
+                            {
+                                var allcookies = document.cookie;
+                                cookiearray = allcookies.split(';');
+
+                                for(var i=0; i<cookiearray.length; i++) {
+                                    name = cookiearray[i].split('=')[0];
+                                    value = cookiearray[i].split('=')[1];
+
+                                    if (name.trim() == "dce_chuchi_cookie_id") {
+                                        return value;
+                                    }
+                                }
+                            }
+
                             ////////////////////////////////////////////////////////////////////////////////////////////
                             // Put event listeners in place
                             window.addEventListener("DOMContentLoaded", function () {
+
+                                getCookie();
 
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 // Grab elements, create settings, etc.
@@ -529,6 +583,29 @@
                                     document.getElementById('callerId').value = '';
                                     //alert(callerId);
 
+                                })
+
+                                $('#getCookie').click(function(){
+                                    //alert("get cookie");
+//                                    var allcookies = document.cookie;
+//                                    //document.write ("All Cookies : " + allcookies );
+//
+//                                    // Get all the cookies pairs in an array
+//                                    cookiearray = allcookies.split(';');
+//
+//                                    // Now take key value pair out of this array
+//                                    for(var i=0; i<cookiearray.length; i++){
+//                                        name = cookiearray[i].split('=')[0];
+//                                        value = cookiearray[i].split('=')[1];
+//                                        alert(" Key: " + name + "\nValue: " + value);
+//                                    }
+                                    alert(getCookie());
+                                })
+
+                                $('#setCookie').click(function(){
+                                    //alert("set cookie");
+                                    deleteCookie();
+                                    writeCookie();
                                 })
 
                             }, false);
