@@ -199,14 +199,14 @@
                                     <img id="callerImage2" width="320" height="240"></img>
                                 </td>
                             </tr>
-                            <!--<tr>-->
-                                <!--<td>-->
-                                    <!--<p><b id='selfJson'></b></p>-->
-                                <!--</td>-->
-                                <!--<td>-->
-                                    <!--<p><b id='callerJson'></b></p>-->
-                                <!--</td>-->
-                            <!--</tr>-->
+                            <tr>
+                                <td colspan="2">
+                                    <p id='selfLog'></p>
+                                </td>
+                                <td colspan="2">
+                                    <p id='callerLog'></p>
+                                </td>
+                            </tr>
                             <tr>
                                 <td colspan="4">
                                     <button id="setCookie" class="sexyButton">Reset Cookie</button>
@@ -668,6 +668,31 @@
                                     $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
                                 }
                             }, 500);
+
+                            setInterval(function() {
+                                if(isLocalRecognizeClicked) {
+                                    $.get("latest/"+getCookie()+"_localRecognize.log", function (data) {
+                                        $('#selfLog').text(data)
+                                    });
+                                } else {
+                                    $.get("latest/localRecognize.log", function (data) {
+                                        $('#selfLog').text(data)
+                                    });
+                                }
+                            }, 500);
+
+                            setInterval(function() {
+                                if(isRemoteRecognizeClicked) {
+                                    $.get("latest/"+getCookie()+"_remoteRecognize.log", function (data) {
+                                        $('#callerLog').text(data)
+                                    });
+                                } else {
+                                    $.get("latest/remoteRecognize.log", function (data) {
+                                        $('#callerLog').text(data)
+                                    });
+                                }
+                            }, 500);
+
 
                          </script>
 
