@@ -201,10 +201,12 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <p id='selfLog'></p>
+                                    <textarea id='selfLog' rows="10" cols="59"></textarea>
+                                    <!--<p id='selfLog'></p>-->
                                 </td>
                                 <td colspan="2">
-                                    <p id='callerLog'></p>
+                                    <textarea id='callerLog' rows="10" cols="59"></textarea>
+                                    <!--<p id='callerLog'></p>-->
                                 </td>
                             </tr>
                             <tr>
@@ -673,10 +675,12 @@
                                 if(isLocalRecognizeClicked) {
                                     $.get("latest/"+getCookie()+"_localRecognize.log", function (data) {
                                         $('#selfLog').text(data)
+                                        document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
                                     });
                                 } else {
                                     $.get("latest/localRecognize.log", function (data) {
                                         $('#selfLog').text(data)
+                                        document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
                                     });
                                 }
                             }, 250);
@@ -685,10 +689,12 @@
                                 if(isRemoteRecognizeClicked) {
                                     $.get("latest/"+getCookie()+"_remoteRecognize.log", function (data) {
                                         $('#callerLog').text(data)
+                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                     });
                                 } else {
                                     $.get("latest/remoteRecognize.log", function (data) {
                                         $('#callerLog').text(data)
+                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                     });
                                 }
                             }, 250);
