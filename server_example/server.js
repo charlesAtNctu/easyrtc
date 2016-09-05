@@ -169,7 +169,7 @@ var webServer = http.createServer(httpApp).listen(8080);
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer, {"log level":1});
 
-easyrtc.setOption("logLevel", "debug");
+easyrtc.setOption("logLevel", "info");//"debug");
 
 // Overriding the default easyrtcAuth listener, only so we can directly access its callback
 easyrtc.events.on("easyrtcAuth", function(socket, easyrtcid, msg, socketCallback, callback) {
