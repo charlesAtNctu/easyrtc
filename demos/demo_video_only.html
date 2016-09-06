@@ -792,6 +792,7 @@
                                                 var secondLastLine = lines[lines.length - 2];
                                                 //alert("2nd last:" + secondLastLine);
                                                 var fields = secondLastLine.split(",");
+                                                selfContext.clearRect(0,0,selfCanvas.width, selfCanvas.height);
                                                 selfContext.strokeStyle = "blue";
                                                 selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
 
@@ -802,7 +803,7 @@
                                             //selfContext.strokeRect(10, 10, 100, 200);
                                         }
                                     }
-                                }, 250);
+                                }, 100);
 
                             }, false);
 
@@ -882,7 +883,7 @@
                                             document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
                                         });
                                     }
-                                }, 250);
+                                }, 100);
                             }
 
                             if(remoteRecognizeLogEnabled == true) {
