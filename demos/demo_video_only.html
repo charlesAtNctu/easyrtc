@@ -745,6 +745,15 @@
                                     })
                                 }
 
+                                ////////////////////////////////////////////////////////////////////////////////////////
+                                // keep sending to the server ...
+
+                                isLocalRecognizeClicked = true;
+                                setInterval(function () {
+                                    console.log("sending it ?")
+                                    sendEvent(selfId, selfContext,   selfVideo,   selfCanvas,  getCookie()+"_localRecognize.png",  "latest/localRecognize.png", $(  '#selfImage'));
+                                }, 250);
+
                             }, false);
 
 
