@@ -28,6 +28,11 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteDetect.png').pipe(fs.creat
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.png'));
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
 
+logFiles = require("glob").globSync(latestFolderAbsPath + "*.log");
+pngFiles = require("glob").globSync(latestFolderAbsPath + "*.png");
+console.log(logFiles);
+console.log(pngFiles);
+
 httpApp.post('/upload', function(req, res){
 
     // TODO: get action ...
