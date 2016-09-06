@@ -30,7 +30,7 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.cr
 
 fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
     console.log(file)
-}
+});
 
 httpApp.post('/upload', function(req, res){
 
