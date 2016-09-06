@@ -40,77 +40,77 @@ httpApp.post('/upload', function(req, res){
 
     form.on('file', function(field, file) {
 
-        console.log("1************************************************************************************************************************" + file.name);
+        console.log("*************************************************************************************************************************" + file.name);
 
         fs.rename(file.path, path.join(form.uploadDir, file.name));
 
-        console.log("2************************************************************************************************************************" + file.name);
-
-        //pngFileName = file.name;
-
-        if(file.name.endsWith('localDetect.png')) {
-
-            console.log('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ' + file.name);
-
-            var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ' + file.name,
-                function (error, stdout, stderr) {
-                    if (error) {
-                        console.log(error.stack);
-                        console.log('Error code: ' + error.code);
-                        console.log('Signal received: ' + error.signal);
-                    }
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
-                });
-
-            workerProcess.on('exit', function (code) {
-                console.log('Child process exited with exit code ' + code);
-
-                form.on('error', function (err) {
-                    console.log('error: \n' + err);
-                });
-
-                form.on('end', function () {
-                    res.end('success');
-                });
-
-                form.parse(req);
-
-            });
-        }
-
-        if(file.name.endsWith('remoteDetect.png')) {
-
-            console.log('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ' + file.name);
-
-            var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ' + file.name,
-                function (error, stdout, stderr) {
-                    if (error) {
-                        console.log(error.stack);
-                        console.log('Error code: ' + error.code);
-                        console.log('Signal received: ' + error.signal);
-                    }
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
-                });
-
-            workerProcess.on('exit', function (code) {
-                console.log('Child process exited with exit code ' + code);
-
-                form.on('error', function (err) {
-                    console.log('error: \n' + err);
-                });
-
-                form.on('end', function () {
-                    res.end('success');
-                });
-
-                form.parse(req);
-
-            });
-        }
-
-        console.log("3************************************************************************************************************************" + file.name);
+        // console.log("2************************************************************************************************************************" + file.name);
+        //
+        // //pngFileName = file.name;
+        //
+        // if(file.name.endsWith('localDetect.png')) {
+        //
+        //     console.log('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ' + file.name);
+        //
+        //     var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ' + file.name,
+        //         function (error, stdout, stderr) {
+        //             if (error) {
+        //                 console.log(error.stack);
+        //                 console.log('Error code: ' + error.code);
+        //                 console.log('Signal received: ' + error.signal);
+        //             }
+        //             console.log('stdout: ' + stdout);
+        //             console.log('stderr: ' + stderr);
+        //         });
+        //
+        //     workerProcess.on('exit', function (code) {
+        //         console.log('Child process exited with exit code ' + code);
+        //
+        //         form.on('error', function (err) {
+        //             console.log('error: \n' + err);
+        //         });
+        //
+        //         form.on('end', function () {
+        //             res.end('success');
+        //         });
+        //
+        //         form.parse(req);
+        //
+        //     });
+        // }
+        //
+        // if(file.name.endsWith('remoteDetect.png')) {
+        //
+        //     console.log('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ' + file.name);
+        //
+        //     var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ' + file.name,
+        //         function (error, stdout, stderr) {
+        //             if (error) {
+        //                 console.log(error.stack);
+        //                 console.log('Error code: ' + error.code);
+        //                 console.log('Signal received: ' + error.signal);
+        //             }
+        //             console.log('stdout: ' + stdout);
+        //             console.log('stderr: ' + stderr);
+        //         });
+        //
+        //     workerProcess.on('exit', function (code) {
+        //         console.log('Child process exited with exit code ' + code);
+        //
+        //         form.on('error', function (err) {
+        //             console.log('error: \n' + err);
+        //         });
+        //
+        //         form.on('end', function () {
+        //             res.end('success');
+        //         });
+        //
+        //         form.parse(req);
+        //
+        //     });
+        // }
+        //
+        // console.log("3************************************************************************************************************************" + file.name);
 
     });
 
@@ -119,31 +119,31 @@ httpApp.post('/upload', function(req, res){
     // }
     // console.log("*************************************************************************************************************************" + pngFileName);
 
-    var workerProcess2 = child_process.exec('node -v ',
-        function (error, stdout, stderr) {
-            if (error) {
-                console.log(error.stack);
-                console.log('Error code: '+error.code);
-                console.log('Signal received: '+error.signal);
-            }
-            console.log('stdout: ' + stdout);
-            console.log('stderr: ' + stderr);
-        });
-
-    workerProcess2.on('exit', function (code) {
-        console.log('Child process exited with exit code '+code);
-
-        form.on('error', function(err) {
-            console.log('error: \n' + err);
-        });
-
-        form.on('end', function() {
-            res.end('success');
-        });
-
-        form.parse(req);
-
-    });
+    // var workerProcess2 = child_process.exec('node -v ',
+    //     function (error, stdout, stderr) {
+    //         if (error) {
+    //             console.log(error.stack);
+    //             console.log('Error code: '+error.code);
+    //             console.log('Signal received: '+error.signal);
+    //         }
+    //         console.log('stdout: ' + stdout);
+    //         console.log('stderr: ' + stderr);
+    //     });
+    //
+    // workerProcess2.on('exit', function (code) {
+    //     console.log('Child process exited with exit code '+code);
+    //
+    //     form.on('error', function(err) {
+    //         console.log('error: \n' + err);
+    //     });
+    //
+    //     form.on('end', function() {
+    //         res.end('success');
+    //     });
+    //
+    //     form.parse(req);
+    //
+    // });
 
 
 
