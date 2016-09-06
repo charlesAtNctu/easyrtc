@@ -29,26 +29,19 @@ fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
     //console.log(file_extension);
     if(file_extension == "png" || file_extension == "log" || file_extension == "latest"){
         console.log("Deleting " + file_path)
-        var workerProcess2 = child_process.exec('rm ' + file_path,
+        var workerProcess = child_process.exec('rm ' + file_path,
             function (error, stdout, stderr) {
                 if (error) {
                     console.log(error.stack);
-                    console.log('Error code: '+error.code);
-                    console.log('Signal received: '+error.signal);
+                    console.log('Error code: ' + error.code);
+                    console.log('Signal received: ' + error.signal);
                 }
                 console.log('stdout: ' + stdout);
                 console.log('stderr: ' + stderr);
             });
 
-        workerProcess2.on('exit', function (code) {
-            console.log('Child process exited with exit code '+code);
-            form.on('error', function(err) {
-                console.log('error: \n' + err);
-            });
-            form.on('end', function() {
-                res.end('success');
-            });
-            form.parse(req);
+        workerProcess.on('exit', function (code) {
+            console.log('Child process exited with exit code ' + code);
         });
     }
 });
