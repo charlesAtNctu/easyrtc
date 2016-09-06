@@ -33,8 +33,11 @@ fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
     console.log(file_path);
     var last_dot_index = file_path.lastIndexOf('.');
     console.log(last_dot_index);
-    var file_extension = file_path.substring(last_dot_index);
+    var file_extension = file_path.substring(last_dot_index+1);
     console.log(file_extension);
+    if(file_extension == "png" || file_extension == "log" || file_extension == "latest"){
+        console.log("Deleting " + file_path)
+    }
 });
 
 httpApp.post('/upload', function(req, res){
