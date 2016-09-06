@@ -146,7 +146,7 @@ httpApp.post('/upload', function(req, res){
     // }
     // console.log("*************************************************************************************************************************" + pngFileName);
 
-    Chu-Chi: without the following code ... it's not working ... no ideas ...
+    // Chu-Chi: without the following code ... it's not working ... no ideas ...
 
     var workerProcess2 = child_process.exec('node -v ',
         function (error, stdout, stderr) {
