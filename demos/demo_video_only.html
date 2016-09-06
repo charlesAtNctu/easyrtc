@@ -130,10 +130,10 @@
                                 // above ... eventually will be a function to call in remote recognize code
 
                                 var localSnapEnabled = false;
-                                var localRecognizeLogEnabled = false;
+
                                 var localTrainingEnabled = false;
                                 var remoteSnapEnabled = false;
-                                var remoteRecognizeLogEnabled = false;
+
                                 var remoteTrainingEnabled = false;
 
                                 // below are used ...
@@ -145,6 +145,10 @@
                                 var localRecognizeEnabled = false;
                                 var remoteDetectEnabled = false;
                                 var remoteRecognizeEnabled = false;
+
+                                var recognizeLogEnabled = true;//false;// for ui
+                                var remoteRecognizeLogEnabled = true;//false;// for interval
+                                var localRecognizeLogEnabled = true;//false;// for interval
 
                             </script>
                         </span>
@@ -260,13 +264,15 @@
                                     <img id="callerImage2" width="320" height="240"></img>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="recognizeLogParent">
                                 <td colspan="2">
-                                    <textarea id='selfLog' rows="10" cols="59"></textarea>
+                                    <textarea id='selfLog' rows="10" cols="42"></textarea>
+                                    <!--<textarea id='selfLog' rows="10" cols="59"></textarea>-->
                                     <!--<p id='selfLog'></p>-->
                                 </td>
                                 <td colspan="2">
-                                    <textarea id='callerLog' rows="10" cols="59"></textarea>
+                                    <textarea id='callerLog' rows="10" cols="42"></textarea>
+                                    <!--<textarea id='callerLog' rows="10" cols="59"></textarea>-->
                                     <!--<p id='callerLog'></p>-->
                                 </td>
                             </tr>
@@ -296,6 +302,9 @@
                             if(recognizeEnabled == false){
                                 document.getElementById("recognizeParent").style.display = 'none';
                                 document.getElementById("recognizeParent2").style.display = 'none';
+                            }
+                            if(recognizeLogEnabled == false){
+                                document.getElementById("recognizeLogParent").style.display = 'none';
                             }
 
                             // Converts image to canvas; returns new canvas element
@@ -747,33 +756,37 @@
                                 }, 500);
                             }
 
-                            setInterval(function() {
-                                if(isLocalRecognizeClicked) {
-                                    $.get("latest/"+getCookie()+"_localRecognize.log", function (data) {
-                                        $('#selfLog').text(data)
-                                        document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
-                                    });
-                                } else {
-                                    $.get("latest/localRecognize.log", function (data) {
-                                        $('#selfLog').text(data)
-                                        document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
-                                    });
-                                }
-                            }, 250);
+                            if(localRecognizeLogEnabled == true) {
+                                setInterval(function () {
+                                    if (isLocalRecognizeClicked) {
+                                        $.get("latest/" + getCookie() + "_localRecognize.log", function (data) {
+                                            $('#selfLog').text(data)
+                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
+                                        });
+                                    } else {
+                                        $.get("latest/localRecognize.log", function (data) {
+                                            $('#selfLog').text(data)
+                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
+                                        });
+                                    }
+                                }, 250);
+                            }
 
-                            setInterval(function() {
-                                if(isRemoteRecognizeClicked) {
-                                    $.get("latest/"+getCookie()+"_remoteRecognize.log", function (data) {
-                                        $('#callerLog').text(data)
-                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                    });
-                                } else {
-                                    $.get("latest/remoteRecognize.log", function (data) {
-                                        $('#callerLog').text(data)
-                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                    });
-                                }
-                            }, 250);
+                            if(remoteRecognizeLogEnabled == true) {
+                                setInterval(function () {
+                                    if (isRemoteRecognizeClicked) {
+                                        $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
+                                            $('#callerLog').text(data)
+                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                        });
+                                    } else {
+                                        $.get("latest/remoteRecognize.log", function (data) {
+                                            $('#callerLog').text(data)
+                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                        });
+                                    }
+                                }, 250);
+                            }
 
                          </script>
 
