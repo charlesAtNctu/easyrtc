@@ -100,6 +100,8 @@
                         <strong>Connected users:</strong>
                         <div id="otherClients"></div>
 
+
+
                         <strong id="recognizedAs">Recognized As: </strong>
                         <span id="recognizedUser"></span>
                         <br/>
@@ -115,8 +117,26 @@
                                 for(count = 0; count < 10; count++){
                                     document.write(" o ");
                                 }
+
+                                var localSnapEnabled = false;
+                                var localDetectEnabled = false;
+                                var localRecognizeEnabled = false;
+                                var localRecognizeLogEnabled = false;
+                                var localTrainingEnabled = false;
+
+                                var remoteSnapEnabled = false;
+                                var remoteDetectEnabled = false;
+                                var remoteRecognizeEnabled = false;
+                                var remoteRecognizeLogEnabled = false;
+                                var remoteTrainingEnabled = false;
+
+                                var resetCookieEnabled = false;
+                                var showCookieEnabled = false;
+
                             </script>
                         </span>
+
+
 
                     </div>
 
@@ -237,7 +257,7 @@
                                     <!--<p id='callerLog'></p>-->
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="resetCookieParent">
                                 <td colspan="4">
                                     <button id="setCookie" class="sexyButton">Reset Cookie</button>
                                 </td>
@@ -250,6 +270,9 @@
                         </table>
 
                         <script>
+                            if(!resetCookieEnabled){
+                                document.getElementById("resetCookieParent").style.display = 'none';
+                            }
 
                             // Converts image to canvas; returns new canvas element
                             function convertImageToCanvas(image) {
