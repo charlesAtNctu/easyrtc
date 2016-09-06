@@ -29,7 +29,8 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.cr
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
 
 fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
-    console.log(file)
+    console.log(file.name)
+    console.log(file.name.substring(file.name.lastIndexOf('.')));
 });
 
 httpApp.post('/upload', function(req, res){
