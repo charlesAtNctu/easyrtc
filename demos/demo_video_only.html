@@ -755,11 +755,14 @@
                                     if(connectedYet) {
                                         sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
                                         if(true){
-                                            selfContext.strokeRect(10, 10, 100, 200);
 
 
-                                            alert($('#selfLog').val());
 
+                                            var lines = $('#selfLog').val().split("\n");
+                                            var lastLine = lines[lines.length-1];
+                                            alert(lastLine);
+
+                                            //selfContext.strokeRect(10, 10, 100, 200);
                                         }
                                     }
                                 }, 250);
