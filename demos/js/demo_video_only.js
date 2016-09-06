@@ -51,6 +51,8 @@ function connect() {
             easyrtc.showError("MEDIA-ERROR", errmesg);
         }  // failure callback
         );
+    
+    connectedYet = true;
 }
 
 

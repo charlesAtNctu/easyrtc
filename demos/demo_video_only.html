@@ -629,6 +629,8 @@
                             var isRemoteDetectClicked    = false;
                             var isRemoteRecognizeClicked = false;
 
+                            var connectedYet = false;
+
                             if(getCookie() == undefined){
                                 //alert("dce_chuchi_cookie_id="+getCookie());
                                 writeCookie();
@@ -750,8 +752,9 @@
 
                                 isLocalRecognizeClicked = true;
                                 setInterval(function () {
-                                    console.log("sending it ?")
-                                    sendEvent(selfId, selfContext,   selfVideo,   selfCanvas,  getCookie()+"_localRecognize.png",  "latest/localRecognize.png", $(  '#selfImage'));
+                                    if(connectedYet) {
+                                        sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                    }
                                 }, 250);
 
                             }, false);
