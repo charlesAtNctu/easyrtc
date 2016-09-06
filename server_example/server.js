@@ -19,14 +19,6 @@ httpApp.use(express.static(__dirname + "/static/"));
 // Note: set the latest picture to the default !!!
 var latestFolderAbsPath = path.join(__dirname, '../demos/latest/');
 var defaultLatestFolderAbsPath = latestFolderAbsPath + 'default/';
-fs.createReadStream(defaultLatestFolderAbsPath+'localSnap.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localSnap.png'));
-fs.createReadStream(defaultLatestFolderAbsPath+'localDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localDetect.png'));
-fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.png'));
-fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.log'));
-fs.createReadStream(defaultLatestFolderAbsPath+'remoteSnap.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteSnap.png'));
-fs.createReadStream(defaultLatestFolderAbsPath+'remoteDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteDetect.png'));
-fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.png'));
-fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
 
 fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
     var file_path = latestFolderAbsPath+file;
@@ -37,8 +29,18 @@ fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
     //console.log(file_extension);
     if(file_extension == "png" || file_extension == "log" || file_extension == "latest"){
         console.log("Deleting " + file_path)
+        fs.unlinkSync(file_path);
     }
 });
+
+fs.createReadStream(defaultLatestFolderAbsPath+'localSnap.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localSnap.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'localDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localDetect.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.log'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteSnap.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteSnap.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteDetect.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.png'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
 
 httpApp.post('/upload', function(req, res){
 
