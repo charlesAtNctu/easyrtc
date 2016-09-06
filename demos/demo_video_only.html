@@ -828,10 +828,25 @@
                                 }, 500);
                             }
 
+//                            if(localRecognizeLogEnabled == true) {
+//                                setInterval(function () {
+//                                    if (isLocalRecognizeClicked) {
+//                                        $.get("latest/" + getCookie() + "_localRecognize.log", function (data) {
+//                                            $('#selfLog').text(data)
+//                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
+//                                        });
+//                                    } else {
+//                                        $.get("latest/localRecognize.log", function (data) {
+//                                            $('#selfLog').text(data)
+//                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
+//                                        });
+//                                    }
+//                                }, 250);
+//                            }
                             if(localRecognizeLogEnabled == true) {
                                 setInterval(function () {
                                     if (isLocalRecognizeClicked) {
-                                        $.get("latest/" + getCookie() + "_localRecognize.log", function (data) {
+                                        $.get("latest/" + getCookie() + "_localRecognize.latest", function (data) {
                                             $('#selfLog').text(data)
                                             document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
                                         });
