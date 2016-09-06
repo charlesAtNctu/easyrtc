@@ -59,6 +59,15 @@
                 background-color:pink;
                 padding:15px;
             }
+            #recognizedAs {
+                float:left;
+            }
+            #confidenceLv {
+                float:left;
+            }
+            #recognizedConfi {
+                float:left;
+            }
         </style>
         <!--show-->
     </head>
@@ -90,6 +99,25 @@
                         <br />
                         <strong>Connected users:</strong>
                         <div id="otherClients"></div>
+
+                        <strong id="recognizedAs">Recognized As: </strong>
+                        <span id="recognizedUser"></span>
+                        <br/>
+                        <strong id="confidenceLv">Confidence Lv: </strong>
+                        <span id="recognizedConfi">
+                            <script type="text/javascript">
+                                var x = document.getElementById('recognizedConfi');
+                                x.style.color = '#00FF00';
+                                //x.style.color = '#FF0000';
+                                //x.style.color = '#FFA500';// orange
+                                //x.style.color = '#FFFF00';// yellow
+                                var count;
+                                for(count = 0; count < 10; count++){
+                                    document.write(" o ");
+                                }
+                            </script>
+                        </span>
+
                     </div>
 
                     <div id="videos">
