@@ -167,6 +167,11 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         }
         callback(wasAccepted);
     };
+
+    // Chu-Chi: check if the within 5 second and at least 10 picture has distance < 70
+    //          if yes, call acept the call directory
+    //          else execute the following ...
+
     document.getElementById("callAcceptButton").onclick = function() {
         acceptTheCall(true);
     };
