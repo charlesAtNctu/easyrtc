@@ -754,6 +754,9 @@
                                 setInterval(function () {
                                     if(connectedYet) {
                                         sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                        if(true){
+                                            selfContext.strokeRect(10, 10, 100, 200);
+                                        }
                                     }
                                 }, 250);
 
