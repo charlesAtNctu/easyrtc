@@ -766,6 +766,7 @@
                                                     var secondLastLine = lines[lines.length - 2];
                                                     //alert("2nd last:" + secondLastLine);
                                                     var fields = secondLastLine.split(",");
+                                                    selfContext.strokeStyle = "blue";
                                                     selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
 
 
@@ -775,7 +776,7 @@
                                             //selfContext.strokeRect(10, 10, 100, 200);
                                         }
                                     }
-                                }, 250);
+                                }, 3000);//250);
 
                             }, false);
 
