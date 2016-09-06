@@ -759,8 +759,14 @@
 
 
                                             var lines = $('#selfLog').val().split("\n");
-                                            var lastLine = lines[lines.length-1];
-                                            alert(lastLine);
+                                            if(lines.length > 0) {
+                                                var lastLine = lines[lines.length - 1];
+                                                alert("last: "+lastLine);
+                                                if(lines.length > 1){
+                                                    var secondLastLine = lines[lines.length - 2];
+                                                    alert("2nd last:" + secondLastLine);
+                                                }
+                                            }
 
                                             //selfContext.strokeRect(10, 10, 100, 200);
                                         }
