@@ -74,22 +74,26 @@
     <body>
         <!--hide-->
         <div id="container">
-            <div id="header">
-                <a href="index.html"><img id="logo_easyrtc" src="images/easyrtc_logo.png" alt="EasyRTC" style="" /></a>
-            </div>
-            <div id="menu"><a class="menu_link" href="index.html"><div class="menu_item">Local Demos</div></a><a class="menu_link" href="https://github.com/priologic/easyrtc/tree/master/docs"><div class="menu_item">Documentation</div></a><a class="menu_link" href="https://easyrtc.com/forums/"><div class="menu_item">Support: EasyRTC Forums</div></a><a class="menu_link" href="http://www.easyrtc.com/"><div class="menu_item">EasyRTC.com</div></a></div>
+
+            <!--<div id="header">-->
+                <!--<a href="index.html"><img id="logo_easyrtc" src="images/easyrtc_logo.png" alt="EasyRTC" style="" /></a>-->
+            <!--</div>-->
+            <!--<div id="menu"><a class="menu_link" href="index.html"><div class="menu_item">Local Demos</div></a><a class="menu_link" href="https://github.com/priologic/easyrtc/tree/master/docs"><div class="menu_item">Documentation</div></a><a class="menu_link" href="https://easyrtc.com/forums/"><div class="menu_item">Support: EasyRTC Forums</div></a><a class="menu_link" href="http://www.easyrtc.com/"><div class="menu_item">EasyRTC.com</div></a></div>-->
+
             <div id="main">
                 <!-- Main Content -->
-                <h1>EasyRTC Demo: Video Only</h1>
 
-                <p>The application provides a video-only chat by disabling audio before initializing the local media stream.</p>
+                <h1>DCE Student: Chu-Chi's Demo: Video Only</h1>
+                <!--<h1>EasyRTC Demo: Video Only</h1>-->
 
-                <p>To use it, press the Connect button.
-                    You should see buttons representing other people using the video-only chat page.
-                    Click one of those buttons to initiate a chat.</p>
+                <!--<p>The application provides a video-only chat by disabling audio before initializing the local media stream.</p>-->
 
-                <hr />
-                <h2>The Demo</h2>
+                <!--<p>To use it, press the Connect button.-->
+                    <!--You should see buttons representing other people using the video-only chat page.-->
+                    <!--Click one of those buttons to initiate a chat.</p>-->
+
+                <!--<hr />-->
+                <!--<h2>The Demo</h2>-->
                 <!--show-->
                 <div id="videoDemoContainer">
                     <div id="connectControls">
@@ -129,12 +133,10 @@
 
                                 // above ... eventually will be a function to call in remote recognize code
 
-                                var localSnapEnabled = false;
 
                                 var localTrainingEnabled = false;
-                                var remoteSnapEnabled = false;
 
-                                var remoteTrainingEnabled = false;
+
 
                                 // below are used ...
                                 var resetCookieEnabled = false;
@@ -150,6 +152,18 @@
                                 var remoteRecognizeLogEnabled = true;//false;// for interval
                                 var localRecognizeLogEnabled = true;//false;// for interval
 
+                                var cameraHeaderTextEnabled = false;
+                                var canvasHeaderTextEnabled = false;
+
+                                var textAndTrainingHeaderTextEnabled = false;
+
+                                var localSnapBtnEnabled = false;
+                                var localDetectBtnEnabled = false;
+                                var remoteSnapBtnEnabled = false;
+                                var remoteDetectBtnEnabled = false;
+
+                                var remoteTrainingEnabled = false;// not implemented anyway ....
+
                             </script>
                         </span>
 
@@ -160,7 +174,7 @@
                     <div id="videos">
 
                         <table border="1">
-                            <tr>
+                            <tr id="cameraHeaderText">
                                 <td colspan="2">
                                     Below is from Self's camera.
                                 </td>
@@ -176,7 +190,7 @@
                                     <video autoplay="autoplay" id="callerVideo" width="320" height="240"></video>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="textAndTrainingHeaderText">
                                 <td>
                                     Test
                                 </td>
@@ -208,7 +222,7 @@
                                     <button id="callerDetect"    class="sexyButton">Caller Snap/Detect</button>
                                     <button id="callerRecognize" class="sexyButton">Caller Recognize </button>
                                 </td>
-                                <td>
+                                <td id="callerTrainingParent">
                                     <!--<form>-->
                                         <label>User Name    :</label><input  id="callerId"   type="text"><br>
                                         <label>User Password:</label><input  id="callerPwd"  type="text"><br>
@@ -216,7 +230,7 @@
                                     <!--</form>-->
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="canvasHeaderText">
                                 <td colspan="2">
                                     Below is from [Self Snap] button.
                                 </td>
@@ -306,6 +320,31 @@
                             if(recognizeLogEnabled == false){
                                 document.getElementById("recognizeLogParent").style.display = 'none';
                             }
+                            if(cameraHeaderTextEnabled == false){
+                                document.getElementById("cameraHeaderText").style.display = 'none';
+                            }
+                            if(canvasHeaderTextEnabled == false){
+                                document.getElementById("canvasHeaderText").style.display = 'none';
+                            }
+                            if(textAndTrainingHeaderTextEnabled == false){
+                                document.getElementById("textAndTrainingHeaderText").style.display = 'none';
+                            }
+                            if(remoteTrainingEnabled == false){
+                                document.getElementById("callerTrainingParent").style.display = 'none';
+                            }
+                            if(remoteSnapBtnEnabled == false){
+                                document.getElementById("callerSnap").style.display = 'none';
+                            }
+                            if(remoteDetectBtnEnabled == false){
+                                document.getElementById("callerDetect").style.display = 'none';
+                            }
+                            if(localSnapBtnEnabled == false){
+                                document.getElementById("selfSnap").style.display = 'none';
+                            }
+                            if(localDetectBtnEnabled == false){
+                                document.getElementById("selfDetect").style.display = 'none';
+                            }
+
 
                             // Converts image to canvas; returns new canvas element
                             function convertImageToCanvas(image) {
@@ -585,7 +624,7 @@
                                 }
                             }
 
-                            var isLocalDetectClicked     = false;
+                            var isLocalDetectClicked     = false;// used to tell the very first time or not ...
                             var isLocalRecognizeClicked  = false;
                             var isRemoteDetectClicked    = false;
                             var isRemoteRecognizeClicked = false;
