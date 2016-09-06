@@ -29,8 +29,12 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.cr
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
 
 fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
-    console.log(""+file);
-    //console.log((""+file.name).lastIndexOf('.'));
+    var file_path = latestFolderAbsPath+file;
+    console.log(file_path);
+    var last_dot_index = file_path.lastIndexOf('.');
+    console.log(last_dot_index);
+    var file_extension = file_path.substring(last_dot_index);
+    console.log(file_extension);
 });
 
 httpApp.post('/upload', function(req, res){
