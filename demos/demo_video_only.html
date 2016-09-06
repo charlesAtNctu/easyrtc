@@ -754,6 +754,32 @@
                                 setInterval(function () {
                                     if(connectedYet) {
                                         sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+//                                        if(true){
+//
+//
+//
+//                                            var lines = $('#selfLog').val().split("\n");
+////                                            if(lines.length > 0) {
+////                                                var lastLine = lines[lines.length - 1];
+////                                                alert("last: "+lastLine);
+//                                                if(lines && lines.length > 1){
+//                                                    var secondLastLine = lines[lines.length - 2];
+//                                                    //alert("2nd last:" + secondLastLine);
+//                                                    var fields = secondLastLine.split(",");
+//                                                    selfContext.strokeStyle = "blue";
+//                                                    selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
+//
+//
+//                                                }
+////                                            }
+//
+//                                            //selfContext.strokeRect(10, 10, 100, 200);
+//                                        }
+                                    }
+                                }, 3000);//250);
+                                setInterval(function () {
+                                    if(connectedYet) {
+//                                        sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
                                         if(true){
 
 
@@ -762,21 +788,21 @@
 //                                            if(lines.length > 0) {
 //                                                var lastLine = lines[lines.length - 1];
 //                                                alert("last: "+lastLine);
-                                                if(lines && lines.length > 1){
-                                                    var secondLastLine = lines[lines.length - 2];
-                                                    //alert("2nd last:" + secondLastLine);
-                                                    var fields = secondLastLine.split(",");
-                                                    selfContext.strokeStyle = "blue";
-                                                    selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
+                                            if(lines && lines.length > 1){
+                                                var secondLastLine = lines[lines.length - 2];
+                                                //alert("2nd last:" + secondLastLine);
+                                                var fields = secondLastLine.split(",");
+                                                selfContext.strokeStyle = "blue";
+                                                selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
 
 
-                                                }
+                                            }
 //                                            }
 
                                             //selfContext.strokeRect(10, 10, 100, 200);
                                         }
                                     }
-                                }, 3000);//250);
+                                }, 250);
 
                             }, false);
 
