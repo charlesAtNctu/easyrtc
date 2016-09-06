@@ -68,13 +68,14 @@ httpApp.post('/upload', function(req, res){
     form.on('file', function(field, file) {
 
         var currentdate = new Date();
-        var datetime = "" + currentdate.getDate() + "/"
-            + (currentdate.getMonth()+1)  + "/"
-            + currentdate.getFullYear() + " @ "
+        var datetime = "" +
+            currentdate.getFullYear() + "/" +
+            (currentdate.getMonth()+1) + "/" +
+            currentdate.getDate() + " @ "
             + currentdate.getHours() + ":"
             + currentdate.getMinutes() + ":"
             + currentdate.getSeconds();
-        console.log(datetime + " - Receiving " + file.name);
+        console.log(datetime + "\t-\tReceiving " + file.name);
 
         fs.rename(file.path, path.join(form.uploadDir, file.name));
 
