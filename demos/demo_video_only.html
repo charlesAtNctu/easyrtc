@@ -627,6 +627,10 @@
                                 }
                             }
 
+                            function reverse(s) {
+                                return s.split('').reverse().join('');
+                            }
+
                             var isLocalDetectClicked     = false;// used to tell the very first time or not ...
                             var isLocalRecognizeClicked  = false;
                             var isRemoteDetectClicked    = false;
@@ -806,11 +810,12 @@
 
                                                 var x_cordinate = selfCanvas.width - fields[3] - fields[5];
                                                 var y_cordinate = fields[4];
+                                                var recognized_person = reverse(fields[1]);
 
                                                 selfContext.fillStyle = "blue";
-                                                selfContext.textAlign = "center";
+                                                selfContext.textAlign = "right";
                                                 selfContext.font="30px Verdana";
-                                                selfContext.fillText(fields[1], x_cordinate, y_cordinate);
+                                                selfContext.fillText(recognized_person, x_cordinate, y_cordinate);
 
                                                 selfContext.strokeRect(x_cordinate, y_cordinate, fields[5], fields[6]);
                                                 //selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
