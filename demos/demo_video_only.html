@@ -660,8 +660,8 @@
                                         console.log("Video capture error: ", error.code);
                                     };
 
-                                selfContext.translate(selfCanvas.width, 0);
-                                selfContext.scale(-1, 1);
+//                                selfContext.translate(selfCanvas.width, 0);
+//                                selfContext.scale(-1, 1);
 
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 // Grab elements, create settings, etc.
@@ -813,9 +813,11 @@
                                                 var recognized_person = reverse(fields[1]);
 
                                                 selfContext.fillStyle = "blue";
-                                                selfContext.textAlign = "right";
+                                                selfContext.textAlign = "left";
                                                 selfContext.font="30px Verdana";
                                                 selfContext.fillText(recognized_person, x_cordinate, y_cordinate);
+
+
 
                                                 selfContext.strokeRect(x_cordinate, y_cordinate, fields[5], fields[6]);
                                                 //selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
