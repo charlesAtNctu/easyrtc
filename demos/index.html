@@ -225,20 +225,21 @@
                 document.getElementById("selfTraining").addEventListener("click", function () {
 //                    alert("hello" + document.getElementById("selfId").val());
 //                    alert((document.getElementById("selfTraining")).val());
-                    alert($('#selfId').val());
+//                    alert($('#selfId').val());
 //
 //
-//                    if($('#selfId').val().trim().length > 0){
-//                        for (var i = 0; i < 20; i++) {// Note: We are sending 20 of pictures for training ...
-//                            sleep(250);// Note: Taking a picture every .25 second. Hence, 20 * .25 = 5 second in total ...
-//                            //var self_training_file_name = $('#selfPwd').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
-//                            var self_training_file_name = "face_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
-//                            //alert(self_training_file_name);
-//                            sendEvent2(selfContext,   selfVideo,   selfCanvas,  self_training_file_name,  "latest/" + self_training_file_name, $('#selfImage'));
-//                        }
-//                    } else {
-//                        alert("Please enter the user id.");
-//                    }
+                    if($('#selfId').val().trim().length > 0){
+                        for (var i = 0; i < 10; i++) {// Note: We are sending 20 of pictures for training ...
+                            sleep(300);// Note: Taking a picture every .25 second. Hence, 20 * .25 = 5 second in total ...
+                            //var self_training_file_name = $('#selfPwd').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
+                            var self_training_file_name = "face_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
+                            //alert(self_training_file_name);
+                            
+                            //sendEvent2(selfContext,   selfVideo,   selfCanvas,  self_training_file_name,  "latest/" + self_training_file_name, $('#selfImage'));
+                        }
+                    } else {
+                        alert("Please enter the user id.");
+                    }
 
                     //$('#selfPwd').val('');
                     //$('#selfId').val('');
