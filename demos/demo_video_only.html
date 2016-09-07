@@ -903,23 +903,40 @@
                                             document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
                                         });
                                     } else {
-                                        $.get("latest/localRecognize.log", function (data) {
+                                        $.get("latest/localRecognize.latest", function (data) {
                                             $('#selfLog').text(data)
                                             document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
                                         });
                                     }
                                 }, 100);
                             }
+//
+//                            if(remoteRecognizeLogEnabled == true) {
+//                                setInterval(function () {
+//                                    if (isRemoteRecognizeClicked) {
+//                                        $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
+//                                            $('#callerLog').text(data)
+//                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                        });
+//                                    } else {
+//                                        $.get("latest/remoteRecognize.log", function (data) {
+//                                            $('#callerLog').text(data)
+//                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                        });
+//                                    }
+//                                }, 250);
+//                            }
+
 
                             if(remoteRecognizeLogEnabled == true) {
                                 setInterval(function () {
                                     if (isRemoteRecognizeClicked) {
-                                        $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
+                                        $.get("latest/" + getCookie() + "_remoteRecognize.latest", function (data) {
                                             $('#callerLog').text(data)
                                             document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                         });
                                     } else {
-                                        $.get("latest/remoteRecognize.log", function (data) {
+                                        $.get("latest/remoteRecognize.latest", function (data) {
                                             $('#callerLog').text(data)
                                             document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                         });

@@ -50,10 +50,12 @@ fs.createReadStream(defaultLatestFolderAbsPath+'localSnap.png').pipe(fs.createWr
 fs.createReadStream(defaultLatestFolderAbsPath+'localDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localDetect.png'));
 fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.png'));
 fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.log'));
+fs.createReadStream(defaultLatestFolderAbsPath+'localRecognize.latest').pipe(fs.createWriteStream(latestFolderAbsPath+'localRecognize.latest'));
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteSnap.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteSnap.png'));
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteDetect.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteDetect.png'));
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.png'));
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
+fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.latest').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.latest'));
 
 httpApp.post('/upload', function(req, res){
 
