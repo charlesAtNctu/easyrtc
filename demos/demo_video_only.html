@@ -458,6 +458,9 @@
                             function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
                                 context.drawImage(video, 0, 0, 320, 240);
 
+
+
+
                                 var image = convertCanvasToImage(canvas);
 
                                 var formData    = new FormData(),
@@ -799,8 +802,8 @@
                                                 //selfContext.clearRect(0,0,selfCanvas.width, selfCanvas.height);
                                                 selfContext.strokeStyle = "blue";
                                                 //selfContext.fillText(fields[1]);
-                                                //selfContext.strokeRect(selfCanvas.width - fields[3] - fields[5], fields[4], fields[5], fields[6]);
-                                                selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
+                                                selfContext.strokeRect(selfCanvas.width - fields[3] - fields[5], fields[4], fields[5], fields[6]);
+                                                //selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
 
                                             }
 //                                            }
