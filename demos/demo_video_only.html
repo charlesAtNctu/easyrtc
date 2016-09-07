@@ -802,8 +802,14 @@
                                                 //selfContext.clearRect(0,0,selfCanvas.width, selfCanvas.height);
                                                 selfContext.strokeStyle = "blue";
                                                 //selfContext.fillText(fields[1]);
-                                                alert(fields[1]);
-                                                selfContext.strokeRect(selfCanvas.width - fields[3] - fields[5], fields[4], fields[5], fields[6]);
+                                                //alert(fields[1]);
+
+                                                var x_cordinate = selfCanvas.width - fields[3] - fields[5];
+                                                var y_cordinate = fields[4];
+
+                                                selfContext.fillText(fields[1], x_cordinate, y_cordinate);
+
+                                                selfContext.strokeRect(x_cordinate, y_cordinate, fields[5], fields[6]);
                                                 //selfContext.strokeRect(fields[3], fields[4], fields[5], fields[6]);
 
                                             }
