@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  <!--skip-->
-        <title>EasyRTC Demo: Video Only</title>
+        <title>NPU DCE Student: Chu-Chi Liu</title>
+        <!--<title>EasyRTC Demo: Video Only</title>-->
                 <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
 
         <!--hide-->
@@ -83,7 +84,7 @@
             <div id="main">
                 <!-- Main Content -->
 
-                <h1>DCE Student: Chu-Chi's Demo: Video Only</h1>
+                <h1>Real Time Video Only Communication With Face Recognition</h1>
                 <!--<h1>EasyRTC Demo: Video Only</h1>-->
 
                 <!--<p>The application provides a video-only chat by disabling audio before initializing the local media stream.</p>-->
@@ -134,7 +135,6 @@
                                 // above ... eventually will be a function to call in remote recognize code
 
 
-                                var localTrainingEnabled = false;
 
 
 
@@ -159,10 +159,15 @@
 
                                 var localSnapBtnEnabled = false;
                                 var localDetectBtnEnabled = false;
+                                var localRecognizeBtnEnabled = false;
+
                                 var remoteSnapBtnEnabled = false;
                                 var remoteDetectBtnEnabled = false;
+                                var remoteRecognizeBtnEnabled = false;
 
                                 var remoteTrainingEnabled = false;// not implemented anyway ....
+                                var localTrainingEnabled = false;
+                                var trainingRowEnabled = false;
 
                             </script>
                         </span>
@@ -204,13 +209,13 @@
                                     Training (NOT IMPL.)
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="trainingRow">
                                 <td>
                                     <button id="selfSnap"        class="sexyButton">Self Snap            </button>
                                     <button id="selfDetect"      class="sexyButton">Self Snap/Detect</button>
                                     <button id="selfRecognize"   class="sexyButton">Self Recognize </button>
                                 </td>
-                                <td>
+                                <td id="selfTrainingParent">
                                     <!--<form>-->
                                         <label>User Name    :</label><input  id="selfId"   type="text"><br>
                                         <label>User Password:</label><input  id="selfPwd"  type="text"><br>
@@ -280,12 +285,12 @@
                             </tr>
                             <tr id="recognizeLogParent">
                                 <td colspan="2">
-                                    <textarea id='selfLog' rows="10" cols="42"></textarea>
+                                    <textarea id='selfLog' rows="2" cols="42"></textarea>
                                     <!--<textarea id='selfLog' rows="10" cols="59"></textarea>-->
                                     <!--<p id='selfLog'></p>-->
                                 </td>
                                 <td colspan="2">
-                                    <textarea id='callerLog' rows="10" cols="42"></textarea>
+                                    <textarea id='callerLog' rows="2" cols="42"></textarea>
                                     <!--<textarea id='callerLog' rows="10" cols="59"></textarea>-->
                                     <!--<p id='callerLog'></p>-->
                                 </td>
@@ -329,6 +334,9 @@
                             if(textAndTrainingHeaderTextEnabled == false){
                                 document.getElementById("textAndTrainingHeaderText").style.display = 'none';
                             }
+                            if(localTrainingEnabled == false){
+                                document.getElementById("selfTrainingParent").style.display = 'none';
+                            }
                             if(remoteTrainingEnabled == false){
                                 document.getElementById("callerTrainingParent").style.display = 'none';
                             }
@@ -338,13 +346,21 @@
                             if(remoteDetectBtnEnabled == false){
                                 document.getElementById("callerDetect").style.display = 'none';
                             }
+                            if(remoteRecognizeBtnEnabled == false){
+                                document.getElementById("callerRecognize").style.display = 'none';
+                            }
                             if(localSnapBtnEnabled == false){
                                 document.getElementById("selfSnap").style.display = 'none';
                             }
                             if(localDetectBtnEnabled == false){
                                 document.getElementById("selfDetect").style.display = 'none';
                             }
-
+                            if(localRecognizeBtnEnabled == false){
+                                document.getElementById("selfRecognize").style.display = 'none';
+                            }
+                            if(trainingRowEnabled == false){
+                                document.getElementById("trainingRow").style.display = 'none';
+                            }
 
                             // Converts image to canvas; returns new canvas element
                             function convertImageToCanvas(image) {
