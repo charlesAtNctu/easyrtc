@@ -25,7 +25,7 @@
     <!--</div>-->
     <!--<div id="menu"><a class="menu_link" href="index.html"><div class="menu_item">Local Demos</div></a><a class="menu_link" href="https://github.com/priologic/easyrtc/tree/master/docs"><div class="menu_item">Documentation</div></a><a class="menu_link" href="https://easyrtc.com/forums/"><div class="menu_item">Support: EasyRTC Forums</div></a><a class="menu_link" href="http://www.easyrtc.com/"><div class="menu_item">easyrtc.com</div></a></div>-->
     <div id="main">
-        <h1>Upload Your Face For Recognition First</h1>
+        <h1>Upload Your Face For Recognition Here</h1>
 <!-- Main Content -->
 <!--<h1>EasyRTC Landing Page</h1>-->
 <!--<p>Congratulations! With EasyRTC installed you are on the road to creating your own WebRTC enabled applications.</p>-->
@@ -288,11 +288,11 @@
                             sleep(300);// Note: Taking a picture every .25 second. Hence, 20 * .25 = 5 second in total ...
                             //var self_training_file_name = $('#selfPwd').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                             var self_training_file_name = "face_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
-                            //alert(self_training_file_name);
+                            alert(self_training_file_name);
 
                             sendEvent3(canvas,
                                        self_training_file_name,
-                                       "latest/" + self_training_file_name, $('#selfImage'));
+                                       "latest/" + self_training_file_name);
                         }
                         alert($('#selfId').val() + "'s Face Upload Completed")
                     } else {
