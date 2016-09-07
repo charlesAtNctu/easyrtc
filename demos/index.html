@@ -25,7 +25,7 @@
     <!--</div>-->
     <!--<div id="menu"><a class="menu_link" href="index.html"><div class="menu_item">Local Demos</div></a><a class="menu_link" href="https://github.com/priologic/easyrtc/tree/master/docs"><div class="menu_item">Documentation</div></a><a class="menu_link" href="https://easyrtc.com/forums/"><div class="menu_item">Support: EasyRTC Forums</div></a><a class="menu_link" href="http://www.easyrtc.com/"><div class="menu_item">easyrtc.com</div></a></div>-->
     <div id="main">
-        <h1>Uploading Your Face For Recognition</h1>
+        <h1>Upload Your Face For Recognition First</h1>
 <!-- Main Content -->
 <!--<h1>EasyRTC Landing Page</h1>-->
 <!--<p>Congratulations! With EasyRTC installed you are on the road to creating your own WebRTC enabled applications.</p>-->
@@ -192,6 +192,60 @@
                 return image;
             }
 
+            // Converts canvas to an image
+            function convertCanvasToImage3(canvas) {
+                var image = new Image();
+                image.src = canvas.toDataURL("image/png");
+                return image;
+            }
+
+            function dataURItoBlob3(dataURI) {
+                // convert base64/URLEncoded data component to raw binary data held in a string
+                var byteString;
+                if (dataURI.split(',')[0].indexOf('base64') >= 0)
+                    byteString = atob(dataURI.split(',')[1]);
+                else
+                    byteString = unescape(dataURI.split(',')[1]);
+
+                // separate out the mime component
+                var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+                // write the bytes of the string to a typed array
+                var ia = new Uint8Array(byteString.length);
+                for (var i = 0; i < byteString.length; i++) {
+                    ia[i] = byteString.charCodeAt(i);
+                }
+
+                return new Blob([ia], {type:mimeString});
+            }
+
+            function sendEvent3(canvas, filename, resultingfilepath) {
+
+                var image = convertCanvasToImage3(canvas);
+
+                var formData    = new FormData(),
+                    xhttp       = new XMLHttpRequest(),
+                    file        = dataURItoBlob3(image.src)
+
+                formData.append('uploads[]', file, filename)
+
+                //image.parentElement.classList.remove('img-error')
+                //image.parentElement.classList.add('img-uploading')
+
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4) {
+                        if(xhttp.status == 200) {
+                            setTimeout(showSuccess.bind(this), 1500)
+                        } else {
+                            setTimeout(showError.bind(this), 1500)
+                        }
+                    }
+                }.bind(this);
+
+                xhttp.open('POST', '/upload');
+                xhttp.send(formData);
+            }
+
             // Put event listeners into place
             window.addEventListener("DOMContentLoaded", function () {
                 // Grab elements, create settings, etc.
@@ -234,11 +288,14 @@
                             //var self_training_file_name = $('#selfPwd').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                             var self_training_file_name = "face_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                             //alert(self_training_file_name);
-                            
-                            //sendEvent2(selfContext,   selfVideo,   selfCanvas,  self_training_file_name,  "latest/" + self_training_file_name, $('#selfImage'));
+
+                            sendEvent3(canvas,
+                                       self_training_file_name,
+                                       "latest/" + self_training_file_name, $('#selfImage'));
                         }
+                        alert("Face Upload Completed")
                     } else {
-                        alert("Please enter the user id.");
+                        alert("Please Enter Your Name");
                     }
 
                     //$('#selfPwd').val('');
