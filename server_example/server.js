@@ -68,7 +68,11 @@ httpApp.post('/upload2', function(req, res)
             console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a name:', name);
             console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a value:', field);
 
-
+            // TODO: remove every mapping that has this cookie id
+            //       i.e., easyrtc2Id2cookieId_*_cookieId
+            //       i.e., cookieId2easyrtcId_cookieId_*
+            //
+            // TODO: create the above again (all in latest)
 
 
         })
