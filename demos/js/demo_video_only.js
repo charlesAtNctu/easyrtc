@@ -111,6 +111,14 @@ function performCall(otherEasyrtcid) {
     var failureCB = function() {
         enable('otherClients');
     };
+
+
+    // testing ...
+    console.log("" + easyrtcid      + " calls " + otherEasyrtcid);
+    console.log("" + otherEasyrtcid + " calls " + easyrtcid     );
+
+
+
     easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 }
 
