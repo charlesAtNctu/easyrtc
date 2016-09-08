@@ -57,9 +57,21 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.cr
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.latest').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.latest'));
 
-httpApp.post('/upload2', function(req, res){
-    var form = new formidable.IncomingForm();
-    console.log("sendding mapping " + form.get('data'));
+httpApp.post('/upload2', function(req, res)
+{
+    var form = new formidable.IncomingForm().parse(req)
+        .on('file', function(name, file) {
+            console.log('Got file:', name);
+        })
+        .on('field', function(name, field) {
+            console.log('Got a field:', name);
+        })
+        .on('error', function(err) {
+            next(err);
+        })
+        .on('end', function() {
+            res.end();
+        });
 });
 
 httpApp.post('/upload', function(req, res){
