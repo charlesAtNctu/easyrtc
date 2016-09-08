@@ -99,6 +99,7 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 
 function performCall(otherEasyrtcid) {
     easyrtc.hangupAll();
+
     var acceptedCB = function(accepted, easyrtcid) {
         if( !accepted ) {
             easyrtc.showError("CALL-REJECTED", "Sorry, your call to " + easyrtc.idToName(easyrtcid) + " was rejected");
@@ -113,10 +114,8 @@ function performCall(otherEasyrtcid) {
     };
 
 
-    // testing ...
-    console.log("" + easyrtcid      + " calls " + otherEasyrtcid);
-    console.log("" + otherEasyrtcid + " calls " + easyrtcid     );
 
+    alert(otherEasyrtcid);// testing ...
 
 
     easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
