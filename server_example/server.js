@@ -59,7 +59,7 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.latest').pipe(fs
 
 httpApp.post('/upload2', function(req, res){
     console.log("sendding mapping");
-}
+});
 
 httpApp.post('/upload', function(req, res){
 
