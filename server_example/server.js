@@ -64,8 +64,9 @@ httpApp.post('/upload2', function(req, res)
             console.log('Got file:', name);
         })
         .on('field', function(name, field) {
-            console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a field:', name);
-            console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a field:', field);
+
+            console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a name:', name);
+            console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a value:', field);
 
 
 
