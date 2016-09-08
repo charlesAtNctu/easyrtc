@@ -115,7 +115,8 @@ function performCall(otherEasyrtcid) {
 
 
 
-    alert(this.myEasyrtcid + " " + otherEasyrtcid);// testing ...
+
+    alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid);// testing ...
 
 
     easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);

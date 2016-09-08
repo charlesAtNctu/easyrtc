@@ -73,6 +73,8 @@ httpApp.post('/upload2', function(req, res)
             //       i.e., cookieId2easyrtcId_cookieId_*
             //
             // TODO: create the above again (all in latest)
+            //
+            // later, easyrtcid2easyrtcid_*_* (end user mapping ...) maybe upload3
 
 
         })
