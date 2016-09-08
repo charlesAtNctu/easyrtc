@@ -120,7 +120,14 @@ function loginSuccess(easyrtcid) {
     // enable("disconnectButton");
     enable('otherClients');
     selfEasyrtcid = easyrtcid;
-    document.getElementById("iam").innerHTML = "I am " + easyrtcid + "( <-> " + getCookie() + ")";
+    document.getElementById("iam").innerHTML = "I am " + easyrtcid;// + "( <-> " + getCookie() + ")";
+
+    var data = new FormData();
+    data.append("data" , "the_text_you_want_to_save");
+    var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+    xhr.open( 'post', '/upload2');
+    xhr.send(data);
+
 }
 
 
