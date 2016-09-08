@@ -123,7 +123,10 @@ function loginSuccess(easyrtcid) {
     document.getElementById("iam").innerHTML = "I am " + easyrtcid;// + "( <-> " + getCookie() + ")";
 
     var data = new FormData();
-    data.append("data" , "the_text_you_want_to_save");
+    data.append("data" ,
+        "cookieId2easyrtcId_" + getCookie() + "_" + easyrtcid + "," +
+        "easyrtcId2cookieId_" + easyrtcid + "_" + getCookie());
+
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     xhr.open( 'post', '/upload2');
     xhr.send(data);
