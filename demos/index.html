@@ -219,6 +219,36 @@
                 return new Blob([ia], {type:mimeString});
             }
 
+            Date.prototype.YYYYMMDDHHMMSSMS = function () {
+                var yyyy = this.getFullYear().toString();
+                var MM = pad(this.getMonth() + 1,2);
+                var dd = pad(this.getDate(), 2);
+                var hh = pad(this.getHours(), 2);
+                var mm = pad(this.getMinutes(), 2)
+                var ss = pad(this.getSeconds(), 2)
+                var ms = pad(this.getMilliseconds(), 3)
+
+                return yyyy + MM + dd+  hh + mm + ss + ms;
+            };
+
+            function getDate() {
+                //d = new Date();
+                //alert(d.YYYYMMDDHHMMSSMS());
+                alert((new Date()).YYYYMMDDHHMMSSMS());
+            }
+
+            function pad(number, length) {
+                var str = '' + number;
+                while (str.length < length) {
+                    str = '0' + str;
+                }
+                return str;
+            }
+
+            function getTimestamp(){
+                return (new Date()).YYYYMMDDHHMMSSMS();
+            }
+
             function sendEvent3(canvas, filename, resultingfilepath) {
 
                 var image = convertCanvasToImage3(canvas);
@@ -283,7 +313,7 @@
 //
 //
                     if($('#selfId').val().trim().length > 0){
-                        alert("About To Upload "+$('#selfId').val()+"'s Face ...\nNote: Do Not Move Your Head Too Fast.")
+                        alert("About To Upload "+$('#selfId').val()+"'s Face ...\n\nNote: Do Not Move Your Head Too Fast.")
                         for (var i = 0; i < 10; i++) {// Note: We are sending 20 of pictures for training ...
                             //sleep(300);// Note: Taking a picture every .25 second. Hence, 20 * .25 = 5 second in total ...
                             //var self_training_file_name = $('#selfPwd').val().trim() + "_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
