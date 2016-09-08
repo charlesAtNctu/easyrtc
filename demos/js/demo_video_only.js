@@ -115,7 +115,7 @@ function performCall(otherEasyrtcid) {
 
 
 
-    alert(otherEasyrtcid);// testing ...
+    alert(this.myEasyrtcid + " " + otherEasyrtcid);// testing ...
 
 
     easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
