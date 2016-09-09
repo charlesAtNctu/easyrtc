@@ -403,7 +403,7 @@
                                 var minScore = "100000";
                                 var minIndex = -1;
                                 var i;
-                                for (i = lines.length-2; i >= lines.length-2-rowToConsider; i--) {
+                                for (i = lines.length-2; i > lines.length-2-rowToConsider; i--) {
                                     //alert(lines[i].split(","))
                                     var score = lines[i].split(",")[2];// score
                                     alert("score:"+score);
