@@ -360,8 +360,10 @@
                                 document.getElementById("trainingRow").style.display = 'none';
                             }
 
-                            function setMonitor(id, counter){
+                            function setMonitor(id, counterS){
 
+                                var counter = Number(counterS);
+                                
                                 //alert(counter);
                                 document.getElementById('recognizedUser').innerHTML = id;
 
@@ -388,7 +390,7 @@
 
                             function lastLog(rowToConsider, logData){
                                 alert(rowToConsider + "\n" + logData);
-                                return "chuchi", 10;
+                                return ["chuchi", "10"];
                             }
 
                             // Converts image to canvas; returns new canvas element
@@ -1021,8 +1023,8 @@
 
 
 
-                                            rId, rScore = lastLog(4, data);
-                                            setMonitor(rId, rScore);
+                                            rIdAndScore = lastLog(4, data);
+                                            setMonitor(rIdAndScore[0], rIdAndScore[1]);
                                             // above ... eventually will be a function to call in remote recognize code
 
 
