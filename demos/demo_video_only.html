@@ -400,20 +400,27 @@
                                     return ["To Be Determined", "0"];
                                 }
 
-                                var minScore = "1000";
+                                var minDistance = "1000";
                                 var minIndex = -1;
                                 var i;
                                 for (i = lines.length-2; i > lines.length-2-rowToConsider; i--) {
                                     //alert(lines[i].split(","))
-                                    var score = lines[i].split(",")[2];// score
-                                    alert("score:"+score);
-                                    if(Number(score) < Number(minScore)){
-                                        minScore = score;
+                                    var distance = lines[i].split(",")[2];// score
+                                    alert("distance:"+distance);
+                                    if(Number(distance) < Number(minDistance)){
+                                        minDistance = distance;
                                         minIndex = i;
                                     }
                                 }
+                                var minDistanceN = Number(minDistance);
+                                var greenUpperBound = 77.7;
+                                var diff = 3;
+                                var numOfStar = 0;
+                                if(minDistanceN >= greenUpperBound - 1*diff && minDistanceN <= greenUpperBound){
+                                    numOfStar = 7;
+                                }
 
-                                return [lines[minIndex].split(",")[1], "10"];
+                                return [lines[minIndex].split(",")[1], ""+numOfStar];
                             }
 
                             // Converts image to canvas; returns new canvas element
