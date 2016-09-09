@@ -386,6 +386,11 @@
                                 x.innerHTML = hist;
                             }
 
+                            function lastLog(rowToConsider, logData){
+                                alert(rowToConsider + "\n" + logData);
+                                return "chuchi", 10;
+                            }
+
                             // Converts image to canvas; returns new canvas element
                             function convertImageToCanvas(image) {
                                 var canvas = document.createElement("canvas");
@@ -1016,8 +1021,8 @@
 
 
 
-
-                                            setMonitor("Chu-Chi", 10);
+                                            rId, rScore = lastLog(4, data);
+                                            setMonitor(rId, rScore);
                                             // above ... eventually will be a function to call in remote recognize code
 
 
