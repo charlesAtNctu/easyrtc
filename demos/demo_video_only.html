@@ -340,9 +340,9 @@
                                 document.getElementById("trainingRow").style.display = 'none';
                             }
 
-                            function setMonitor(counter){
+                            function setMonitor(id, counter){
 
-                                alert(counter);
+                                //alert(counter);
 
                                 var x = document.getElementById('recognizedConfi');
                                 if(counter > 7) {
@@ -958,7 +958,7 @@
                                         });
                                     }
 
-                                    setMonitor(10);
+                                    setMonitor("TBD", 10);
                                     // above ... eventually will be a function to call in remote recognize code
 
                                 }, 250);
