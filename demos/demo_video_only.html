@@ -396,14 +396,14 @@
 //                                        logData.split("\n").length);
 
                                 var lines = logData.split("\n")
-                                if(lines.length <= rowToConsider){
+                                if(lines.length <= rowToConsider+1){// HAS NEW LINE ...
                                     return ["To Be Determined", "0"];
                                 }
 
                                 var minScore = "100000";
                                 var minIndex = -1;
                                 var i;
-                                for (i = lines.length-1; i >= lines.length-1-rowToConsider; i--) {
+                                for (i = lines.length-2; i >= lines.length-2-rowToConsider; i--) {
                                     //alert(lines[i].split(","))
                                     var score = lines[i].split(",")[2];// score
                                     alert("score:"+score);
