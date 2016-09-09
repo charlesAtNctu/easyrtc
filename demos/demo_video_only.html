@@ -356,9 +356,13 @@
                                 }
 
                                 var count;
+                                var hist = "";
                                 for(count = 0; count < counter; count++){
-                                    document.write(" o ");
+                                    //document.write(" o ");
+                                    //document.getElementById('mySpan').innerHTML = '...'
+                                    hist = hist + " o ";
                                 }
+                                x.innerHTML = hist;
                             }
 
                             // Converts image to canvas; returns new canvas element
