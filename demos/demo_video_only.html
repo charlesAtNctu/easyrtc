@@ -400,18 +400,20 @@
                                     return ["To Be Determined", "0"];
                                 }
 
-                                var minScore = "100000";
+                                var minScore = "1000";
                                 var minIndex = -1;
                                 var i;
                                 for (i = lines.length-2; i > lines.length-2-rowToConsider; i--) {
                                     //alert(lines[i].split(","))
                                     var score = lines[i].split(",")[2];// score
                                     alert("score:"+score);
-
+                                    if(Number(score) < Number(minScore)){
+                                        minScore = score;
+                                        minIndex = i;
+                                    }
                                 }
 
-
-                                return ["chuchi", "10"];
+                                return [lines[minIndex].split(",")[1], "10"];
                             }
 
                             // Converts image to canvas; returns new canvas element
