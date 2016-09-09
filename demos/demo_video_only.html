@@ -1009,6 +1009,15 @@
                                         $.get("latest/" + getCookie() + "_localRecognize.log", function (data) {
                                             $('#selfLog2').text(data)
                                             document.getElementById("selfLog2").scrollTop = document.getElementById("selfLog2").scrollHeight;
+
+
+
+                                            rIdAndScore = lastLog(4, data);
+                                            setMonitor(rIdAndScore[0], rIdAndScore[1]);
+                                            // above ... eventually will be a function to call in remote recognize code
+
+
+
                                         });
                                     } else {
                                         $.get("latest/localRecognize.log", function (data) {
@@ -1042,12 +1051,7 @@
                                             $('#callerLog2').text(data)
                                             document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
 
-
-
-                                            rIdAndScore = lastLog(4, data);
-                                            setMonitor(rIdAndScore[0], rIdAndScore[1]);
-                                            // above ... eventually will be a function to call in remote recognize code
-
+                                            // TODO: put lastLog here ....
 
 
                                         });
