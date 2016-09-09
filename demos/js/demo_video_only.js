@@ -116,7 +116,15 @@ function performCall(otherEasyrtcid) {
 
 
 
+    // todo: write it to the server ...
+    // todo: synchronusly ...
     alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid);// testing ...
+    // todo: in upload2, cp -p remote_recognize.png ...
+    // todo: then, log will be updated ...
+    // todo: check the log first
+    // todo: if not pass, show the popup ... otherwise, let it pass ...
+
+    // todo:
 
 
     easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
@@ -131,14 +139,18 @@ function loginSuccess(easyrtcid)
     selfEasyrtcid = easyrtcid;
     document.getElementById("iam").innerHTML = "I am " + easyrtcid;// + "( <-> " + getCookie() + ")";
 
-    
-    
+    // todo: it's easier to be done in upload2 server !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // todo: whenver click connect, reset everything ...
+    // todo: remove all the existing ones that contains cookie id here !!! in latest folder ...
+    // todo: remove all the existing ones that contains corresponding easyrtc id !!! in latest folder ...
+
+
     var data = new FormData();
-    data.append("data" ,
-        "cookieId2easyrtcId_" + getCookie() + "_" + easyrtcid + "," +
-        "easyrtcId2cookieId_" + easyrtcid + "_" + getCookie());
+    data.append("data" ,                               // called when click connect btn ...
+        "c2e_" + getCookie() + "_" + easyrtcid + "," + // cookie  id to easyrtc id
+        "e2c_" + easyrtcid + "_" + getCookie());       // easyrtc id to cookie  id
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-    xhr.open( 'post', '/upload2');
+    xhr.open( 'post', '/upload2');                     // todo: do the same for e2e mapping ...
     xhr.send(data);
 }
 
