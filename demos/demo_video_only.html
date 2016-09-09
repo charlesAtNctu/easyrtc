@@ -363,7 +363,7 @@
                             function setMonitor(id, counterS){
 
                                 var counter = Number(counterS);
-                                
+
                                 //alert(counter);
                                 document.getElementById('recognizedUser').innerHTML = id;
 
@@ -389,7 +389,15 @@
                             }
 
                             function lastLog(rowToConsider, logData){
-                                alert(rowToConsider + "\n" + logData);
+                                alert(
+                                        rowToConsider + "\n" +
+                                        logData + "\n" +
+                                        logData.split("\n") + "\n" +
+                                        logData.split("\n").length);
+
+                                
+
+
                                 return ["chuchi", "10"];
                             }
 
@@ -694,7 +702,7 @@
                                 //alert("dce_chuchi_cookie_id="+getCookie());
                             }
 
-                            setMonitor("To Be Determined", 0);
+                            setMonitor("To Be Determined", "To Be Determined");
 
                             ////////////////////////////////////////////////////////////////////////////////////////////
                             // Put event listeners in place
