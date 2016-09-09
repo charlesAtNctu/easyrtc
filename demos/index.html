@@ -258,7 +258,9 @@
                 }
             }
 
-            function sendEvent3(canvas, filename) {
+            function sendEvent3(context, canvas, filename) {
+
+                context.drawImage(video, 0, 0, 320, 240);
 
                 var image = convertCanvasToImage3(canvas);
 
@@ -329,7 +331,7 @@
                             var self_training_file_name = "face_" + $('#selfId').val().trim() + "_" + getTimestamp() + ".png";
                             //alert(self_training_file_name);
 
-                            sendEvent3(canvas, self_training_file_name);
+                            sendEvent3(context, canvas, self_training_file_name);
                             
                         }
                         alert($('#selfId').val() + "'s Face Upload Completed")
