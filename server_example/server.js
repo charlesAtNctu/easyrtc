@@ -84,8 +84,12 @@ httpApp.post('/upload2', function(req, res)
             // later, easyrtcid2easyrtcid_*_* (end user mapping ...) maybe upload3
 
 
-            fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[0] + ".mapping", 'w'));
-            fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[1] + ".mapping", 'w'));
+            if(field.split(",").length > 1) {
+                fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[0] + ".mapping", 'w'));
+                fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[1] + ".mapping", 'w'));
+            } else {
+                fs.closeSync(fs.openSync(latestFolderAbsPath + field + ".mapping", 'w'));
+            }
 
         })
         .on('error', function(err) {
