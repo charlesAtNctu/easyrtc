@@ -406,7 +406,7 @@
                                 for (i = lines.length-2; i > lines.length-2-rowToConsider; i--) {
                                     //alert(lines[i].split(","))
                                     var distance = lines[i].split(",")[2];// score
-                                    alert("distance:"+distance);
+                                    //alert("distance:"+distance);
                                     if(Number(distance) < Number(minDistance)){
                                         minDistance = distance;
                                         minIndex = i;
@@ -416,8 +416,14 @@
                                 var greenUpperBound = 77.7;
                                 var diff = 3;
                                 var numOfStar = 0;
-                                if(minDistanceN >= greenUpperBound - 1*diff && minDistanceN <= greenUpperBound){
-                                    numOfStar = 7;
+
+
+                                if(minDistanceN > greenUpperBound - 1*diff && minDistanceN <= greenUpperBound){
+                                    numOfStar = 8;
+                                } else if(minDistanceN > greenUpperBound - 2*diff && minDistanceN <= greenUpperBound - 1*diff){
+                                    numOfStar = 9;
+                                } else if(minDistanceN <= greenUpperBound - 2*diff){
+                                    numOfStar = 10;
                                 }
 
                                 return [lines[minIndex].split(",")[1], ""+numOfStar];
