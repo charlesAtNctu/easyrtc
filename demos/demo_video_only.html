@@ -389,13 +389,16 @@
                             }
 
                             function lastLog(rowToConsider, logData){
-                                alert(
-                                        rowToConsider + "\n" +
-                                        logData + "\n" +
-                                        logData.split("\n") + "\n" +
-                                        logData.split("\n").length);
+//                                alert(
+//                                        rowToConsider + "\n" +
+//                                        logData + "\n" +
+//                                        logData.split("\n") + "\n" +
+//                                        logData.split("\n").length);
 
-                                
+                                var lines = logData.split("\n")
+                                if(lines.length <= rowToConsider){
+                                    return ["To Be Determined", "0"];
+                                }
 
 
                                 return ["chuchi", "10"];
