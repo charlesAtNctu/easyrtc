@@ -27,7 +27,10 @@ fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
     //console.log(last_dot_index);
     var file_extension = file_path.substring(last_dot_index+1);
     //console.log(file_extension);
-    if(file_extension == "png" || file_extension == "log" || file_extension == "latest"){
+
+
+
+    if(file_extension == "png" || file_extension == "log" || file_extension == "latest" || file_extension == "mapping"){
         console.log("Deleting " + file_path)
         var workerProcess = child_process.exec('rm ' + file_path,
             function (error, stdout, stderr) {
@@ -57,6 +60,10 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.png').pipe(fs.cr
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.log'));
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.latest').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.latest'));
 
+
+
+
+
 httpApp.post('/upload2', function(req, res)
 {
     var form = new formidable.IncomingForm().parse(req)
@@ -77,8 +84,8 @@ httpApp.post('/upload2', function(req, res)
             // later, easyrtcid2easyrtcid_*_* (end user mapping ...) maybe upload3
 
 
-            fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[0], 'w'));
-            fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[1], 'w'));
+            fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[0] + ".mapping", 'w'));
+            fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[1] + ".mapping", 'w'));
 
         })
         .on('error', function(err) {
