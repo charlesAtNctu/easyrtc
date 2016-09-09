@@ -66,9 +66,9 @@
             #confidenceLv {
                 float:left;
             }
-            /*#recognizedConfi {*/
-                /*float:left;*/
-            /*}*/
+            #recognizedConfi {
+                float:left;
+            }
         </style>
         <!--show-->
     </head>
@@ -417,12 +417,25 @@
                                 var diff = 3;
                                 var numOfStar = 0;
 
-
-                                if(minDistanceN > greenUpperBound - 1*diff && minDistanceN <= greenUpperBound){
+                                if(       minDistanceN >  greenUpperBound + 6*diff                                            ){
+                                    numOfStar = 1;
+                                } else if(minDistanceN >  greenUpperBound + 5*diff && minDistanceN <= greenUpperBound + 6*diff){
+                                    numOfStar = 2;
+                                } else if(minDistanceN >  greenUpperBound + 4*diff && minDistanceN <= greenUpperBound + 5*diff){
+                                    numOfStar = 3;
+                                } else if(minDistanceN >  greenUpperBound + 3*diff && minDistanceN <= greenUpperBound + 4*diff){
+                                    numOfStar = 4;
+                                } else if(minDistanceN >  greenUpperBound + 2*diff && minDistanceN <= greenUpperBound + 3*diff){
+                                    numOfStar = 5;
+                                } else if(minDistanceN >  greenUpperBound + 1*diff && minDistanceN <= greenUpperBound + 2*diff){
+                                    numOfStar = 6;
+                                } else if(minDistanceN >  greenUpperBound + 0*diff && minDistnaceN <= greenUpperBound + 1*diff){
+                                    numOfStar = 7;
+                                } else if(minDistanceN >  greenUpperBound - 1*diff && minDistanceN <= greenUpperBound + 0*diff){
                                     numOfStar = 8;
-                                } else if(minDistanceN > greenUpperBound - 2*diff && minDistanceN <= greenUpperBound - 1*diff){
+                                } else if(minDistanceN >  greenUpperBound - 2*diff && minDistanceN <= greenUpperBound - 1*diff){
                                     numOfStar = 9;
-                                } else if(minDistanceN <= greenUpperBound - 2*diff){
+                                } else if(                                            minDistanceN <= greenUpperBound - 2*diff){
                                     numOfStar = 10;
                                 }
 
