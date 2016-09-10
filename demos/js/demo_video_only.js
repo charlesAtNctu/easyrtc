@@ -129,7 +129,8 @@ function performCall(otherEasyrtcid) {
     var data = new FormData();
 
     data.append("data" ,                               // called when click connect btn ...
-        "e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid);
+        "e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid + "," +
+        "e2e_" + otherEasyrtcid + "_" + document.getElementById("iam").innerHTML.substring("I am ".length) );
 
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
@@ -155,8 +156,8 @@ function loginSuccess(easyrtcid)
 
     var data = new FormData();
     data.append("data" ,                               // called when click connect btn ...
-        "c2e_" + getCookie() + "_" + easyrtcid);// + "," + // cookie  id to easyrtc id
-        //"e2c_" + easyrtcid + "_" + getCookie());       // easyrtc id to cookie  id
+        "c2e_" + getCookie() + "_" + easyrtcid) + "," + // cookie  id to easyrtc id
+        "e2c_" + easyrtcid + "_" + getCookie());        // easyrtc id to cookie  id
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
     xhr.send(data);
