@@ -64,7 +64,7 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.latest').pipe(fs
 
 
 
-httpApp.post('/upload2', function(req, res)
+httpApp.post('/mapping', function(req, res)
 {
     var form = new formidable.IncomingForm().parse(req)
         .on('file', function(name, file) {
