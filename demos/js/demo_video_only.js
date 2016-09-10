@@ -154,9 +154,16 @@ function loginSuccess(easyrtcid)
     // todo: remove all the existing ones that contains corresponding easyrtc id !!! in latest folder ...
 
 
+
+
+
+
+
+
+
     var data = new FormData();
     data.append("data" ,                               // called when click connect btn ...
-        "c2e_" + getCookie() + "_" + easyrtcid) + "," + // cookie  id to easyrtc id
+        "c2e_" + getCookie() + "_" + easyrtcid + "," + // cookie  id to easyrtc id
         "e2c_" + easyrtcid + "_" + getCookie());        // easyrtc id to cookie  id
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
