@@ -93,7 +93,18 @@ httpApp.post('/mapping', function(req, res)
 
             if(field.startsWith("e2e_")){
                 from_to = field.split(",")[0];
-                console.log(from_to)
+                console.log("Connecting from_to: " + from_to);
+
+                from_start = from_to.indexOf("_");
+                to_start = from_to.lastIndexOf("_");
+
+                from_easyrtcid = from_to.substring(from_start, to_start);
+                to_easyrtcid = from_to.substring(to_start);
+
+                console.log("Connecting from " + from_easyrtcid + " to " + to_easyrtcid);
+
+
+
 
                 var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
                     function (error, stdout, stderr) {
@@ -109,10 +120,6 @@ httpApp.post('/mapping', function(req, res)
                 workerProcess.on('exit', function (code) {
                     console.log('Child process exited with exit code ' + code);
 
-                    while(true){
-                        console.log("testing");
-                    }
-
                     form.on('error', function (err) {
                         console.log('error: \n' + err);
                     });
@@ -122,8 +129,6 @@ httpApp.post('/mapping', function(req, res)
                     });
                     form.parse(req);
                 });
-
-
 
             }
 
