@@ -235,9 +235,22 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     isTheCallerInTheGroup = false;
 
 
-    alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
+    // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
+    // easyrtcid is the other party ...
+    // i need to check its confidence level before letting it pass ...
+    //while(true){
+        data.append("data" , "e2c_" + easyrtcid + "_," + "c2c_" + getCookie() + "_");// use e2c to find the other party's cookie id and, then, use c2c to check whether true or false
+        var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+        xhr.open( 'post', '/connect');
+        xhr.send(data);
+        alert("" + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
 
+        alert("" + xhr.responseText);
 
+        if(xhr.responseText == "true"){
+            isTheCallerInTheGroup = true;
+        }
+    //}
 
 
     if(isTheCallerInTheGroup) {
