@@ -246,7 +246,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     // var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     // xhr.open( 'post', '/connect');
     // xhr.send(data);
-    
+
     //
     //alert("CONNECT " + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
     //
@@ -258,6 +258,10 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
     //}
 
+
+    sleep(20000);
+
+    
 
     if(isTheCallerInTheGroup) {
         acceptTheCall(true);// if it pass the face recognition test ...
