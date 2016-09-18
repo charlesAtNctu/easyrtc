@@ -139,6 +139,9 @@ function performCall(otherEasyrtcid) {
     easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 }
 
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
 
 function loginSuccess(easyrtcid) 
 {
@@ -163,8 +166,8 @@ function loginSuccess(easyrtcid)
 
     var data = new FormData();
     data.append("data" ,                               // called when click connect btn ...
-        "c2e_" + getCookie() + "_" + easyrtcid + "," + // cookie  id to easyrtc id
-        "e2c_" + easyrtcid + "_" + getCookie());        // easyrtc id to cookie  id
+        "c2e_" + getCookie() + "_" + replaceAll(easyrtcid, "_", "UNDERSCORE") + "," + // cookie  id to easyrtc id
+        "e2c_" + replaceAll(easyrtcid, "_", "UNDERSCORE") + "_" + getCookie());        // easyrtc id to cookie  id
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
     xhr.send(data);
