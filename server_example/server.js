@@ -113,7 +113,7 @@ httpApp.post('/mapping', function(req, res)
                     var last_dot_index = file.lastIndexOf('.');
 
                     if(file.startsWith("e2c_" + from_easyrtcid)){
-                        from_cookie = file.substring(("e2c_" + from_easyrtcid).length, last_dot_index);
+                        from_cookie = file.substring(("e2c_" + from_easyrtcid).length+1, last_dot_index);
                     }
                     if(file.startsWith("e2c_" + to_easyrtcid)){
                         to_cookie = file.substring(("e2c_" + to_easyrtcid).length+1, last_dot_index);
@@ -140,7 +140,7 @@ httpApp.post('/mapping', function(req, res)
                 // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
 
 
-                
+
 
                 workerProcess.on('exit', function (code) {
                     console.log('Child process exited with exit code ' + code);
