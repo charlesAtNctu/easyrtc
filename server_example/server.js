@@ -91,6 +91,12 @@ httpApp.post('/mapping', function(req, res)
                 fs.closeSync(fs.openSync(latestFolderAbsPath + field + ".mapping", 'w'));
             }
 
+            if(field.startsWith("e2e_")){
+                from_to = field.split(",")[0];
+                console.log(from_to)
+            }
+
+
         })
         .on('error', function(err) {
             next(err);

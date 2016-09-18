@@ -131,8 +131,14 @@ function performCall(otherEasyrtcid) {
     //replaceAll(easyrtcid, "_", "UNDERSCORE"
 
     data.append("data" ,                               // called when click connect btn ...
-        "e2e_" + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") + "_" + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "," +
-        "e2e_" + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "_" + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") );
+        "e2e_"
+        + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") 
+        + "_"
+        + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "," +
+        "e2e_" 
+        + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") 
+        + "_"
+        + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") );
 
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
