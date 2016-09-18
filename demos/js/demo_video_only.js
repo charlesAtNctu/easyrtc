@@ -232,7 +232,15 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //          if yes, call acept the call directory
     //          else execute the following ...
 
-    if(true) {
+    isTheCallerInTheGroup = false;
+
+
+    alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
+
+
+
+
+    if(isTheCallerInTheGroup) {
         acceptTheCall(true);// if it pass the face recognition test ...
     } else {
 
