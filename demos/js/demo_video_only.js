@@ -249,7 +249,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //
     //alert("CONNECT " + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
     //
-    alert("CONNECT " + xhr.responseText);
+    //alert("CONNECT " + xhr.responseText);
     //
     // if(xhr.responseText == "true"){
     //     isTheCallerInTheGroup = true;
