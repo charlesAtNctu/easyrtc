@@ -109,15 +109,21 @@ httpApp.post('/mapping', function(req, res)
                 to_coookie = "";
 
                 fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
+
+                    var last_dot_index = file_path.lastIndexOf('.');
+
                     if(file.startsWith("e2c_" + from_easyrtcid)){
-                        from_cookie = file.substring(("e2c_" + from_easyrtcid).length);
+                        from_cookie = file.substring(("e2c_" + from_easyrtcid).length, last_dot_index);
                     }
                     if(file.startsWith("e2c_" + to_easyrtcid)){
-                        to_cookie = file.substring(("e2c_" + to_easyrtcid).length);
+                        to_cookie = file.substring(("e2c_" + to_easyrtcid).length+1, last_dot_index);
                     }
                 });
 
                 console.log("Connecting from " + from_cookie + " to " + to_cookie);
+
+                // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
+
 
                 var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
                     function (error, stdout, stderr) {
