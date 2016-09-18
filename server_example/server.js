@@ -110,7 +110,7 @@ httpApp.post('/mapping', function(req, res)
 
                 fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
 
-                    var last_dot_index = file_path.lastIndexOf('.');
+                    var last_dot_index = file.lastIndexOf('.');
 
                     if(file.startsWith("e2c_" + from_easyrtcid)){
                         from_cookie = file.substring(("e2c_" + from_easyrtcid).length, last_dot_index);
@@ -122,7 +122,7 @@ httpApp.post('/mapping', function(req, res)
 
                 console.log("Connecting from " + from_cookie + " to " + to_cookie);
 
-                // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
+
 
 
                 var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
@@ -135,6 +135,12 @@ httpApp.post('/mapping', function(req, res)
                         console.log('stdout: ' + stdout);
                         console.log('stderr: ' + stderr);
                     });
+
+
+                // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
+
+
+                
 
                 workerProcess.on('exit', function (code) {
                     console.log('Child process exited with exit code ' + code);
