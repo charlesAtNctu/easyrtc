@@ -247,7 +247,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     xhr.open( 'post', '/connect');
     xhr.send(data);
     //
-    alert("CONNECT " + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
+    //alert("CONNECT " + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
     //
     alert("CONNECT " + xhr.responseText);
     //
