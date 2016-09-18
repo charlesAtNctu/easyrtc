@@ -110,6 +110,9 @@ httpApp.post('/connect', function(req, res)
 
             console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a name:', name);
             console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a value:', field);
+
+            
+
         })
         .on('error', function(err) {
             next(err);
