@@ -136,6 +136,14 @@ function performCall(otherEasyrtcid) {
     xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
     xhr.send(data);
 
+
+
+
+
+
+
+
+
     easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 }
 
