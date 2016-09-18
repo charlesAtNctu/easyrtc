@@ -100,27 +100,27 @@ httpApp.post('/mapping', function(req, res)
         });
 });
 
-httpApp.post('/connect', function(req, res)
-{
-    var form = new formidable.IncomingForm().parse(req)
-        .on('file', function(name, file) {
-            console.log('Got file:', name);
-        })
-        .on('field', function(name, field) {
-
-            console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a name:', name);
-            console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a value:', field);
-
-            
-
-        })
-        .on('error', function(err) {
-            next(err);
-        })
-        .on('end', function() {
-            res.end('false');
-        });
-});
+// httpApp.post('/connect', function(req, res)
+// {
+//     var form = new formidable.IncomingForm().parse(req)
+//         .on('file', function(name, file) {
+//             console.log('Got file:', name);
+//         })
+//         .on('field', function(name, field) {
+//
+//             console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a name:', name);
+//             console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a value:', field);
+//
+//
+//
+//         })
+//         .on('error', function(err) {
+//             next(err);
+//         })
+//         .on('end', function() {
+//             res.end('false');
+//         });
+// });
 
 httpApp.post('/upload', function(req, res){
 

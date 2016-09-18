@@ -271,16 +271,17 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //     alert(request.responseText + "!!!");
     // }
 
-    while(true){
+    // while(true){
+    //
+    //     data.append("data" , "e2c_" + replaceAll(easyrtcid, "_", "UNDRESCORE") + "_," + "c2c_" + getCookie() + "_");// use e2c to find the other party's cookie id and, then, use c2c to check whether true or false
+    //     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+    //     xhr.open( 'post', '/connect');
+    //     xhr.send(data);
+    //
+    //     alert(request.responseText);
+    // }
 
-        data.append("data" , "e2c_" + replaceAll(easyrtcid, "_", "UNDRESCORE") + "_," + "c2c_" + getCookie() + "_");// use e2c to find the other party's cookie id and, then, use c2c to check whether true or false
-        var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-        xhr.open( 'post', '/connect');
-        xhr.send(data);
-
-        alert(request.responseText);
-    }
-
+    
 
     if(isTheCallerInTheGroup) {
         acceptTheCall(true);// if it pass the face recognition test ...
