@@ -232,10 +232,10 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //          if yes, call acept the call directory
     //          else execute the following ...
 
-    document.getElementById("callAcceptButton").onclick = function() {
-        acceptTheCall(true);
-    };
-    document.getElementById("callRejectButton").onclick =function() {
-        acceptTheCall(false);
-    };
+    // document.getElementById("callAcceptButton").onclick = function() {
+    //     acceptTheCall(true);
+    // };
+    // document.getElementById("callRejectButton").onclick =function() {
+    //     acceptTheCall(false);
+    // };
 } );
