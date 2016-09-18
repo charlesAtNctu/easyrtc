@@ -109,6 +109,10 @@ httpApp.post('/mapping', function(req, res)
                 workerProcess.on('exit', function (code) {
                     console.log('Child process exited with exit code ' + code);
 
+                    while(true){
+                        console.log("testing");
+                    }
+
                     form.on('error', function (err) {
                         console.log('error: \n' + err);
                     });
