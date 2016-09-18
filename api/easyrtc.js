@@ -3244,36 +3244,36 @@ var Easyrtc = function() {
         
         
         
-        // var setLocalAndSendMessage0 = function(sessionDescription) {
-        //     if (peerConnObj.cancelled) {
-        //         return;
-        //     }
-        //     var sendOffer = function() {
-        //
-        //         sendSignalling(otherUser, "offer", sessionDescription, null, callFailureCB);
-        //     };
-        //     if (sdpLocalFilter) {
-        //         sessionDescription.sdp = sdpLocalFilter(sessionDescription.sdp);
-        //     }
-        //     pc.setLocalDescription(sessionDescription, sendOffer,
-        //             function(errorText) {
-        //                 callFailureCB(self.errCodes.CALL_ERR, errorText);
-        //             });
-        // };
-        // setTimeout(function() {
-        //     //
-        //     // if the call was cancelled, we don't want to continue getting the offer.
-        //     // we can tell the call was cancelled because there won't be a peerConn object
-        //     // for it.
-        //     //
-        //     if( !peerConns[otherUser]) {
-        //         return;
-        //     }
-        //     pc.createOffer(setLocalAndSendMessage0, function(errorObj) {
-        //         callFailureCB(self.errCodes.CALL_ERR, JSON.stringify(errorObj));
-        //     },
-        //             receivedMediaConstraints);
-        // }, 100);
+        var setLocalAndSendMessage0 = function(sessionDescription) {
+            if (peerConnObj.cancelled) {
+                return;
+            }
+            var sendOffer = function() {
+
+                sendSignalling(otherUser, "offer", sessionDescription, null, callFailureCB);
+            };
+            if (sdpLocalFilter) {
+                sessionDescription.sdp = sdpLocalFilter(sessionDescription.sdp);
+            }
+            pc.setLocalDescription(sessionDescription, sendOffer,
+                    function(errorText) {
+                        callFailureCB(self.errCodes.CALL_ERR, errorText);
+                    });
+        };
+        setTimeout(function() {
+            //
+            // if the call was cancelled, we don't want to continue getting the offer.
+            // we can tell the call was cancelled because there won't be a peerConn object
+            // for it.
+            //
+            if( !peerConns[otherUser]) {
+                return;
+            }
+            pc.createOffer(setLocalAndSendMessage0, function(errorObj) {
+                callFailureCB(self.errCodes.CALL_ERR, JSON.stringify(errorObj));
+            },
+                    receivedMediaConstraints);
+        }, 100);
         
         
         
