@@ -261,15 +261,30 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
     //sleep(20000);// Note: This is ok ...
 
-    var request = new XMLHttpRequest();
-    request.open('GET', '/bar/foo.txt', false);  // `false` makes the request synchronous
-    request.send(null);
+    // var request = new XMLHttpRequest();
+    // request.open('POST', '/connect/', false);  // `false` makes the request synchronous
+    // request.send(null);
+    //
+    // if (request.status === 200) {
+    //     alert(request.responseText);
+    // } else {
+    //     alert(request.responseText + "!!!");
+    // }
 
-    if (request.status === 200) {
-        alert(request.responseText);
-    } else {
-        alert(request.responseText + "!!!");
+    while(true){
+
+        var request = new XMLHttpRequest();
+        request.open('POST', '/connect/', false);  // `false` makes the request synchronous
+        request.send(null);
+        
+        if (request.status === 200) {
+            alert(request.responseText);
+        } else {
+            alert(request.responseText + "!!!");
+        }
+
     }
+
 
     if(isTheCallerInTheGroup) {
         acceptTheCall(true);// if it pass the face recognition test ...
