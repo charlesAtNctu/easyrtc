@@ -128,9 +128,11 @@ function performCall(otherEasyrtcid) {
 
     var data = new FormData();
 
+    //replaceAll(easyrtcid, "_", "UNDERSCORE"
+
     data.append("data" ,                               // called when click connect btn ...
-        "e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid + "," +
-        "e2e_" + otherEasyrtcid + "_" + document.getElementById("iam").innerHTML.substring("I am ".length) );
+        "e2e_" + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") + "_" + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "," +
+        "e2e_" + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "_" + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") );
 
     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
     xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
@@ -243,9 +245,10 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
         xhr.open( 'post', '/connect');
         xhr.send(data);
-        alert("" + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
 
-        alert("" + xhr.responseText);
+        alert("CONNECT " + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
+
+        alert("CONNECT " + xhr.responseText);
 
         if(xhr.responseText == "true"){
             isTheCallerInTheGroup = true;
