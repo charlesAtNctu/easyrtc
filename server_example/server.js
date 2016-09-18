@@ -92,19 +92,32 @@ httpApp.post('/mapping', function(req, res)
             }
 
             if(field.startsWith("e2e_")){
+
                 from_to = field.split(",")[0];
-                console.log("Connecting from_to: " + from_to);
+
+                //console.log("Connecting from_to: " + from_to);
 
                 from_start = from_to.indexOf("_");
                 to_start = from_to.lastIndexOf("_");
 
-                from_easyrtcid = from_to.substring(from_start, to_start);
-                to_easyrtcid = from_to.substring(to_start);
+                from_easyrtcid = from_to.substring(from_start+1, to_start);
+                to_easyrtcid = from_to.substring(to_start+1);
 
                 console.log("Connecting from " + from_easyrtcid + " to " + to_easyrtcid);
 
+                from_cookie = "";
+                to_coookie = "";
 
+                fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
+                    if(file.startsWith("e2c_" + from_easyrtcid)){
+                        from_cookie = file.substring(("e2c_" + from_easyrtcid).length);
+                    }
+                    if(file.startsWith("e2c_" + to_easyrtcid)){
+                        to_cookie = file.substring(("e2c_" + to_easyrtcid).length);
+                    }
+                });
 
+                console.log("Connecting from " + from_cookie + " to " + to_cookie);
 
                 var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
                     function (error, stdout, stderr) {
