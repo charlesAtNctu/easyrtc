@@ -123,10 +123,10 @@ httpApp.post('/mapping', function(req, res)
                 console.log("Connecting from " + from_cookie + " to " + to_cookie);
 
 
-                want_to_have_remote = to_cookie + "_localRecognize.png";
-                want_to_have_name_as = from_cookie + "_remoteRecognize.png"
+                want_to_have_remote = from_cookie + "_localRecognize.png";
+                want_to_have_name_as = to_cookie + "_remoteRecognize.png"
 
-                console.log("Copying and renaming from " + want_to_have_remote + " to " + want_to_have_name_as);
+                console.log("cp -p " + want_to_have_remote + " " + want_to_have_name_as);
 
                 var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
                     function (error, stdout, stderr) {
