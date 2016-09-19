@@ -1004,21 +1004,21 @@
 
                             if(localRecognizeEnabled == true) {
                                 setInterval(function () {
-                                    if (isLocalRecognizeClicked) {
+                                    //if (isLocalRecognizeClicked) {
                                         $('#selfImage2').attr("src", "latest/" + getCookie() + "_localRecognize.png?" + new Date().getTime());
-                                    } else {
-                                        $('#selfImage2').attr("src", "latest/localRecognize.png?" + new Date().getTime());
-                                    }
+                                    //} else {
+                                    //    $('#selfImage2').attr("src", "latest/localRecognize.png?" + new Date().getTime());
+                                    //}
                                 }, 500);
                             }
 
                             if(remoteRecognizeEnabled == true) {
                                 setInterval(function () {
-                                    if (isRemoteRecognizeClicked) {
+                                    //if (isRemoteRecognizeClicked) {
                                         $('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
-                                    } else {
-                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
-                                    }
+                                    //} else {
+                                    //    $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+                                    //}
                                 }, 500);
                             }
 
