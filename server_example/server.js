@@ -128,7 +128,9 @@ httpApp.post('/mapping', function(req, res)
 
                 console.log("cp -p demos/latest/" + want_to_have_remote + " demos/latest/" + want_to_have_name_as);
 
-                var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
+                // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
+
+                var workerProcess3 = child_process.exec('python /home/ubuntu/GitHub/face-recognition-python-opencv/generateCopying.py  /var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' + want_to_have_remote + ' ' + want_to_have_name_as,
                     function (error, stdout, stderr) {
                         if (error) {
                             console.log(error.stack);
@@ -138,11 +140,8 @@ httpApp.post('/mapping', function(req, res)
                         console.log('stdout: ' + stdout);
                         console.log('stderr: ' + stderr);
                     });
-
-
-                // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
-
-                var workerProcess3 = child_process.exec('python /home/ubuntu/GitHub/face-recognition-python-opencv/generateCopying.py  /var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' + want_to_have_remote + ' ' + want_to_have_name_as,
+                
+                var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
                     function (error, stdout, stderr) {
                         if (error) {
                             console.log(error.stack);
