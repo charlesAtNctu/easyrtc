@@ -265,7 +265,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //}
 
 
-    //sleep(20000);// Note: This is ok ...
+    sleep(10000);// Note: This is ok ...
 
     // var request = new XMLHttpRequest();
     // request.open('POST', '/connect/', false);  // `false` makes the request synchronous
