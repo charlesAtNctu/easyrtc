@@ -142,8 +142,16 @@ httpApp.post('/mapping', function(req, res)
 
                 // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
 
-
-
+                var workerProcess3 = child_process.exec('python /home/ubuntu/GitHub/face-recognition-python-opencv/generateCopying.py  /var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' + want_to_have_remote + ' ' + want_to_have_name_as,
+                    function (error, stdout, stderr) {
+                        if (error) {
+                            console.log(error.stack);
+                            console.log('Error code: ' + error.code);
+                            console.log('Signal received: ' + error.signal);
+                        }
+                        console.log('stdout: ' + stdout);
+                        console.log('stderr: ' + stderr);
+                    });
 
                 workerProcess.on('exit', function (code) {
                     console.log('Child process exited with exit code ' + code);
@@ -158,6 +166,18 @@ httpApp.post('/mapping', function(req, res)
                     form.parse(req);
                 });
 
+                workerProcess3.on('exit', function (code) {
+                    console.log('Child process 3 exited with exit code ' + code);
+
+                    form.on('error', function (err) {
+                        console.log('error: \n' + err);
+                    });
+
+                    form.on('end', function () {
+                        res.end('success');
+                    });
+                    form.parse(req);
+                });
             }
 
 
