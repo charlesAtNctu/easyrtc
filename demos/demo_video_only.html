@@ -874,7 +874,8 @@
 
 
                                 setInterval(function () {
-                                    if(connectedYet) {
+                                    //if(connectedYet) {
+                                    if(isInitializer) {
                                         sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
 //                                        if(true){
 //
@@ -946,8 +947,7 @@
                                 }, 1000);
 
                                 setInterval(function () {
-                                    //if(connectedYet) {
-                                    if(isInitializer) {
+                                    if(connectedYet) {
                                         if(true){
                                             var lines = $('#callerLog').val().split("\n");
                                             if(lines && lines.length > 1){
