@@ -156,6 +156,7 @@
 
 
                                 var isInitializer = false;
+                                var isListener = true;
 
                             </script>
                         </span>
@@ -903,22 +904,23 @@
                                     }
                                 }, 3000);
 
-//                                setInterval(function () {
-//                                    if(connectedYet) {
-//
-//                                        sendEvent(
-//                                                callerId,
-//                                                callerContext,
-//                                                callerVideo,
-//                                                callerCanvas,
-//                                                getCookie() + "_remoteRecognize.png",
-//                                                "latest/remoteRecognize.png",
-//                                                $('#callerImage'));
-//
-//                                        isRemoteRecognizeClicked = true;
-//                                        isRemoteRecognizeClicked2 = true;
-//                                    }
-//                                }, 3000);
+                                setInterval(function () {
+                                    //if(connectedYet) {
+                                    if(isListener) {
+
+                                        sendEvent(
+                                                callerId,
+                                                callerContext,
+                                                callerVideo,
+                                                callerCanvas,
+                                                getCookie() + "_remoteRecognize.png",
+                                                "latest/remoteRecognize.png",
+                                                $('#callerImage'));
+
+                                        isRemoteRecognizeClicked = true;
+                                        isRemoteRecognizeClicked2 = true;
+                                    }
+                                }, 3000);
 
 
 
