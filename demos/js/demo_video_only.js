@@ -126,6 +126,8 @@ function performCall(otherEasyrtcid) {
 
     // todo:
 
+    isInitializer = true;
+    
     var data = new FormData();
 
     //replaceAll(easyrtcid, "_", "UNDERSCORE"
