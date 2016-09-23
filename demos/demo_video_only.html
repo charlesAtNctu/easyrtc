@@ -155,7 +155,7 @@
                                 var trainingRowEnabled = false;
 
                                 var isInitializer      = false;
-                                var isListener         = false;
+                                var isListener         = true;
                                 var   listenerFileName = "_remoteRecognize.png";
 
                             </script>
@@ -1025,22 +1025,7 @@
 //                                }, 1000);//500);
 //                            }
 
-                            if(remoteRecognizeEnabled == true) {
-                                setInterval(function () {
 
-
-
-
-
-
-
-//                                    if (isRemoteRecognizeClicked) {
-//                                        $('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
-//                                    } else {
-//                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
-//                                    }
-                                }, 1000);//500);
-                            }
 
 
                             listenerFileNameSet = false;
@@ -1059,7 +1044,16 @@
                             }, 250);
 
 
-
+                            if(remoteRecognizeEnabled == true) {
+                                setInterval(function () {
+                                    if (isRemoteRecognizeClicked && listenerFileNameSet && isListener) {
+                                        //$('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
+                                        $('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+                                    } else {
+                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+                                    }
+                                }, 1000);//500);
+                            }
 
 
 
