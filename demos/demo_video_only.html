@@ -298,6 +298,15 @@
                                 </td>
                             </tr>
 
+                            <tr>
+                                <td colspan="2">
+                                    <textarea id='selfLog3' rows="9" cols="42"></textarea>
+                                </td>
+                                <td colspan="2">
+                                    <textarea id='callerLog3' rows="9" cols="42"></textarea>
+                                </td>
+                            </tr>
+
                             <tr id="resetCookieParent">
                                 <td colspan="4">
                                     <button id="setCookie" class="sexyButton">Reset Cookie</button>
@@ -1034,25 +1043,12 @@
                             }
                             if(isInitializer == true) {
                                 setInterval(function () {
+                                    if (true){//isLocalRecognizeClicked) {
                                         $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                            alert(data);
+                                            $('#selfLog3').text(data)
+                                            //document.getElementById("selfLog3").scrollTop = document.getElementById("selfLog3").scrollHeight;
                                         });
-
-
-
-
-
-//                                    if (isLocalRecognizeClicked) {
-//                                        $.get("latest/" + getCookie() + "_localRecognize.latest", function (data) {
-//                                            $('#selfLog').text(data)
-//                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
-//                                        });
-//                                    } else {
-//                                        $.get("latest/localRecognize.latest", function (data) {
-//                                            $('#selfLog').text(data)
-//                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
-//                                        });
-//                                    }
+                                    }
                                 }, 250);
                             }
 
