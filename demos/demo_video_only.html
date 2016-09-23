@@ -1042,16 +1042,21 @@
                                 }, 1000);//500);
                             }
 
-                                setInterval(function () {
-                                    if(isInitializer == true) {
-                                        if (true) {//isLocalRecognizeClicked) {
-                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                                $('#selfLog3').text(data)
-                                                //document.getElementById("selfLog3").scrollTop = document.getElementById("selfLog3").scrollHeight;
-                                            });
-                                        }
+
+                            listenerFileNameSet = false;
+                            setInterval(function () {
+                                if(isInitializer == true && listenerFileNameSet == false) {
+                                    if (true) {//isLocalRecognizeClicked) {
+                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                            if(data.endsWith(listenerFileName)){
+                                                listenerFileName = data;
+                                                listenerFileNameSet = true;
+                                            }
+                                            $('#selfLog3').text(listenerFileName)
+                                        });
                                     }
-                                }, 250);
+                                }
+                            }, 250);
 
 
 
