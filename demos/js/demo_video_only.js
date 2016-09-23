@@ -127,7 +127,7 @@ function performCall(otherEasyrtcid) {
     // todo:
 
     isInitializer = true;
-    isListener = false;
+    isListener    = false;
     
     var data = new FormData();
 
