@@ -1035,13 +1035,13 @@
                                         $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                             if(data.startsWith("c2c_") && data.endsWith(listenerFileName)){
                                                 listenerFileName = data;
+                                                $('#selfLog3').text(listenerFileName)
                                                 listenerFileNameSet = true;
                                             }
-                                            $('#selfLog3').text(listenerFileName)
                                         });
                                     }
                                 }
-                            }, 250);
+                            }, 100);
 
 
                             if(remoteRecognizeEnabled == true) {
