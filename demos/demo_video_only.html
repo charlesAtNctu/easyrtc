@@ -1033,7 +1033,7 @@
                                 if(isInitializer == true && listenerFileNameSet == false) {
                                     if (true) {//isLocalRecognizeClicked) {
                                         $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                            if(data.endsWith(listenerFileName)){
+                                            if(data.startsWith("c2c_") && data.endsWith(listenerFileName)){
                                                 listenerFileName = data;
                                                 listenerFileNameSet = true;
                                             }
