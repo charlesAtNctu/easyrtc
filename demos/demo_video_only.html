@@ -1522,11 +1522,10 @@
                                     });
 
 
-                                    if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isListener == true) {
-                                        $('#callerImage2').attr("src", "latest/" + listenToCookieId2 + "_remoteRecognize.png?" + new Date().getTime());
-                                        //$('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+                                    if (isBeginToDownload2 && getCookie() == listenToCookieId2) {
+                                        $('#callerImage2').attr("src", "latest/" + listenToCookieId2 + "_localtRecognize.png?" + new Date().getTime());
                                     } else {
-                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png");//?" + new Date().getTime());
                                     }
                                 }, 1000);//500);
                             }
