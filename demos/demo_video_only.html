@@ -158,6 +158,7 @@
                                 var isListener         = true;
 //                                var   listenerFileName = "_remoteRecognize.png";
                                 var   listenerFileName = "_localRecognize.png";
+                                var initializerId = ""
 
                             </script>
                         </span>
@@ -934,6 +935,7 @@
                                             if (data.endsWith(listenerFileName)) {
                                                 isBeginToSend = true;
                                                 sendingRate = 2500;
+                                                initializerId = data.substring(0, data.indexOf("_"))
 //                                                listenToCookieId = data;
 //                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
                                             }
@@ -1511,21 +1513,21 @@
                             if(true){//remoteRecognizeEnabled == true) {
                                 setInterval(function () {
 
-                                    isBeginToDownload2 = false;
-                                    listenToCookieId2 = ""
-                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                        if (data.endsWith("localRecognize.png")) {
-                                            isBeginToDownload2 = true;
-                                            listenToCookieId2 = data;
-                                            listenToCookieId2 = listenToCookieId2.substring(0, listenToCookieId2.indexOf("_"))
-                                        }
-                                    });
+//                                    isBeginToDownload2 = false;
+//                                    listenToCookieId2 = ""
+//                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+//                                        if (data.endsWith("localRecognize.png")) {
+//                                            isBeginToDownload2 = true;
+//                                            listenToCookieId2 = data;
+//                                            listenToCookieId2 = listenToCookieId2.substring(0, listenToCookieId2.indexOf("_"))
+//                                        }
+//                                    });
 
 
 //                                    if (isBeginToDownload2 && getCookie() == listenToCookieId2) {
 //                                        $('#callerImage2').attr("src", "latest/" + listenToCookieId2 + "_localRecognize.png?" + new Date().getTime());
 //                                    } else {
-                                    if(isBeginToDownload2){
+                                    if(initializerId == getCookie){
                                         $('#callerImage2').attr("src", "latest/remoteRecognize.png");//?" + new Date().getTime());
                                     }
                                 }, 1000);//500);
