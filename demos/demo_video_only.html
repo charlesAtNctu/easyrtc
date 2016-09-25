@@ -1515,12 +1515,12 @@
 
                             setInterval(function(){
 
-//                                if(initializerId == ""){
-//                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png");
-//                                } else {
-                                    alert(initializerId)
+                                if(initializerId == ""){
+                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png");
+                                } else {
+                                    //alert(initializerId)
                                     $('#callerImage2').attr("src", initializerId + "_localRecognize.png?" + new Date().getTime());
-//                                }
+                                }
 
                             }, 2000);
 
