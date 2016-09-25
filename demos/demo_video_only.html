@@ -1471,6 +1471,11 @@
                                     document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                 });
 
+                                $.get("latest/remoteRecognize.log", function (data) {
+                                    $('#callerLog2').text(data)
+                                    document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+                                });
+
                                 setInterval(function () {
 
                                     $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
@@ -1483,56 +1488,62 @@
                                     });
 
 
-                                    if(isBeginToDownload == true && isListener == true) {
+                                    if(isBeginToDownload == true && (getCookie() == listenToCookieId)){//isListener == true) {
 
                                         //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
                                         $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
                                             $('#callerLog').text(data)
                                             document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                         });
+
+                                        $.get("latest/" + listenToCookieId + "_localRecognize.log", function (data) {
+                                            $('#callerLog2').text(data)
+                                            document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+
+                                        });
                                     }
 
                                 }, askingRate);//250);
                             }
 
-                            if(true){//remoteRecognizeLogEnabled2 == true) {
-
-                                isBeginToDownload2 = false;
-                                askingRate2 = 100;
-                                listenToCookieId2 = ""
-
-                                $.get("latest/remoteRecognize.log", function (data) {
-                                    $('#callerLog2').text(data)
-                                    document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-                                });
-
-                                setInterval(function () {
-
-                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                        if (data.endsWith(listenerFileName)) {
-                                            isBeginToDownload2 = true;
-                                            askingRate2 = 250;
-                                            listenToCookieId2 = data;
-                                        }
-                                    });
-
-
-
-                                    if (isBeginToDownload == true && isListener == true) {
-
-
-                                            $.get("latest/" + listenToCookieId2 + "_localRecognize.log", function (data) {
-                                                $('#callerLog2').text(data)
-                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-
-                                            });
-                                    }
-
-
-
-
-                                }, askingRate2);
-                            }
+//                            if(true){//remoteRecognizeLogEnabled2 == true) {
+//
+//                                isBeginToDownload2 = false;
+//                                askingRate2 = 100;
+//                                listenToCookieId2 = ""
+//
+//                                $.get("latest/remoteRecognize.log", function (data) {
+//                                    $('#callerLog2').text(data)
+//                                    document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//                                });
+//
+//                                setInterval(function () {
+//
+//                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+//                                        if (data.endsWith(listenerFileName)) {
+//                                            isBeginToDownload2 = true;
+//                                            askingRate2 = 250;
+//                                            listenToCookieId2 = data;
+//                                        }
+//                                    });
+//
+//
+//
+//                                    if (isBeginToDownload == true && isListener == true) {
+//
+//
+//                                            $.get("latest/" + listenToCookieId2 + "_localRecognize.log", function (data) {
+//                                                $('#callerLog2').text(data)
+//                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//
+//                                            });
+//                                    }
+//
+//
+//
+//
+//                                }, askingRate2);
+//                            }
 
                          </script>
 
