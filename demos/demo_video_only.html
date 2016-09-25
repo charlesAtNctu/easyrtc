@@ -965,26 +965,32 @@
 
                                 if(true) {
 
-                                    $.get("latest/remoteRecognize.latest", function (data) {
+                                    isBeginToDownload = false;
+                                    askingRate = 100;
+                                    listenToCookieId = ""
+
+                                    $.get("latest/"+listenToCookieId+"remoteRecognize.latest", function (data) {
                                         $('#callerLog').text(data)
                                         document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                     });
 
-                                    $.get("latest/remoteRecognize.log", function (data) {
+                                    $.get("latest/"+listenToCookieId+"remoteRecognize.log", function (data) {
                                         $('#callerLog2').text(data)
                                         document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
                                     });
 
-                                    isBeginToDownload = false;
-                                    askingRate = 100;
+
                                     setInterval(function () {
                                         //if(connectedYet) {
                                         $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                             if (data.endsWith(listenerFileName)) {
                                                 isBeginToDownload = true;
                                                 askingRate = 1000;
+                                                listenToCookieId = data;
                                             }
                                         });
+
+                                        if(isListener == true && isBeginToDownload == true) {
 
 //                                        if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isBeginToDownload == true && isListener == true) {
 //                                            //$('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
@@ -995,18 +1001,18 @@
 //                                        }
 
 
-                                            $.get("latest/" + getCookie() + "_remoteRecognize.latest", function (data) {
+                                            $.get("latest/" + listenToCookieId + "_remoteRecognize.latest", function (data) {
                                                 $('#callerLog').text(data)
                                                 document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                             });
 
 
-
-                                            $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
+                                            $.get("latest/" + listenToCookieId + "_remoteRecognize.log", function (data) {
                                                 $('#callerLog2').text(data)
                                                 document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
                                             });
-                                       
+                                        }
+
 
                                     }, askingRate);//500);
                                 }
