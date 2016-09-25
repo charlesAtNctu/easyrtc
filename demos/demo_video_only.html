@@ -994,19 +994,19 @@
 //                                            $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
 //                                        }
 
-                                        if (isRemoteRecognizeClicked) {
+
                                             $.get("latest/" + getCookie() + "_remoteRecognize.latest", function (data) {
                                                 $('#callerLog').text(data)
                                                 document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                             });
-                                        }
 
-                                        if (isRemoteRecognizeClicked2) {
+
+
                                             $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
                                                 $('#callerLog2').text(data)
                                                 document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
                                             });
-                                        }
+                                       
 
                                     }, askingRate);//500);
                                 }
