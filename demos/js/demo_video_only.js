@@ -129,7 +129,7 @@ function performCall(otherEasyrtcid) {
 
     isInitializer = true;
     isListener    = false;
-    isC2cYet      = true
+    
     
     var data = new FormData();
 

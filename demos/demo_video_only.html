@@ -157,7 +157,7 @@
                                 var isInitializer      = false;
                                 var isListener         = true;
                                 var   listenerFileName = "_remoteRecognize.png";
-                                var isC2cYet           = false;
+
 
                             </script>
                         </span>
@@ -912,18 +912,26 @@
 //                                    }
 //                                }, 3000);
 
+
+                                isBeginToSend = false;
                                 setInterval(function () {
                                     //if(connectedYet) {
-                                    if(isC2cYet && isListener) {
-
-                                        sendEvent(
-                                                callerId,
-                                                callerContext,
-                                                callerVideo,
-                                                callerCanvas,
-                                                getCookie() + "_remoteRecognize.png",
-                                                "latest/remoteRecognize.png",
-                                                $('#callerImage'));
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                        if(data.endsWith(listenerFileName)){
+                                            isBeginToSend = true;
+                                        }
+                                    });
+                                    if(isBeginToSend && isListener) {
+//                                        sendEvent(
+//                                                callerId,
+//                                                callerContext,
+//                                                callerVideo,
+//                                                callerCanvas,
+//                                                getCookie() + "_remoteRecognize.png",
+//                                                "latest/remoteRecognize.png",
+//                                                $('#callerImage'));
+                                        
+                                        sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
 
                                         isRemoteRecognizeClicked = true;
                                         isRemoteRecognizeClicked2 = true;
