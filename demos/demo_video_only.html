@@ -1507,30 +1507,35 @@
                                         });
                                     }
 
+                                    if(initializerId == ""){
+                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png");
+                                    }
+
+
                                 }, askingRate);//250);
                             }
 
-                            if(true){//remoteRecognizeEnabled == true) {
-                                setInterval(function () {
-
-//                                    isBeginToDownload2 = false;
-//                                    listenToCookieId2 = ""
-//                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-//                                        if (data.endsWith("localRecognize.png")) {
-//                                            isBeginToDownload2 = true;
-//                                            listenToCookieId2 = data;
-//                                            listenToCookieId2 = listenToCookieId2.substring(0, listenToCookieId2.indexOf("_"))
-//                                        }
-//                                    });
-
-
-                                    if(initializerId != getCookie()){
-                                        $('#callerImage2').attr("src", "latest/" + initializerId + "_localRecognize.png?" + new Date().getTime());
-                                    } else {
-                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png");//?" + new Date().getTime());
-                                    }
-                                }, 1000);//0);//500);
-                            }
+//                            if(true){//remoteRecognizeEnabled == true) {
+//                                setInterval(function () {
+//
+////                                    isBeginToDownload2 = false;
+////                                    listenToCookieId2 = ""
+////                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+////                                        if (data.endsWith("localRecognize.png")) {
+////                                            isBeginToDownload2 = true;
+////                                            listenToCookieId2 = data;
+////                                            listenToCookieId2 = listenToCookieId2.substring(0, listenToCookieId2.indexOf("_"))
+////                                        }
+////                                    });
+//
+//
+//                                    if(initializerId != getCookie()){
+//                                        $('#callerImage2').attr("src", "latest/" + initializerId + "_localRecognize.png?" + new Date().getTime());
+//                                    } else {
+//                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png");//?" + new Date().getTime());
+//                                    }
+//                                }, 1000);//0);//500);
+//                            }
 
 //                            if(true){//remoteRecognizeLogEnabled2 == true) {
 //
