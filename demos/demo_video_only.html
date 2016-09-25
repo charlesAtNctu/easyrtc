@@ -1490,7 +1490,7 @@
 
                                     if(isBeginToDownload == true && (getCookie() == listenToCookieId)){//isListener == true) {
 
-                                        $('#callerImage2').attr("src", "latest/" + listenToCookieId + "_localRecognize.png?" + new Date().getTime());
+                                        //$('#callerImage2').attr("src", "latest/" + listenToCookieId + "_localRecognize.png?" + new Date().getTime());
 
                                         //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
                                         $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
@@ -1506,6 +1506,29 @@
                                     }
 
                                 }, askingRate);//250);
+                            }
+
+                            if(true){//remoteRecognizeEnabled == true) {
+                                setInterval(function () {
+
+                                    isBeginToDownload2 = false;
+                                    listenToCookieId2 = ""
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                        if (data.endsWith(listenerFileName)) {
+                                            isBeginToDownload2 = true;
+                                            listenToCookieId2 = data;
+                                            listenToCookieId2 = listenToCookieId2.substring(0, listenToCookieId2.indexOf("_"))
+                                        }
+                                    });
+
+
+                                    if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isListener == true) {
+                                        $('#callerImage2').attr("src", "latest/" + listenToCookieId2 + "_remoteRecognize.png?" + new Date().getTime());
+                                        //$('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+                                    } else {
+                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+                                    }
+                                }, 1000);//500);
                             }
 
 //                            if(true){//remoteRecognizeLogEnabled2 == true) {
