@@ -270,7 +270,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //}
 
     setTimeout( function () {
-        sleep(10000);// Note: This is ok ... change from 10s to 20s
+        sleep(20000);// Note: This is ok ... change from 10s to 20s
 
         // var request = new XMLHttpRequest();
         // request.open('POST', '/connect/', false);  // `false` makes the request synchronous
