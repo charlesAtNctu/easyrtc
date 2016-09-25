@@ -1527,7 +1527,7 @@
 //                                    if (isBeginToDownload2 && getCookie() == listenToCookieId2) {
 //                                        $('#callerImage2').attr("src", "latest/" + listenToCookieId2 + "_localRecognize.png?" + new Date().getTime());
 //                                    } else {
-                                    if(initializerId == getCookie){
+                                    if(initializerId == getCookie()){
                                         $('#callerImage2').attr("src", "latest/remoteRecognize.png");//?" + new Date().getTime());
                                     }
                                 }, 1000);//500);
