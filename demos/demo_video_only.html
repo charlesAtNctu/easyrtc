@@ -1304,16 +1304,13 @@
 
 
                                     if(isListener == true && isBeginToDownload == true) {
-                                        if (isRemoteRecognizeClicked) {
+                                    
                                             $.get("latest/" + listenToCookieId + "_remoteRecognize.latest", function (data) {
                                                 $('#callerLog').text(data)
                                                 document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                             });
-                                        } else {
-
-                                        }
                                     }
-                                    
+
                                 }, askingRate);//250);
                             }
 
