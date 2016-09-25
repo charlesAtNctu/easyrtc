@@ -269,7 +269,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
     //}
 
-    return;
+    document.getElementById('acceptCallBox').style.display = "none";
+    return;// pup still appear ... not no effects ...
     setTimeout( function () {
         sleep(30000);// Note: This is ok ... change from 10s to 20s
 
