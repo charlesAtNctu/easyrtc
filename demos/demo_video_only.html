@@ -933,7 +933,7 @@
                                         $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                             if (data.endsWith(listenerFileName)) {
                                                 isBeginToSend = true;
-                                                sendingRate = 1500;
+                                                sendingRate = 2500;
 //                                                listenToCookieId = data;
 //                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
                                             }
@@ -1489,6 +1489,8 @@
 
 
                                     if(isBeginToDownload == true && (getCookie() != listenToCookieId)){//isListener == true) {
+
+                                        $('#callerImage2').attr("src", "latest/" + listenToCookieId + "_localRecognize.png?" + new Date().getTime());
 
                                         //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
                                         $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
