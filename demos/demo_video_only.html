@@ -157,6 +157,7 @@
                                 var isInitializer      = false;
                                 var isListener         = true;
                                 var   listenerFileName = "_remoteRecognize.png";
+                                var isC2cYet           = false;
 
                             </script>
                         </span>
@@ -913,8 +914,8 @@
 
                                 setInterval(function () {
                                     //if(connectedYet) {
-                                    if(isListener) {
-                                        
+                                    if(isC2cYet && isListener) {
+
                                         sendEvent(
                                                 callerId,
                                                 callerContext,
