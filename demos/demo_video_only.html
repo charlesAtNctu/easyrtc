@@ -1333,30 +1333,37 @@
                             }
 
                             if(remoteRecognizeLogEnabled2 == true) {
+
+                                isBeginToDownload2 = false;
+                                askingRate2 = 100;
+                                listenToCookieId2 = ""
+
+                                $.get("latest/remoteRecognize.log", function (data) {
+                                    $('#callerLog2').text(data)
+                                    document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+                                });
+
                                 setInterval(function () {
 
-
-
-
-
-                                    if (isListener == true) {
-                                        if (isRemoteRecognizeClicked2) {
-                                            $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
-                                                $('#callerLog2').text(data)
-                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-
-                                                // TODO: put lastLog here ....
-
-
-                                            });
-                                        } else {
-                                            $.get("latest/remoteRecognize.log", function (data) {
-                                                $('#callerLog2').text(data)
-                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-                                            });
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                        if (data.endsWith(listenerFileName)) {
+                                            isBeginToDownload2 = true;
+                                            askingRate2 = 250;
+                                            listenToCookieId2 = data;
                                         }
+                                    });
+
+
+
+                                    if (isListener == true && isBeginToDownload == true) {
+
+
+                                            $.get("latest/" + listenToCookieId.substring(0, listenToCookieId.indexOf("_")) + "_localRecognize.log", function (data) {
+                                                $('#callerLog2').text(data)
+                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+
                                     }
-                                }, 250);
+                                }, askingRate2);
                             }
 
                          </script>
