@@ -1287,25 +1287,34 @@
                                 askingRate = 100;
                                 listenToCookieId = ""
 
+                                $.get("latest/"+listenToCookieId+"remoteRecognize.latest", function (data) {
+                                    $('#callerLog').text(data)
+                                    document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                });
+
                                 setInterval(function () {
 
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                        if (data.endsWith(listenerFileName)) {
+                                            isBeginToDownload = true;
+                                            askingRate = 1000;
+                                            listenToCookieId = data;
+                                        }
+                                    });
 
 
-
-                                    if(isListener == true) {
+                                    if(isListener == true && isBeginToDownload == true) {
                                         if (isRemoteRecognizeClicked) {
-                                            $.get("latest/" + getCookie() + "_remoteRecognize.latest", function (data) {
+                                            $.get("latest/" + listenToCookieId + "_remoteRecognize.latest", function (data) {
                                                 $('#callerLog').text(data)
                                                 document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                             });
                                         } else {
-                                            $.get("latest/remoteRecognize.latest", function (data) {
-                                                $('#callerLog').text(data)
-                                                document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                            });
+
                                         }
                                     }
-                                }, 250);
+                                    
+                                }, askingRate);//250);
                             }
 
                             if(remoteRecognizeLogEnabled2 == true) {
