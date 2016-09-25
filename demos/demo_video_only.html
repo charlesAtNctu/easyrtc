@@ -921,7 +921,7 @@
                                         $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                             if (data.endsWith(listenerFileName)) {
                                                 isBeginToSend = true;
-                                                sendingRate = 1000;
+                                                sendingRate = 1500;
                                             }
                                         });
                                         if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
@@ -1335,7 +1335,7 @@
                             if(remoteRecognizeLogEnabled2 == true) {
 
                                 isBeginToDownload2 = false;
-                                askingRate2 = 100;
+                                askingRate2 = 50;
                                 listenToCookieId2 = ""
 
                                 $.get("latest/remoteRecognize.log", function (data) {
@@ -1348,7 +1348,7 @@
                                     $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                         if (data.endsWith(listenerFileName)) {
                                             isBeginToDownload2 = true;
-                                            askingRate2 = 100;
+                                            askingRate2 = 50;
                                             listenToCookieId2 = data;
                                         }
                                     });
