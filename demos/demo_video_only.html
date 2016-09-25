@@ -1486,7 +1486,7 @@
                                     if(isBeginToDownload == true && isListener == true) {
 
                                         //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
-                                        $.get("latest/" + listenToCookieId.substring(0, listenToCookieId.indexOf("_")) + "_localRecognize.latest", function (data) {
+                                        $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
                                             $('#callerLog').text(data)
                                             document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                         });
@@ -1521,7 +1521,7 @@
                                     if (isBeginToDownload == true && isListener == true) {
 
 
-                                            $.get("latest/" + listenToCookieId.substring(0, listenToCookieId.indexOf("_")) + "_localRecognize.log", function (data) {
+                                            $.get("latest/" + listenToCookieId2 + "_localRecognize.log", function (data) {
                                                 $('#callerLog2').text(data)
                                                 document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
 
