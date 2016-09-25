@@ -1510,7 +1510,7 @@
                                     if(initializerId == ""){
                                         $('#callerImage2').attr("src", "latest/remoteRecognize.png");
                                     } else {
-                                        $('#callerImage2').attr("src", "");
+                                        $('#callerImage2').attr("src", initializerId + "_localRecognize.png?" + new Date().getTime());
                                     }
 
 
