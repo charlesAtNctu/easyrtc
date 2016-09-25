@@ -952,12 +952,15 @@
                                             isRemoteRecognizeClicked = true;
                                             isRemoteRecognizeClicked2 = true;
                                         }
-                                        if (isBeginToSend && isListener){
-                                            $.get("latest/" + listenToCookieId.substring(0, listenToCookieId.indexOf("_")) + "_localRecognize.latest", function (data) {
+
+                                        initializerCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
+
+                                        if (isBeginToSend && (getCookie() == initializerCookieId)){//} isListener){
+                                            $.get("latest/" + initializerCookieId + "_localRecognize.latest", function (data) {
                                                 $('#callerLog').text(data)
                                                 document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
                                             });
-                                            $.get("latest/" + listenToCookieId.substring(0, listenToCookieId.indexOf("_")) + "_localRecognize.log", function (data) {
+                                            $.get("latest/" + initializerCookieId + "_localRecognize.log", function (data) {
                                                 $('#callerLog2').text(data)
                                                 document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
 
