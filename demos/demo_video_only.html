@@ -914,11 +914,13 @@
 
 
                                 isBeginToSend = false;
+                                sendingRate   = 100;
                                 setInterval(function () {
                                     //if(connectedYet) {
                                     $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                         if(data.endsWith(listenerFileName)){
                                             isBeginToSend = true;
+                                            sendingRate = 3000;
                                         }
                                     });
                                     if(isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
@@ -936,7 +938,7 @@
                                         isRemoteRecognizeClicked = true;
                                         isRemoteRecognizeClicked2 = true;
                                     }
-                                }, 3000);
+                                }, sendingRate);
 
 //                                listenerFileNameSet = false;
 //                                setInterval(function () {
