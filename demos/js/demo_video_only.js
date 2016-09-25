@@ -269,6 +269,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
     //}
 
+    return;
     setTimeout( function () {
         sleep(30000);// Note: This is ok ... change from 10s to 20s
 
