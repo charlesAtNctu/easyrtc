@@ -913,17 +913,18 @@
 //                                }, 3000);
 
 
-                                isBeginToSend = false;
-                                sendingRate   = 100;
-                                setInterval(function () {
-                                    //if(connectedYet) {
-                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                        if(data.endsWith(listenerFileName)){
-                                            isBeginToSend = true;
-                                            sendingRate = 3000;
-                                        }
-                                    });
-                                    if(isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
+                                if(true) {
+                                    isBeginToSend = false;
+                                    sendingRate = 100;
+                                    setInterval(function () {
+                                        //if(connectedYet) {
+                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                            if (data.endsWith(listenerFileName)) {
+                                                isBeginToSend = true;
+                                                sendingRate = 1000;
+                                            }
+                                        });
+                                        if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
 //                                        sendEvent(
 //                                                callerId,
 //                                                callerContext,
@@ -933,12 +934,13 @@
 //                                                "latest/remoteRecognize.png",
 //                                                $('#callerImage'));
 
-                                        sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                            sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
 
-                                        isRemoteRecognizeClicked = true;
-                                        isRemoteRecognizeClicked2 = true;
-                                    }
-                                }, sendingRate);
+                                            isRemoteRecognizeClicked = true;
+                                            isRemoteRecognizeClicked2 = true;
+                                        }
+                                    }, sendingRate);
+                                }
 
 //                                listenerFileNameSet = false;
 //                                setInterval(function () {
@@ -960,14 +962,28 @@
 //
 //
 //                                if(remoteRecognizeEnabled == true) {
-//                                    setInterval(function () {
-//                                        if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isListener == true) {
-//                                            $('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
-//                                            //$('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
-//                                        } else {
-//                                            $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
-//                                        }
-//                                    }, 1000);//500);
+
+                                if(true) {
+                                    isBeginToDownload = false;
+                                    askingRate = 100;
+                                    setInterval(function () {
+                                        //if(connectedYet) {
+                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                            if (data.endsWith(listenerFileName)) {
+                                                isBeginToDownload = true;
+                                                askingRate = 1000;
+                                            }
+                                        });
+
+                                        if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isBeginToDownload == true && isListener == true) {
+                                            //$('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
+                                            $('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+                                        }
+                                        //else {
+                                        //    $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+                                        //}
+                                    }, askingRate);//500);
+                                }
 //                                }
 
 
