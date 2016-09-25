@@ -1507,15 +1507,22 @@
                                         });
                                     }
 
-                                    if(initializerId == ""){
-                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png");
-                                    } else {
-                                        $('#callerImage2').attr("src", initializerId + "_localRecognize.png?" + new Date().getTime());
-                                    }
+
 
 
                                 }, askingRate);//250);
                             }
+
+                            setInterval(function(){
+
+//                                if(initializerId == ""){
+//                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png");
+//                                } else {
+                                    $('#callerImage2').attr("src", initializerId + "_localRecognize.png?" + new Date().getTime());
+//                                }
+
+                            });
+
 
 //                            if(true){//remoteRecognizeEnabled == true) {
 //                                setInterval(function () {
