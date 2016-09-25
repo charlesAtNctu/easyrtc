@@ -1513,13 +1513,16 @@
                                 }, askingRate);//250);
                             }
 
+                            pngCounter = 0;// TODO: move from copy to latest ... move to ... one the same name and the other append counter ...
                             setInterval(function(){
 
-                                if(initializerId == ""){
-                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png");
-                                } else {
-                                    //alert(initializerId)
-                                    $('#callerImage2').attr("src", initializerId + "_localRecognize.png?" + new Date().getTime());
+                                if (initializerId != getCookie()) {
+                                    if (initializerId == "") {
+                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png");
+                                    } else {
+                                        //alert(initializerId)
+                                        $('#callerImage2').attr("src", initializerId + "_localRecognize.png?" + new Date().getTime());
+                                    }
                                 }
 
                             }, 2000);
