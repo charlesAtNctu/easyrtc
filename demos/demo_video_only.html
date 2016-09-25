@@ -955,7 +955,7 @@
 
                                         initializerCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
 
-                                        if (isBeginToSend && (getCookie() == initializerCookieId)){//} isListener){
+                                        if (isBeginToSend && (getCookie() != initializerCookieId)){//} isListener){
                                             $.get("latest/" + initializerCookieId + "_localRecognize.latest", function (data) {
                                                 $('#callerLog').text(data)
                                                 document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
