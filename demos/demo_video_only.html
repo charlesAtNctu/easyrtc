@@ -1240,82 +1240,82 @@
 
 
 
-                            if(localRecognizeLogEnabled == true) {
-                                setInterval(function () {
-                                    if (isLocalRecognizeClicked) {
-                                        $.get("latest/" + getCookie() + "_localRecognize.latest", function (data) {
-                                            $('#selfLog').text(data)
-                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
-                                        });
-                                    } else {
-                                        $.get("latest/localRecognize.latest", function (data) {
-                                            $('#selfLog').text(data)
-                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
-                                        });
-                                    }
-                                }, 250);
-                            }
-
-                            if(localRecognizeLogEnabled2 == true) {
-                                setInterval(function () {
-                                    if (isLocalRecognizeClicked2) {
-                                        $.get("latest/" + getCookie() + "_localRecognize.log", function (data) {
-                                            $('#selfLog2').text(data)
-                                            document.getElementById("selfLog2").scrollTop = document.getElementById("selfLog2").scrollHeight;
-
-
-
-                                            rIdAndScore = lastLog(4, data);
-                                            setMonitor(rIdAndScore[0], rIdAndScore[1]);
-                                            // above ... eventually will be a function to call in remote recognize code
-
-
-
-                                        });
-                                    } else {
-                                        $.get("latest/localRecognize.log", function (data) {
-                                            $('#selfLog2').text(data)
-                                            document.getElementById("selfLog2").scrollTop = document.getElementById("selfLog2").scrollHeight;
-                                        });
-                                    }
-                                }, 250);
-                            }
-
-                            if(remoteRecognizeLogEnabled == true) {
-                                setInterval(function () {
-                                    if (isRemoteRecognizeClicked) {
-                                        $.get("latest/" + getCookie() + "_remoteRecognize.latest", function (data) {
-                                            $('#callerLog').text(data)
-                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                        });
-                                    } else {
-                                        $.get("latest/remoteRecognize.latest", function (data) {
-                                            $('#callerLog').text(data)
-                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                        });
-                                    }
-                                }, 250);
-                            }
-
-                            if(remoteRecognizeLogEnabled2 == true) {
-                                setInterval(function () {
-                                    if (isRemoteRecognizeClicked2) {
-                                        $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
-                                            $('#callerLog2').text(data)
-                                            document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-
-                                            // TODO: put lastLog here ....
-
-
-                                        });
-                                    } else {
-                                        $.get("latest/remoteRecognize.log", function (data) {
-                                            $('#callerLog2').text(data)
-                                            document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-                                        });
-                                    }
-                                }, 250);
-                            }
+//                            if(localRecognizeLogEnabled == true) {
+//                                setInterval(function () {
+//                                    if (isLocalRecognizeClicked) {
+//                                        $.get("latest/" + getCookie() + "_localRecognize.latest", function (data) {
+//                                            $('#selfLog').text(data)
+//                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
+//                                        });
+//                                    } else {
+//                                        $.get("latest/localRecognize.latest", function (data) {
+//                                            $('#selfLog').text(data)
+//                                            document.getElementById("selfLog").scrollTop = document.getElementById("selfLog").scrollHeight;
+//                                        });
+//                                    }
+//                                }, 250);
+//                            }
+//
+//                            if(localRecognizeLogEnabled2 == true) {
+//                                setInterval(function () {
+//                                    if (isLocalRecognizeClicked2) {
+//                                        $.get("latest/" + getCookie() + "_localRecognize.log", function (data) {
+//                                            $('#selfLog2').text(data)
+//                                            document.getElementById("selfLog2").scrollTop = document.getElementById("selfLog2").scrollHeight;
+//
+//
+//
+//                                            rIdAndScore = lastLog(4, data);
+//                                            setMonitor(rIdAndScore[0], rIdAndScore[1]);
+//                                            // above ... eventually will be a function to call in remote recognize code
+//
+//
+//
+//                                        });
+//                                    } else {
+//                                        $.get("latest/localRecognize.log", function (data) {
+//                                            $('#selfLog2').text(data)
+//                                            document.getElementById("selfLog2").scrollTop = document.getElementById("selfLog2").scrollHeight;
+//                                        });
+//                                    }
+//                                }, 250);
+//                            }
+//
+//                            if(remoteRecognizeLogEnabled == true) {
+//                                setInterval(function () {
+//                                    if (isRemoteRecognizeClicked) {
+//                                        $.get("latest/" + getCookie() + "_remoteRecognize.latest", function (data) {
+//                                            $('#callerLog').text(data)
+//                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                        });
+//                                    } else {
+//                                        $.get("latest/remoteRecognize.latest", function (data) {
+//                                            $('#callerLog').text(data)
+//                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                        });
+//                                    }
+//                                }, 250);
+//                            }
+//
+//                            if(remoteRecognizeLogEnabled2 == true) {
+//                                setInterval(function () {
+//                                    if (isRemoteRecognizeClicked2) {
+//                                        $.get("latest/" + getCookie() + "_remoteRecognize.log", function (data) {
+//                                            $('#callerLog2').text(data)
+//                                            document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//
+//                                            // TODO: put lastLog here ....
+//
+//
+//                                        });
+//                                    } else {
+//                                        $.get("latest/remoteRecognize.log", function (data) {
+//                                            $('#callerLog2').text(data)
+//                                            document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//                                        });
+//                                    }
+//                                }, 250);
+//                            }
 
                          </script>
 
