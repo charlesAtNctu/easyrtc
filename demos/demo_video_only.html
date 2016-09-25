@@ -1322,11 +1322,11 @@
 
                                     if(isListener == true && isBeginToDownload == true) {
 
-                                        $('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
-//                                        $.get("latest/" + listenToCookieId + "_remoteRecognize.latest", function (data) {
-//                                            $('#callerLog').text(data)
-//                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-//                                        });
+                                        //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
+                                        $.get("latest/" + listenToCookieId.substring(0, listenToCookieId.indexOf("_")) + "_localRecognize.latest", function (data) {
+                                            $('#callerLog').text(data)
+                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                        });
                                     }
 
                                 }, askingRate);//250);
