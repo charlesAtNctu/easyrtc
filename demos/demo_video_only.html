@@ -1030,23 +1030,23 @@
 
                             listenerFileNameSet = false;
                             setInterval(function () {
-                                if(isInitializer == true && listenerFileNameSet == false) {
-                                    if (true) {//isLocalRecognizeClicked) {
+                                if(/*isInitializer == true*/isListener == true && listenerFileNameSet == false) {
+                                    //if (true) {//isLocalRecognizeClicked) {
                                         $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                             if(data.startsWith("c2c_") && data.endsWith(listenerFileName)){
                                                 listenerFileName = data;
-                                                $('#selfLog3').text(listenerFileName)
+                                                $('#selfLog3').text(listenerFileName)// todo: issue here ... never true ...
                                                 listenerFileNameSet = true;
                                             }
                                         });
-                                    }
+                                    //}
                                 }
                             }, 100);
 
 
                             if(remoteRecognizeEnabled == true) {
                                 setInterval(function () {
-                                    if (isRemoteRecognizeClicked && listenerFileNameSet && isListener) {
+                                    if (/*isRemoteRecognizeClicked && */listenerFileNameSet == true && isListener == true) {
                                         //$('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
                                         $('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
                                     } else {
