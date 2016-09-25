@@ -921,7 +921,7 @@
                                             isBeginToSend = true;
                                         }
                                     });
-                                    if(isBeginToSend && isInitializer) {
+                                    if(isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
 //                                        sendEvent(
 //                                                callerId,
 //                                                callerContext,
@@ -936,7 +936,61 @@
                                         isRemoteRecognizeClicked = true;
                                         isRemoteRecognizeClicked2 = true;
                                     }
-                                }, 1000);
+                                }, 3000);
+
+//                                listenerFileNameSet = false;
+//                                setInterval(function () {
+//                                    if(/*isInitializer == true*/isListener == true && listenerFileNameSet == false) {
+//                                        //if (true) {//isLocalRecognizeClicked) {
+//                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+//                                            if(data.startsWith("c2c_") && data.endsWith(listenerFileName)){
+//
+//                                                alert(data);
+//
+//                                                listenerFileName = data;
+//                                                $('#selfLog3').text(listenerFileName)// todo: issue here ... never true ...
+//                                                listenerFileNameSet = true;
+//                                            }
+//                                        });
+//                                        //}
+//                                    }
+//                                }, 100);
+//
+//
+//                                if(remoteRecognizeEnabled == true) {
+//                                    setInterval(function () {
+//                                        if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isListener == true) {
+//                                            $('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
+//                                            //$('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+//                                        } else {
+//                                            $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+//                                        }
+//                                    }, 1000);//500);
+//                                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1035,35 +1089,35 @@
 
 
 
-                            listenerFileNameSet = false;
-                            setInterval(function () {
-                                if(/*isInitializer == true*/isListener == true && listenerFileNameSet == false) {
-                                    //if (true) {//isLocalRecognizeClicked) {
-                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                            if(data.startsWith("c2c_") && data.endsWith(listenerFileName)){
-
-                                                alert(data);
-
-                                                listenerFileName = data;
-                                                $('#selfLog3').text(listenerFileName)// todo: issue here ... never true ...
-                                                listenerFileNameSet = true;
-                                            }
-                                        });
-                                    //}
-                                }
-                            }, 100);
-
-
-                            if(remoteRecognizeEnabled == true) {
-                                setInterval(function () {
-                                    if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isListener == true) {
-                                        $('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
-                                        //$('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
-                                    } else {
-                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
-                                    }
-                                }, 1000);//500);
-                            }
+//                            listenerFileNameSet = false;
+//                            setInterval(function () {
+//                                if(/*isInitializer == true*/isListener == true && listenerFileNameSet == false) {
+//                                    //if (true) {//isLocalRecognizeClicked) {
+//                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+//                                            if(data.startsWith("c2c_") && data.endsWith(listenerFileName)){
+//
+//                                                alert(data);
+//
+//                                                listenerFileName = data;
+//                                                $('#selfLog3').text(listenerFileName)// todo: issue here ... never true ...
+//                                                listenerFileNameSet = true;
+//                                            }
+//                                        });
+//                                    //}
+//                                }
+//                            }, 100);
+//
+//
+//                            if(remoteRecognizeEnabled == true) {
+//                                setInterval(function () {
+//                                    if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isListener == true) {
+//                                        $('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
+//                                        //$('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+//                                    } else {
+//                                        $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+//                                    }
+//                                }, 1000);//500);
+//                            }
 
 
 
