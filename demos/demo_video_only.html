@@ -1514,7 +1514,7 @@
                                     isBeginToDownload2 = false;
                                     listenToCookieId2 = ""
                                     $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                        if (data.endsWith(listenerFileName)) {
+                                        if (data.endsWith("localRecognize.png")) {
                                             isBeginToDownload2 = true;
                                             listenToCookieId2 = data;
                                             listenToCookieId2 = listenToCookieId2.substring(0, listenToCookieId2.indexOf("_"))
