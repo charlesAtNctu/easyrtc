@@ -963,59 +963,60 @@
 //
 //                                if(remoteRecognizeEnabled == true) {
 
-                                if(true) {
-
-                                    isBeginToDownload = false;
-                                    askingRate = 100;
-                                    listenToCookieId = ""
-
-                                    $.get("latest/"+listenToCookieId+"remoteRecognize.latest", function (data) {
-                                        $('#callerLog').text(data)
-                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                    });
-
-                                    $.get("latest/"+listenToCookieId+"remoteRecognize.log", function (data) {
-                                        $('#callerLog2').text(data)
-                                        document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-                                    });
-
-
-                                    setInterval(function () {
-                                        //if(connectedYet) {
-                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                            if (data.endsWith(listenerFileName)) {
-                                                isBeginToDownload = true;
-                                                askingRate = 1000;
-                                                listenToCookieId = data;
-                                            }
-                                        });
-
-                                        if(isListener == true && isBeginToDownload == true) {
-
-//                                        if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isBeginToDownload == true && isListener == true) {
-//                                            //$('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
-//                                            $('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+//                                if(true) {
+//
+//                                    isBeginToDownload = false;
+//                                    askingRate = 100;
+//                                    listenToCookieId = ""
+//
+//                                    $.get("latest/"+listenToCookieId+"remoteRecognize.latest", function (data) {
+//                                        $('#callerLog').text(data)
+//                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                    });
+//
+//                                    $.get("latest/"+listenToCookieId+"remoteRecognize.log", function (data) {
+//                                        $('#callerLog2').text(data)
+//                                        document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//                                    });
+//
+//
+//                                    setInterval(function () {
+//                                        //if(connectedYet) {
+//                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+//                                            if (data.endsWith(listenerFileName)) {
+//                                                isBeginToDownload = true;
+//                                                askingRate = 1000;
+//                                                listenToCookieId = data;
+//                                            }
+//                                        });
+//
+//                                        if(isListener == true && isBeginToDownload == true) {
+//
+////                                        if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isBeginToDownload == true && isListener == true) {
+////                                            //$('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
+////                                            $('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+////                                        }
+////                                        else {
+////                                            $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+////                                        }
+//
+//
+//                                            $.get("latest/" + listenToCookieId + "_remoteRecognize.latest", function (data) {
+//                                                $('#callerLog').text(data)
+//                                                document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                            });
+//
+//
+//                                            $.get("latest/" + listenToCookieId + "_remoteRecognize.log", function (data) {
+//                                                $('#callerLog2').text(data)
+//                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//                                            });
 //                                        }
-//                                        else {
-//                                            $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
-//                                        }
+//
+//
+//                                    }, askingRate);//500);
+//                                }
 
-
-                                            $.get("latest/" + listenToCookieId + "_remoteRecognize.latest", function (data) {
-                                                $('#callerLog').text(data)
-                                                document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                            });
-
-
-                                            $.get("latest/" + listenToCookieId + "_remoteRecognize.log", function (data) {
-                                                $('#callerLog2').text(data)
-                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-                                            });
-                                        }
-
-
-                                    }, askingRate);//500);
-                                }
 //                                }
 
 
@@ -1173,7 +1174,59 @@
 
 
 
+                            if(true) {
 
+                                isBeginToDownload = false;
+                                askingRate = 100;
+                                listenToCookieId = ""
+
+                                $.get("latest/"+listenToCookieId+"remoteRecognize.latest", function (data) {
+                                    $('#callerLog').text(data)
+                                    document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                });
+
+                                $.get("latest/"+listenToCookieId+"remoteRecognize.log", function (data) {
+                                    $('#callerLog2').text(data)
+                                    document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+                                });
+
+
+                                setInterval(function () {
+                                    //if(connectedYet) {
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                        if (data.endsWith(listenerFileName)) {
+                                            isBeginToDownload = true;
+                                            askingRate = 1000;
+                                            listenToCookieId = data;
+                                        }
+                                    });
+
+                                    if(isListener == true && isBeginToDownload == true) {
+
+//                                        if (/*isRemoteRecognizeClicked && listenerFileNameSet == true && */isBeginToDownload == true && isListener == true) {
+//                                            //$('#callerImage2').attr("src", "latest/" + getCookie() + "_remoteRecognize.png?" + new Date().getTime());
+//                                            $('#callerImage2').attr("src", "latest/" + listenerFileName + "?" + new Date().getTime());
+//                                        }
+//                                        else {
+//                                            $('#callerImage2').attr("src", "latest/remoteRecognize.png?" + new Date().getTime());
+//                                        }
+
+
+                                        $.get("latest/" + listenToCookieId + "_remoteRecognize.latest", function (data) {
+                                            $('#callerLog').text(data)
+                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                        });
+
+
+                                        $.get("latest/" + listenToCookieId + "_remoteRecognize.log", function (data) {
+                                            $('#callerLog2').text(data)
+                                            document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+                                        });
+                                    }
+
+
+                                }, askingRate);//500);
+                            }
 
 
 
