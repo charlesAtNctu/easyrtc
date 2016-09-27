@@ -98,21 +98,6 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 
 
 function performCall(otherEasyrtcid) {
-    easyrtc.hangupAll();
-
-    var acceptedCB = function(accepted, easyrtcid) {
-        if( !accepted ) {
-            easyrtc.showError("CALL-REJECTED", "Sorry, your call to " + easyrtc.idToName(easyrtcid) + " was rejected");
-            enable('otherClients');
-        }
-    };
-    var successCB = function() {
-        enable('hangupButton');
-    };
-    var failureCB = function() {
-        enable('otherClients');
-    };
-
 
 
 
@@ -129,35 +114,58 @@ function performCall(otherEasyrtcid) {
 
     isInitializer = true;
     isListener    = false;
-    
-    
-    var data = new FormData();
 
-    //replaceAll(easyrtcid, "_", "UNDERSCORE"
-
-    data.append("data" ,                               // called when click connect btn ...
-        "e2e_"
-        + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") 
-        + "_"
-        + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "," +
-        "e2e_" 
-        + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") 
-        + "_"
-        + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") );
-
-    var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-    xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
-    xhr.send(data);
+    if(isListenerGoingToDecide == false){
 
 
 
 
+        var data = new FormData();
+
+        //replaceAll(easyrtcid, "_", "UNDERSCORE"
+
+        data.append("data" ,                               // called when click connect btn ...
+            "e2e_"
+            + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE")
+            + "_"
+            + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "," +
+            "e2e_"
+            + replaceAll(otherEasyrtcid, "_", "UNDERSCORE")
+            + "_"
+            + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") );
+
+        var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+        xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
+        xhr.send(data);
 
 
 
 
+        // todo: maybe i should be doing things here ... isWaiting = true
+        // else go on ...
 
-    easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
+
+    } else {
+
+
+        easyrtc.hangupAll();
+
+        var acceptedCB = function (accepted, easyrtcid) {
+            if (!accepted) {
+                easyrtc.showError("CALL-REJECTED", "Sorry, your call to " + easyrtc.idToName(easyrtcid) + " was rejected");
+                enable('otherClients');
+            }
+        };
+        var successCB = function () {
+            enable('hangupButton');
+        };
+        var failureCB = function () {
+            enable('otherClients');
+        };
+
+
+        easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
+    }
 }
 
 function replaceAll(str, find, replace) {
@@ -270,9 +278,9 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //}
 
     document.getElementById('acceptCallBox').style.display = "none";
-    return;// pup still appear ... not no effects ...
-    setTimeout( function () {
-        sleep(30000);// Note: This is ok ... change from 10s to 20s
+    //return;// pup still appear ... not no effects ...
+    //setTimeout( function () {
+        sleep(10000);// Note: This is ok ... change from 10s to 20s
 
         // var request = new XMLHttpRequest();
         // request.open('POST', '/connect/', false);  // `false` makes the request synchronous
@@ -308,5 +316,5 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
             };
 
         }
-    }, 0);
+    //}, 0);
 } );
