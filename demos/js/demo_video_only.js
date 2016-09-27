@@ -144,6 +144,7 @@ function performCall(otherEasyrtcid) {
         // todo: maybe i should be doing things here ... isWaiting = true
         // else go on ...
 
+        isListenerGoingToDecide = true;
 
     } else {
 
