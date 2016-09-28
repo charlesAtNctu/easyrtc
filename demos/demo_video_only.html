@@ -1153,55 +1153,55 @@
 
 
 
-
-
-                                setInterval(function () {
-                                    if(connectedYet) {
-                                        if(true){
-                                            var lines = $('#selfLog').val().split("\n");
-                                            if(lines && lines.length > 1){
-                                                var secondLastLine = lines[lines.length - 2];
-                                                var fields = secondLastLine.split(",");
-
-                                                selfContext.strokeStyle = "blue";
-
-                                                var x_cordinate = fields[3];//selfCanvas.width - fields[3] - fields[5];
-                                                var y_cordinate = fields[4];
-                                                var recognized_person = fields[1];// reverse(fields[1]);
-
-                                                selfContext.fillStyle = "blue";
-                                                selfContext.textAlign = "left";
-                                                selfContext.font="30px Verdana";
-                                                selfContext.fillText(recognized_person, x_cordinate, y_cordinate);
-                                                selfContext.strokeRect(x_cordinate, y_cordinate, fields[5], fields[6]);
-                                            }
-                                        }
-                                    }
-                                }, 1000);
-
-                                setInterval(function () {
-                                    if(connectedYet) {
-                                        if(true){
-                                            var lines = $('#callerLog').val().split("\n");
-                                            if(lines && lines.length > 1){
-                                                var secondLastLine = lines[lines.length - 2];
-                                                var fields = secondLastLine.split(",");
-
-                                                callerContext.strokeStyle = "blue";
-
-                                                var x_cordinate = fields[3];//selfCanvas.width - fields[3] - fields[5];
-                                                var y_cordinate = fields[4];
-                                                var recognized_person = fields[1];// reverse(fields[1]);
-
-                                                callerContext.fillStyle = "blue";
-                                                callerContext.textAlign = "left";
-                                                callerContext.font="30px Verdana";
-                                                callerContext.fillText(recognized_person, x_cordinate, y_cordinate);
-                                                callerContext.strokeRect(x_cordinate, y_cordinate, fields[5], fields[6]);
-                                            }
-                                        }
-                                    }
-                                }, 1000);
+// TODO: disable it for now ....
+//
+//                                setInterval(function () {
+//                                    if(connectedYet) {
+//                                        if(true){
+//                                            var lines = $('#selfLog').val().split("\n");
+//                                            if(lines && lines.length > 1){
+//                                                var secondLastLine = lines[lines.length - 2];
+//                                                var fields = secondLastLine.split(",");
+//
+//                                                selfContext.strokeStyle = "blue";
+//
+//                                                var x_cordinate = fields[3];//selfCanvas.width - fields[3] - fields[5];
+//                                                var y_cordinate = fields[4];
+//                                                var recognized_person = fields[1];// reverse(fields[1]);
+//
+//                                                selfContext.fillStyle = "blue";
+//                                                selfContext.textAlign = "left";
+//                                                selfContext.font="30px Verdana";
+//                                                selfContext.fillText(recognized_person, x_cordinate, y_cordinate);
+//                                                selfContext.strokeRect(x_cordinate, y_cordinate, fields[5], fields[6]);
+//                                            }
+//                                        }
+//                                    }
+//                                }, 1000);
+//
+//                                setInterval(function () {
+//                                    if(connectedYet) {
+//                                        if(true){
+//                                            var lines = $('#callerLog').val().split("\n");
+//                                            if(lines && lines.length > 1){
+//                                                var secondLastLine = lines[lines.length - 2];
+//                                                var fields = secondLastLine.split(",");
+//
+//                                                callerContext.strokeStyle = "blue";
+//
+//                                                var x_cordinate = fields[3];//selfCanvas.width - fields[3] - fields[5];
+//                                                var y_cordinate = fields[4];
+//                                                var recognized_person = fields[1];// reverse(fields[1]);
+//
+//                                                callerContext.fillStyle = "blue";
+//                                                callerContext.textAlign = "left";
+//                                                callerContext.font="30px Verdana";
+//                                                callerContext.fillText(recognized_person, x_cordinate, y_cordinate);
+//                                                callerContext.strokeRect(x_cordinate, y_cordinate, fields[5], fields[6]);
+//                                            }
+//                                        }
+//                                    }
+//                                }, 1000);
 
 
 
