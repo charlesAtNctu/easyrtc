@@ -146,6 +146,7 @@ function performCall(otherEasyrtcid) {
         // else go on ...
 
         //isListenerGoingToDecide = true;
+        isGoingToShowPopup = true;
 
     } else {
 
