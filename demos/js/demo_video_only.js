@@ -112,14 +112,14 @@ function performCall(otherEasyrtcid) {
     // todo:
 
 
-
+    isInitializer = true;
+    isListener    = false;
 
     if(isGoingToShowPopup == false){
 
 
-        isInitializer = true;
-        isListener    = false;
-        
+
+
 
         var data = new FormData();
 
