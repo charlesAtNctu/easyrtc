@@ -1525,12 +1525,14 @@
 
                                     if (initializerId != "" && initializerId != getCookie()){
 
+                                        sleep(2000);
+
                                         //alert("latest/"+initializerId + "_localRecognize.png")
                                         $('#callerImage2').attr("src", "latest/"+initializerId + "_localRecognize.png" + "?" + new Date().getTime());
                                     }
 
 
-                            }, 3000);
+                            }, 1000);
 
 
 
