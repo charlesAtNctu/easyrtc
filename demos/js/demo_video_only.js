@@ -86,6 +86,8 @@ function convertListToButtons (roomName, occupants, isPrimary) {
                 performCall(easyrtcid);
             };
         }(easyrtcid);
+        
+        popupBtn = button;// testing ...
 
         var label = document.createTextNode( easyrtc.idToName(easyrtcid));
         button.appendChild(label);

@@ -161,6 +161,7 @@
                                 var initializerId = ""
 
                                 var isGoingToShowPopup = false;
+                                var popupBtn = ""
 
                             </script>
                         </span>
@@ -1538,9 +1539,10 @@
                             setInterval(function(){
                                 if(isGoingToShowPopup == true){
 
-
-
-                                    //alert("going to show the popup now ..." + $('#callerLog2').val());// TODO: should be something else ... not just wiaint for ..
+                                    if(popupBtn != "") {
+                                        popupBtn.click;// testing ...
+                                        //alert("going to show the popup now ..." + $('#callerLog2').val());// TODO: should be something else ... not just wiaint for ..
+                                    }
                                 }
                             }, 1000);
 
