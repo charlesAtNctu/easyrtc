@@ -85,7 +85,9 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 
 
     for(var easyrtcid in occupants) {
-        var button = document.createElement('button');
+        //var button = document.createElement('button');
+        var button = document.getElementById('showPopup');
+
         button.onclick = function(easyrtcid) {
             return function() {
                 performCall(easyrtcid);
@@ -97,19 +99,13 @@ function convertListToButtons (roomName, occupants, isPrimary) {
         var label = document.createTextNode( easyrtc.idToName(easyrtcid));
         button.appendChild(label + " testing ");
         otherClientDiv.appendChild(button);
+
+        break;
     }
-    
-/*    var button = document.getElementById('showPopup');
-    button.onclick = function(easyrtcid) {
-        return function() {
-            performCall(easyrtcid);
-        };
-    }(easyrtcid);
-    var label = document.createTextNode( easyrtc.idToName(easyrtcid));
 
-    alert(label);
 
-    button.appendChild(label);*/
+
+
 
 
 
