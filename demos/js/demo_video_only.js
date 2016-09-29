@@ -106,6 +106,9 @@ function convertListToButtons (roomName, occupants, isPrimary) {
         };
     }(easyrtcid);
     var label = document.createTextNode( easyrtc.idToName(easyrtcid));
+
+    alert(label);
+
     button.appendChild(label);
 
 
