@@ -84,22 +84,22 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 
 
 
-    // for(var easyrtcid in occupants) {
-    //     var button = document.createElement('button');
-    //     button.onclick = function(easyrtcid) {
-    //         return function() {
-    //             performCall(easyrtcid);
-    //         };
-    //     }(easyrtcid);
-    //
-    //     //popupBtn = button;// testing ...
-    //
-    //     var label = document.createTextNode( easyrtc.idToName(easyrtcid));
-    //     button.appendChild(label);
-    //     otherClientDiv.appendChild(button);
-    // }
+    for(var easyrtcid in occupants) {
+        var button = document.createElement('button');
+        button.onclick = function(easyrtcid) {
+            return function() {
+                performCall(easyrtcid);
+            };
+        }(easyrtcid);
+
+        //popupBtn = button;// testing ...
+
+        var label = document.createTextNode( easyrtc.idToName(easyrtcid));
+        button.appendChild(label + " testing ");
+        otherClientDiv.appendChild(button);
+    }
     
-    var button = document.getElementById('showPopup');
+/*    var button = document.getElementById('showPopup');
     button.onclick = function(easyrtcid) {
         return function() {
             performCall(easyrtcid);
@@ -109,7 +109,7 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 
     alert(label);
 
-    button.appendChild(label);
+    button.appendChild(label);*/
 
 
 
