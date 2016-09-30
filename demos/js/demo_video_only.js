@@ -236,9 +236,14 @@ easyrtc.setOnStreamClosed( function (easyrtcid) {
 });
 
 
-easyrtc.setAcceptChecker(setTimeout(
-
+easyrtc.setAcceptChecker(
+//    setTimeout(
     function(easyrtcid, callback) {
+
+
+        setTimeout(function(){
+
+
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
             document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
@@ -321,7 +326,10 @@ easyrtc.setAcceptChecker(setTimeout(
             };
 
         }
-    }, 10000));
+    }
+          , 10000)
+//        , 10000);
+);
 
 
     //}, 0);
