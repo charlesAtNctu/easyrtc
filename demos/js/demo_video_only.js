@@ -240,9 +240,11 @@ easyrtc.setAcceptChecker(
 //    setTimeout(
     function(easyrtcid, callback) {
 
+        alert("before");
 
         setTimeout(function(){
 
+            alert("after");
 
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
