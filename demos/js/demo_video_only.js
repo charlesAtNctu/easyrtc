@@ -246,17 +246,20 @@ easyrtc.setAcceptChecker(
 
             alert("after");
 
+            var savedEasyrtc = easyrtc;
+            var savedEasyrtcid = easyrtcid;
+
         document.getElementById('acceptCallBox').style.display = "block";
-        if (easyrtc.getConnectionCount() > 0) {
-            document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
+        if (savedEasyrtc.getConnectionCount() > 0) {
+            document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + savedEasyrtc.idToName(savedEasyrtcid) + " ?";
         }
         else {
-            document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
+            document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + savedEasyrtc.idToName(savedEasyrtcid) + " ?";
         }
         var acceptTheCall = function (wasAccepted) {
             document.getElementById('acceptCallBox').style.display = "none";
-            if (wasAccepted && easyrtc.getConnectionCount() > 0) {
-                easyrtc.hangupAll();
+            if (wasAccepted && savedEasyrtc.getConnectionCount() > 0) {
+                savedEasyrtc.hangupAll();
             }
             callback(wasAccepted);
         };
