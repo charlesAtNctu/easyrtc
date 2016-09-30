@@ -252,15 +252,19 @@ easyrtc.setAcceptChecker(
 
             alert("before");
 
+
             setTimeout(function () {
 
                     alert("after");
 
+                    var savedEasyrtc = easyrtc;
+                    var savedWasAccepted = wasAccepted;
+
                     document.getElementById('acceptCallBox').style.display = "none";
-                    if (wasAccepted && easyrtc.getConnectionCount() > 0) {
-                        easyrtc.hangupAll();
+                    if (savedWasAccepted && savedEasyrtc.getConnectionCount() > 0) {
+                        savedEasyrtc.hangupAll();
                     }
-                    callback(wasAccepted);
+                    callback(savedWasAccepted);
 
                 }
                 , 5000);
