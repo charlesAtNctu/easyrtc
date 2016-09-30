@@ -321,8 +321,8 @@ easyrtc.setAcceptChecker(setTimeout(
             };
 
         }
-    }, 10000);
+    }, 10000));
 
 
     //}, 0);
-} );
+//} );
