@@ -240,11 +240,7 @@ easyrtc.setAcceptChecker(
 //    setTimeout(
     function(easyrtcid, callback) {
 
-        alert("before");
 
-        setTimeout(function(){
-
-            alert("after");
 
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
@@ -261,6 +257,12 @@ easyrtc.setAcceptChecker(
             callback(wasAccepted);
         };
 
+        alert("before");
+
+        setTimeout(function(){
+
+                alert("after");
+            
         // Chu-Chi: check if the within 5 second and at least 10 picture has distance < 70
         //          if yes, call acept the call directory
         //          else execute the following ...
