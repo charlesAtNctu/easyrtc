@@ -243,19 +243,19 @@ easyrtc.setAcceptChecker(
 
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
-            document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
+            document.getElementById('acceptCallLabel').innerHTML = "Chu-Chi: Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
         }
         else {
-            document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
+            document.getElementById('acceptCallLabel').innerHTML = "Chu-Chi: Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
         }
         var acceptTheCall = function (wasAccepted) {
 
 
 
-                    setTimeout(function () {
-                            alert("after");
-                    }
-                    , 5000);
+                    // setTimeout(function () {
+                    //         alert("after");
+                    // }
+                    // , 5000);
 
 
 
