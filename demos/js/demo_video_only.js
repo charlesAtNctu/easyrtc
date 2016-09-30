@@ -85,8 +85,8 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 
 
     for(var easyrtcid in occupants) {
-        //var button = document.createElement('button');
-        var button = document.getElementById('showPopup');
+        var button = document.createElement('button');
+        //var button = document.getElementById('showPopup');
 
         button.onclick = function(easyrtcid) {
             return function() {
