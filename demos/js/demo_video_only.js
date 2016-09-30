@@ -250,24 +250,25 @@ easyrtc.setAcceptChecker(
         }
         var acceptTheCall = function (wasAccepted) {
 
-            alert("before");
 
 
-            setTimeout(function () {
+                    setTimeout(function () {
+                            alert("after");
+                    }
+                    , 5000);
 
-                    alert("after");
 
-                    var savedEasyrtc = easyrtc;
-                    var savedWasAccepted = wasAccepted;
+
+
+
 
                     document.getElementById('acceptCallBox').style.display = "none";
-                    if (savedWasAccepted && savedEasyrtc.getConnectionCount() > 0) {
-                        savedEasyrtc.hangupAll();
+                    if (wasAccepted && easyrtc.getConnectionCount() > 0) {
+                        easyrtc.hangupAll();
                     }
-                    callback(savedWasAccepted);
+                    callback(wasAccepted);
 
-                }
-                , 5000);
+
 
         };
 
