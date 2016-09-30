@@ -115,7 +115,7 @@ function performCall(otherEasyrtcid) {
     isInitializer = true;
     isListener    = false;
 
-    if(isGoingToShowPopup == false){
+    //if(isGoingToShowPopup == false){
 
 
 
@@ -146,9 +146,9 @@ function performCall(otherEasyrtcid) {
         // else go on ...
 
         //isListenerGoingToDecide = true;
-        isGoingToShowPopup = true;
+    //    isGoingToShowPopup = true;
 
-    } else {
+    //} else {
 
 
         easyrtc.hangupAll();
@@ -168,7 +168,7 @@ function performCall(otherEasyrtcid) {
 
 
         easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
-    }
+    //}
 }
 
 function replaceAll(str, find, replace) {
