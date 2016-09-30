@@ -327,7 +327,7 @@ easyrtc.setAcceptChecker(
 
         }
     }
-          , 10000)}
+          , 5000)}
 //        , 10000);
 );
 
