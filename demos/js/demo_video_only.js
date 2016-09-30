@@ -241,7 +241,6 @@ easyrtc.setAcceptChecker(
     function(easyrtcid, callback) {
 
 
-
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
             document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
@@ -250,19 +249,25 @@ easyrtc.setAcceptChecker(
             document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
         }
         var acceptTheCall = function (wasAccepted) {
-            document.getElementById('acceptCallBox').style.display = "none";
-            if (wasAccepted && easyrtc.getConnectionCount() > 0) {
-                easyrtc.hangupAll();
-            }
-            callback(wasAccepted);
+
+            alert("before");
+
+            setTimeout(function () {
+
+                    alert("after");
+
+                    document.getElementById('acceptCallBox').style.display = "none";
+                    if (wasAccepted && easyrtc.getConnectionCount() > 0) {
+                        easyrtc.hangupAll();
+                    }
+                    callback(wasAccepted);
+
+                }
+                , 5000);
+
         };
 
-        alert("before");
 
-        setTimeout(function(){
-
-                alert("after");
-            
         // Chu-Chi: check if the within 5 second and at least 10 picture has distance < 70
         //          if yes, call acept the call directory
         //          else execute the following ...
@@ -331,7 +336,7 @@ easyrtc.setAcceptChecker(
 
         }
     }
-          , 5000)}
+
 //        , 10000);
 );
 
