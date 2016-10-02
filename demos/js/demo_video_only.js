@@ -161,7 +161,7 @@ function performCall(otherEasyrtcid) {
 
         easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 
-    }, 10000);
+    }, 5000);
 }
 
 function replaceAll(str, find, replace) {
@@ -235,7 +235,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //
     // setTimeout(function() {
     //
-    //     isBeginToSend = false;
+    //     isBeginToSend = false;// NOTE: IN THE OTHER PARTY ... HENCE THIS WON'T WORK ..
 
 
 
