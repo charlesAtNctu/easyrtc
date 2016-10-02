@@ -156,6 +156,8 @@ function performCall(otherEasyrtcid) {
 
     setTimeout(function() {
 
+        alert(otherEasyrtcid)
+
         isBeginToSend = false;
 
 
