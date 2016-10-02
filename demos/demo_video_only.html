@@ -1358,7 +1358,85 @@
 
 
 
+                            if(true){//remoteRecognizeLogEnabled == true) {
 
+                                isBeginToDownload = false;
+                                askingRate = 100;
+                                listenToCookieId = ""
+
+                                $.get("latest/remoteRecognize.latest", function (data) {
+                                    $('#callerLog').text(data)
+                                    document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                });
+
+                                $.get("latest/remoteRecognize.log", function (data) {
+                                    $('#callerLog2').text(data)
+                                    document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+                                });
+
+                                setInterval(function () {
+
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                        if (data.endsWith(listenerFileName)) {
+                                            isBeginToDownload = true;
+                                            askingRate = 250;
+                                            listenToCookieId = data;
+                                            listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
+                                        }
+                                    });
+
+
+                                    if(isBeginToDownload == true && (getCookie() != listenToCookieId)){//isListener == true) {
+
+                                        //$('#callerImage2').attr("src", "latest/" + listenToCookieId + "_localRecognize.png?" + new Date().getTime());
+
+                                        //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
+                                        $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
+                                            $('#callerLog').text(data)
+                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+                                        });
+
+                                        $.get("latest/" + listenToCookieId + "_localRecognize.log", function (data) {
+                                            $('#callerLog2').text(data)
+                                            document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+
+                                        });
+                                    }
+
+
+
+
+                                }, askingRate);//250);
+                            }
+
+                            pngCounter = 0;// TODO: move from copy to latest ... move to ... one the same name and the other append counter ...
+                            setInterval(function(){
+
+
+                                if (initializerId == "") {
+                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png");
+                                }
+
+                                if (initializerId != "" && initializerId != getCookie()){
+
+                                    sleep(2000);
+
+                                    //alert("latest/"+initializerId + "_localRecognize.png")
+                                    $('#callerImage2').attr("src", "latest/"+initializerId + "_localRecognize.png" + "?" + new Date().getTime());
+                                }
+
+
+                            }, 1000);
+
+
+                            setInterval(function(){
+                                if(isGoingToShowPopup == true){
+
+
+
+                                    //alert("going to show the popup now ..." + $('#callerLog2').val());// TODO: should be something else ... not just wiaint for ..
+                                }
+                            }, 1000);
 
 
 
