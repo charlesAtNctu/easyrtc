@@ -125,12 +125,12 @@ httpApp.post('/mapping', function(req, res)
 
                 want_to_have_remote = from_cookie + "_localRecognize.png";
                 want_to_have_name_as = to_cookie + "_remoteRecognize.png"
-                console.log("cp -p demos/latest/" + want_to_have_remote + " demos/latest/" + want_to_have_remote);// want_to_have_name_as);
+                //console.log("cp -p demos/latest/" + want_to_have_remote + " demos/latest/" + want_to_have_remote);// want_to_have_name_as);
 
 
 
                 // var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
-                var workerProcess = child_process.exec('python /home/ubuntu/GitHub/face-recognition-python-opencv/generateMapping.py /var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' + to_cookie,
+                var workerProcess = child_process.exec('python /home/ubuntu/GitHub/face-recognition-python-opencv/generateMapping.py /var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' +  want_to_have_remote,
                     function (error, stdout, stderr) {
                         if (error) {
                             console.log(error.stack);
