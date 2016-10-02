@@ -233,7 +233,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
         isBeginToSend = false;
 
-        alert(easyrtcid);
+
 
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
@@ -254,7 +254,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          if yes, call acept the call directory
         //          else execute the following ...
 
-        isTheCallerInTheGroup = false;
+        alert(easyrtcid);
+        isTheCallerInTheGroup = true;
 
 
         // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
@@ -305,6 +306,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         if (isTheCallerInTheGroup) {
             acceptTheCall(true);// if it pass the face recognition test ...
         } else {
+
+
 
 
             document.getElementById("callAcceptButton").onclick = function () {
