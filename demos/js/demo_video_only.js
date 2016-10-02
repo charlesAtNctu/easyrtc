@@ -226,85 +226,90 @@ easyrtc.setOnStreamClosed( function (easyrtcid) {
 
 
 easyrtc.setAcceptChecker(function(easyrtcid, callback) {
-    document.getElementById('acceptCallBox').style.display = "block";
-    if( easyrtc.getConnectionCount() > 0 ) {
-        document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
-    }
-    else {
-        document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) +  " ?";
-    }
-    var acceptTheCall = function(wasAccepted) {
-        document.getElementById('acceptCallBox').style.display = "none";
-        if( wasAccepted && easyrtc.getConnectionCount() > 0 ) {
-            easyrtc.hangupAll();
+
+    alert("before");
+
+    setTimeout(function() {
+
+        document.getElementById('acceptCallBox').style.display = "block";
+        if (easyrtc.getConnectionCount() > 0) {
+            document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
         }
-        callback(wasAccepted);
-    };
-
-    // Chu-Chi: check if the within 5 second and at least 10 picture has distance < 70
-    //          if yes, call acept the call directory
-    //          else execute the following ...
-
-    isTheCallerInTheGroup = false;
-
-
-    // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
-    // easyrtcid is the other party ...
-    // i need to check its confidence level before letting it pass ...
-    //while(true){
-
-    // data.append("data" , "e2c_" + replaceAll(easyrtcid, "_", "UNDRESCORE") + "_," + "c2c_" + getCookie() + "_");// use e2c to find the other party's cookie id and, then, use c2c to check whether true or false
-    // var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-    // xhr.open( 'post', '/connect');
-    // xhr.send(data);
-
-    //
-    //alert("CONNECT " + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
-    //
-    //alert("CONNECT " + xhr.responseText);
-    //
-    // if(xhr.responseText == "true"){
-    //     isTheCallerInTheGroup = true;
-    // }
-
-    //}
-
-
-    sleep(10000);// Note: This is ok ...
-
-    // var request = new XMLHttpRequest();
-    // request.open('POST', '/connect/', false);  // `false` makes the request synchronous
-    // request.send(null);
-    //
-    // if (request.status === 200) {
-    //     alert(request.responseText);
-    // } else {
-    //     alert(request.responseText + "!!!");
-    // }
-
-    // while(true){
-    //
-    //     data.append("data" , "e2c_" + replaceAll(easyrtcid, "_", "UNDRESCORE") + "_," + "c2c_" + getCookie() + "_");// use e2c to find the other party's cookie id and, then, use c2c to check whether true or false
-    //     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-    //     xhr.open( 'post', '/connect');
-    //     xhr.send(data);
-    //
-    //     alert(request.responseText);
-    // }
-
-    
-
-    if(isTheCallerInTheGroup) {
-        acceptTheCall(true);// if it pass the face recognition test ...
-    } else {
-
-
-        document.getElementById("callAcceptButton").onclick = function () {
-            acceptTheCall(true);
-        };
-        document.getElementById("callRejectButton").onclick = function () {
-            acceptTheCall(false);
+        else {
+            document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
+        }
+        var acceptTheCall = function (wasAccepted) {
+            document.getElementById('acceptCallBox').style.display = "none";
+            if (wasAccepted && easyrtc.getConnectionCount() > 0) {
+                easyrtc.hangupAll();
+            }
+            callback(wasAccepted);
         };
 
-    }
+        // Chu-Chi: check if the within 5 second and at least 10 picture has distance < 70
+        //          if yes, call acept the call directory
+        //          else execute the following ...
+
+        isTheCallerInTheGroup = false;
+
+
+        // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
+        // easyrtcid is the other party ...
+        // i need to check its confidence level before letting it pass ...
+        //while(true){
+
+        // data.append("data" , "e2c_" + replaceAll(easyrtcid, "_", "UNDRESCORE") + "_," + "c2c_" + getCookie() + "_");// use e2c to find the other party's cookie id and, then, use c2c to check whether true or false
+        // var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+        // xhr.open( 'post', '/connect');
+        // xhr.send(data);
+
+        //
+        //alert("CONNECT " + getCookie() + " e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
+        //
+        //alert("CONNECT " + xhr.responseText);
+        //
+        // if(xhr.responseText == "true"){
+        //     isTheCallerInTheGroup = true;
+        // }
+
+        //}
+
+
+        sleep(10000);// Note: This is ok ...
+
+        // var request = new XMLHttpRequest();
+        // request.open('POST', '/connect/', false);  // `false` makes the request synchronous
+        // request.send(null);
+        //
+        // if (request.status === 200) {
+        //     alert(request.responseText);
+        // } else {
+        //     alert(request.responseText + "!!!");
+        // }
+
+        // while(true){
+        //
+        //     data.append("data" , "e2c_" + replaceAll(easyrtcid, "_", "UNDRESCORE") + "_," + "c2c_" + getCookie() + "_");// use e2c to find the other party's cookie id and, then, use c2c to check whether true or false
+        //     var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+        //     xhr.open( 'post', '/connect');
+        //     xhr.send(data);
+        //
+        //     alert(request.responseText);
+        // }
+
+
+        if (isTheCallerInTheGroup) {
+            acceptTheCall(true);// if it pass the face recognition test ...
+        } else {
+
+
+            document.getElementById("callAcceptButton").onclick = function () {
+                acceptTheCall(true);
+            };
+            document.getElementById("callRejectButton").onclick = function () {
+                acceptTheCall(false);
+            };
+
+        }
+    }, 10000)
 } );
