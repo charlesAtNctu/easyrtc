@@ -152,12 +152,16 @@ function performCall(otherEasyrtcid) {
 
 
 
+    alert("before");
+
+    setTimeout(function() {
+
+        isBeginToSend = false;
 
 
+        easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 
-
-
-    easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
+    }, 10000);
 }
 
 function replaceAll(str, find, replace) {
@@ -227,11 +231,11 @@ easyrtc.setOnStreamClosed( function (easyrtcid) {
 
 easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
-    alert("before");
-
-    setTimeout(function() {
-
-        isBeginToSend = false;
+    // alert("before");
+    //
+    // setTimeout(function() {
+    //
+    //     isBeginToSend = false;
 
 
 
@@ -254,8 +258,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          if yes, call acept the call directory
         //          else execute the following ...
 
-        alert(easyrtcid);
-        isTheCallerInTheGroup = true;
+        //alert(easyrtcid);
+        isTheCallerInTheGroup = false;
 
 
         // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
@@ -318,5 +322,5 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
             };
 
         }
-    }, 10000)
+    //}, 10000)
 } );
