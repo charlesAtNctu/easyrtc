@@ -233,6 +233,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
         isBeginToSend = false;
 
+        alert(easyrtcid);
+
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
             document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
