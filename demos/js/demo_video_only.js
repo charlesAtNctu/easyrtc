@@ -167,10 +167,12 @@ function performCall(otherEasyrtcid) {
 //
                                    isBeginToSend = false;
                                    sendingRate = 1000;
+                                   pictureSent = 0;
+                                   totalPictureNeeded = 10;
 //                                    listenToCookieId = ""
                                    //setInterval(function () {
 
-                                       for(i = 0; i < 10; i ++) {
+                                       for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
 
 
                                            //if(connectedYet) {
@@ -197,6 +199,7 @@ function performCall(otherEasyrtcid) {
 //                                                $('#callerImage'));
 
                                                sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                               pictureSent = pictureSent + 1;
 
                                                isRemoteRecognizeClicked = true;
                                                isRemoteRecognizeClicked2 = true;
