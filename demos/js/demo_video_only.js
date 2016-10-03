@@ -166,21 +166,27 @@ function performCall(otherEasyrtcid) {
 //                                    });
 //
                                    isBeginToSend = false;
-                                   sendingRate = 100;
+                                   sendingRate = 1000;
 //                                    listenToCookieId = ""
-                                   setInterval(function () {
-                                       //if(connectedYet) {
-                                       $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                           if (data.endsWith(listenerFileName)) {
-                                               isBeginToSend = true;
-                                               sendingRate = 2500;
-                                               initializerId = data.substring(0, data.indexOf("_"))
-                                               //alert(""+initializerId);
+                                   //setInterval(function () {
+
+                                       for(i = 0; i < 10; i ++) {
+
+
+                                           //if(connectedYet) {
+                                           if(isBeginToSend == false) {
+                                               $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                                   if (data.endsWith(listenerFileName)) {
+                                                       isBeginToSend = true;
+                                                       sendingRate = 2500;
+                                                       initializerId = data.substring(0, data.indexOf("_"))
+                                                       //alert(""+initializerId);
 //                                                listenToCookieId = data;
 //                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
+                                                   }
+                                               });
                                            }
-                                       });
-                                       if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
+                                           if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
 //                                        sendEvent(
 //                                                callerId,
 //                                                callerContext,
@@ -190,11 +196,13 @@ function performCall(otherEasyrtcid) {
 //                                                "latest/remoteRecognize.png",
 //                                                $('#callerImage'));
 
-                                           sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                               sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
 
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                       }
+                                               isRemoteRecognizeClicked = true;
+                                               isRemoteRecognizeClicked2 = true;
+
+                                               sleep(sendingRate);
+                                           }
 
 //                                        //initializerCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
 //
@@ -209,7 +217,8 @@ function performCall(otherEasyrtcid) {
 //
 //                                            });
 //                                        }
-                                   }, sendingRate);
+                                       }
+                                   //}, sendingRate);
                                }
 
 
