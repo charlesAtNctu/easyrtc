@@ -206,8 +206,11 @@ function performCall(otherEasyrtcid) {
 //                                                "latest/remoteRecognize.png",
 //                                                $('#callerImage'));
 
+                                               
                                                sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                               alert("begin sending 2 ... ")
                                                pictureSent = pictureSent + 1;
+                                               alert("begin sending 3 ... ")
                                                alert("number of pictures being sent2:   " + pictureSent);
 
                                                isRemoteRecognizeClicked = true;
