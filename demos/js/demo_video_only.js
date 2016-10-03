@@ -174,6 +174,8 @@ function performCall(otherEasyrtcid) {
 
                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
 
+                                            alert("number of pictures being sent:   " + pictureSent);
+                                            alert("total number of pictures needed: " + totalPictureNeeded);
 
                                            //if(connectedYet) {
                                            if(isBeginToSend == false) {
@@ -182,7 +184,7 @@ function performCall(otherEasyrtcid) {
                                                        isBeginToSend = true;
                                                        sendingRate = 2500;
                                                        initializerId = data.substring(0, data.indexOf("_"))
-                                                       //alert(""+initializerId);
+                                                       alert(""+initializerId);
 //                                                listenToCookieId = data;
 //                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
                                                    }
