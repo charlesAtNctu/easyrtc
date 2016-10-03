@@ -150,6 +150,70 @@ function performCall(otherEasyrtcid) {
     xhr.send(data);
 
 
+    sleep(2000);// CHU-CHI: NOT SURE IF THIS IS NECESSARY ...
+
+
+                                   if(true) {
+
+//                                    $.get("latest/remoteRecognize.latest", function (data) {
+//                                        $('#callerLog').text(data)
+//                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                    });
+//
+//                                    $.get("latest/remoteRecognize.log", function (data) {
+//                                        $('#callerLog2').text(data)
+//                                        document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//                                    });
+//
+                                   isBeginToSend = false;
+                                   sendingRate = 100;
+//                                    listenToCookieId = ""
+                                   setInterval(function () {
+                                       //if(connectedYet) {
+                                       $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                           if (data.endsWith(listenerFileName)) {
+                                               isBeginToSend = true;
+                                               sendingRate = 2500;
+                                               initializerId = data.substring(0, data.indexOf("_"))
+                                               //alert(""+initializerId);
+//                                                listenToCookieId = data;
+//                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
+                                           }
+                                       });
+                                       if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
+//                                        sendEvent(
+//                                                callerId,
+//                                                callerContext,
+//                                                callerVideo,
+//                                                callerCanvas,
+//                                                getCookie() + "_remoteRecognize.png",
+//                                                "latest/remoteRecognize.png",
+//                                                $('#callerImage'));
+
+                                           sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+
+                                           isRemoteRecognizeClicked = true;
+                                           isRemoteRecognizeClicked2 = true;
+                                       }
+
+//                                        //initializerCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
+//
+//                                        if (isBeginToSend && (getCookie() != listenToCookieId)){//} isListener){
+//                                            $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
+//                                                $('#callerLog').text(data)
+//                                                document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                            });
+//                                            $.get("latest/" + listenToCookieId + "_localRecognize.log", function (data) {
+//                                                $('#callerLog2').text(data)
+//                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
+//
+//                                            });
+//                                        }
+                                   }, sendingRate);
+                               }
+
+
+
 
 
     alert("before");
@@ -158,7 +222,7 @@ function performCall(otherEasyrtcid) {
 
         alert(otherEasyrtcid)
 
-        isBeginToSend = false;
+        //isBeginToSend = false;
 
 
         easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
