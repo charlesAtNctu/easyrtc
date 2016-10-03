@@ -150,7 +150,7 @@ function performCall(otherEasyrtcid) {
     xhr.send(data);
 
 
-    sleep(2000);// CHU-CHI: NOT SURE IF THIS IS NECESSARY ...
+    //sleep(2000);// CHU-CHI: NOT SURE IF THIS IS NECESSARY ...
 
 
                                    if(true) {
@@ -230,7 +230,8 @@ function performCall(otherEasyrtcid) {
 
 
 
-    alert("before");
+
+    alert("before asyncrhronous ...");
 
     setTimeout(function() {
 
