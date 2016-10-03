@@ -190,7 +190,13 @@ function performCall(otherEasyrtcid) {
                                                    }
                                                });
                                            }
+
+                                           alert("after checking mapping")
+
                                            if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
+
+                                               alert("begin sending ... ")
+
 //                                        sendEvent(
 //                                                callerId,
 //                                                callerContext,
@@ -202,6 +208,7 @@ function performCall(otherEasyrtcid) {
 
                                                sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
                                                pictureSent = pictureSent + 1;
+                                               alert("number of pictures being sent2:   " + pictureSent);
 
                                                isRemoteRecognizeClicked = true;
                                                isRemoteRecognizeClicked2 = true;
