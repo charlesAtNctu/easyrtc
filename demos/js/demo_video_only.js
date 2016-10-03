@@ -175,7 +175,7 @@ function performCall(otherEasyrtcid) {
                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
 
                                             alert("number of pictures being sent:   " + pictureSent);
-                                            alert("total number of pictures needed: " + totalPictureNeeded);
+                                            //alert("total number of pictures needed: " + totalPictureNeeded);
 
                                            //if(connectedYet) {
                                            if(isBeginToSend == false) {
@@ -245,7 +245,7 @@ function performCall(otherEasyrtcid) {
 
     setTimeout(function() {
 
-        alert(otherEasyrtcid)
+        //alert(otherEasyrtcid)
 
         //isBeginToSend = false;
 
