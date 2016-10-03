@@ -184,18 +184,18 @@ function performCall(otherEasyrtcid) {
                                                        isBeginToSend = true;
                                                        sendingRate = 2500;
                                                        initializerId = data.substring(0, data.indexOf("_"))
-                                                       alert(""+initializerId);
+                                                       //alert(""+initializerId);
 //                                                listenToCookieId = data;
 //                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
                                                    }
                                                });
                                            }
 
-                                           alert("after checking mapping")
+                                           //alert("after checking mapping")
 
                                            if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
 
-                                               alert("begin sending ... ")
+                                               //alert("begin sending ... ")
 
 //                                        sendEvent(
 //                                                callerId,
@@ -208,10 +208,10 @@ function performCall(otherEasyrtcid) {
 
                                                
                                                //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
-                                               alert("begin sending 2 ... ")
+                                               //alert("begin sending 2 ... ")
                                                pictureSent = pictureSent + 1;
-                                               alert("begin sending 3 ... ")
-                                               alert("number of pictures being sent2:   " + pictureSent);
+                                               //alert("begin sending 3 ... ")
+                                               //alert("number of pictures being sent2:   " + pictureSent);
 
                                                isRemoteRecognizeClicked = true;
                                                isRemoteRecognizeClicked2 = true;
