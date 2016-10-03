@@ -207,7 +207,7 @@ function performCall(otherEasyrtcid) {
 //                                                $('#callerImage'));
 
                                                
-                                               sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                               //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
                                                alert("begin sending 2 ... ")
                                                pictureSent = pictureSent + 1;
                                                alert("begin sending 3 ... ")
