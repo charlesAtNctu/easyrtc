@@ -146,10 +146,13 @@ function sendEvent(id, context, video, canvas, filename, resultingfilepath, imag
 }
 
 
-function testingFunctionInvocation(){
-    alert("testing ....");
-
-    // TODO: context.drawImage(video, 0, 0, 320, 240);
+function testingFunctionInvocation(id, context, video, canvas, filename, resultingfilepath) {// id never used here ...
+    alert("testing id:        " + id);
+    alert("testing context:   " + context);
+    alert("testing video:     " + video);
+    alert("testing canvas:    " + canvas);
+    alert("testing filename:  " + filename);
+    alert("resultingfilepath: " + resultingfilepath);
 }
 
 
@@ -264,7 +267,7 @@ function performCall(otherEasyrtcid) {
 
                                                
                                                //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
-                                               testingFunctionInvocation();
+                                               testingFunctionInvocation(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png")
                                                //alert("begin sending 2 ... ")
                                                pictureSent = pictureSent + 1;
                                                //alert("begin sending 3 ... ")
