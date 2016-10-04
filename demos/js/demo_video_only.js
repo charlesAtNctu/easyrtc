@@ -97,9 +97,11 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 }
 
 function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
+    alert("begin sending -2 ... ")
+    
     context.drawImage(video, 0, 0, 320, 240);
 
-    alert("begin sending -2 ... ")
+
 
 
     var image = convertCanvasToImage(canvas);
