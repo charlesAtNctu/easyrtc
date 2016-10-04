@@ -96,6 +96,52 @@ function convertListToButtons (roomName, occupants, isPrimary) {
     }
 }
 
+function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
+    context.drawImage(video, 0, 0, 320, 240);
+
+    alert("begin sending -2 ... ")
+
+
+    var image = convertCanvasToImage(canvas);
+
+    var formData    = new FormData(),
+        xhttp       = new XMLHttpRequest(),
+        file        = dataURItoBlob(image.src)
+
+    formData.append('uploads[]', file, filename)
+
+    //image.parentElement.classList.remove('img-error')
+    //image.parentElement.classList.add('img-uploading')
+
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4) {
+            if(xhttp.status == 200) {
+                setTimeout(showSuccess.bind(this), 1500)
+
+                // Chu-Chi: below necessary ?
+
+                sDetect = new Image();
+                sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
+                sDetect.onload = function() {
+                    //console.info("resetting the source ... :)")
+
+                    d = new Date();
+                    imageElem.attr("src", sDetect.src + "?" + d.getTime());
+
+                    //canvas.width = canvas.width;
+                    //context.clearRect(0, 0, canvas.width, canvas.height);
+                    //context.drawImage(sDetect,0,0, 320, 240);
+                };
+
+            } else {
+                setTimeout(showError.bind(this), 1500)
+            }
+        }
+    }.bind(this);
+
+    xhttp.open('POST', '/upload');
+    xhttp.send(formData);
+}
 
 function performCall(otherEasyrtcid) {
     easyrtc.hangupAll();
