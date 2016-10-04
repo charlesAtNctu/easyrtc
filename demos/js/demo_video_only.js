@@ -148,6 +148,8 @@ function sendEvent(id, context, video, canvas, filename, resultingfilepath, imag
 
 function testingFunctionInvocation(){
     alert("testing ....");
+
+    // TODO: context.drawImage(video, 0, 0, 320, 240);
 }
 
 
