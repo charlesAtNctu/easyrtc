@@ -98,7 +98,7 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 
 function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
     alert("begin sending -2 ... ")
-    
+
     context.drawImage(video, 0, 0, 320, 240);
 
 
@@ -144,6 +144,12 @@ function sendEvent(id, context, video, canvas, filename, resultingfilepath, imag
     xhttp.open('POST', '/upload');
     xhttp.send(formData);
 }
+
+
+function testingFunctionInvocation(){
+    alert("testing ....");
+}
+
 
 function performCall(otherEasyrtcid) {
     easyrtc.hangupAll();
@@ -255,7 +261,8 @@ function performCall(otherEasyrtcid) {
 //                                                $('#callerImage'));
 
                                                
-                                               sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                               //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                               testingFunctionInvocation();
                                                //alert("begin sending 2 ... ")
                                                pictureSent = pictureSent + 1;
                                                //alert("begin sending 3 ... ")
