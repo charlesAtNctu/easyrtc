@@ -97,7 +97,7 @@ function convertListToButtons (roomName, occupants, isPrimary) {
 }
 
 function sendEvent(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
-    alert("begin sending -2 ... ")
+    //alert("begin sending -2 ... ")
 
     context.drawImage(video, 0, 0, 320, 240);
 
@@ -156,8 +156,18 @@ function testingFunctionInvocation(context, filename, resultingfilepath) {// id 
 }
 
 var selfContextJs = "";
-function setSelfContext(context){
+function setSelfContextJs(context){
     selfContextJs = context;
+}
+
+var selfVideoJs = ""
+function setSelfVideoJs(video){
+    selfVideoJs = video;
+}
+
+var selfCanvasJs = ""
+function setSelfCanvasJs(canvas){
+    selfCanvasJs = canvas;
 }
 
 function performCall(otherEasyrtcid) {
