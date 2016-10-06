@@ -257,25 +257,29 @@ function performCall(otherEasyrtcid) {
 //                                    listenToCookieId = ""
                                    //setInterval(function () {
 
+                                       sleep(3000);
+
+                                       if(isBeginToSend == false) {
+                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                               if (data.endsWith(listenerFileName)) {
+                                                   isBeginToSend = true;
+                                                   sendingRate = 2500;
+                                                   initializerId = data.substring(0, data.indexOf("_"))
+                                                   //alert(""+initializerId);
+//                                                listenToCookieId = data;
+//                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
+                                               }
+                                           });
+                                       }
+
                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
 
                                            //sleep(1000);// Note: After commenting the following line, thing hangs ...
-                                            alert("number of pictures being sent:   " + pictureSent);
+                                            //alert("number of pictures being sent:   " + pictureSent);
                                             //alert("total number of pictures needed: " + totalPictureNeeded);
 
                                            //if(connectedYet) {
-                                           if(isBeginToSend == false) {
-                                               $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                                   if (data.endsWith(listenerFileName)) {
-                                                       isBeginToSend = true;
-                                                       sendingRate = 2500;
-                                                       initializerId = data.substring(0, data.indexOf("_"))
-                                                       //alert(""+initializerId);
-//                                                listenToCookieId = data;
-//                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
-                                                   }
-                                               });
-                                           }
+
 
                                            //alert("after checking mapping")
 
