@@ -146,15 +146,19 @@ function sendEvent(id, context, video, canvas, filename, resultingfilepath, imag
 }
 
 
-function testingFunctionInvocation(filename, resultingfilepath) {// id never used here ...
-    // alert("testing id:        " + id);
-    // alert("testing context:   " + context);
+function testingFunctionInvocation(context, filename, resultingfilepath) {// id never used here ...
+    //alert("testing id:        " + id);
+    alert("testing context:   " + context);
     // alert("testing video:     " + video);
     // alert("testing canvas:    " + canvas);
     alert("testing filename:  " + filename);
     alert("resultingfilepath: " + resultingfilepath);
 }
 
+var selfContextJs = "";
+function setSelfContext(context){
+    selfContextJs = context;
+}
 
 function performCall(otherEasyrtcid) {
     easyrtc.hangupAll();
@@ -267,7 +271,7 @@ function performCall(otherEasyrtcid) {
 
                                                
                                                //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
-                                               testingFunctionInvocation(getCookie() + "_localRecognize.png", "latest/localRecognize.png")
+                                               testingFunctionInvocation(selfContextJs,                            getCookie() + "_localRecognize.png", "latest/localRecognize.png")
                                                //alert("begin sending 2 ... ")
                                                pictureSent = pictureSent + 1;
                                                //alert("begin sending 3 ... ")
