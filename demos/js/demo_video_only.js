@@ -147,13 +147,13 @@ function sendEvent(id, context, video, canvas, filename, resultingfilepath, imag
 
 
 function testingFunctionInvocation(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
-    alert("testing id:                " + id);
-    alert("testing context:           " + context);
-    alert("testing video:             " + video);
-    alert("testing canvas:            " + canvas);
-    alert("testing filename:          " + filename);
-    alert("testing resultingfilepath: " + resultingfilepath);
-    alert("testing imageElem:         " + imageElem);
+    // alert("testing id:                " + id);
+    // alert("testing context:           " + context);
+    // alert("testing video:             " + video);
+    // alert("testing canvas:            " + canvas);
+    // alert("testing filename:          " + filename);
+    // alert("testing resultingfilepath: " + resultingfilepath);
+    // alert("testing imageElem:         " + imageElem);
 
 
 
