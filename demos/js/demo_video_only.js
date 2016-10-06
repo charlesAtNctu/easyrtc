@@ -259,7 +259,7 @@ function performCall(otherEasyrtcid) {
 
                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
 
-                                            alert("number of pictures being sent:   " + pictureSent);
+                                            //alert("number of pictures being sent:   " + pictureSent);
                                             //alert("total number of pictures needed: " + totalPictureNeeded);
 
                                            //if(connectedYet) {
