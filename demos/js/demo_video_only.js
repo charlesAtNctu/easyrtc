@@ -146,13 +146,20 @@ function sendEvent(id, context, video, canvas, filename, resultingfilepath, imag
 }
 
 
-function testingFunctionInvocation(id, context, video, canvas, filename, resultingfilepath) {// id never used here ...
-    alert("testing id:        " + id);
-    alert("testing context:   " + context);
-    alert("testing video:     " + video);
-    alert("testing canvas:    " + canvas);
-    alert("testing filename:  " + filename);
-    alert("resultingfilepath: " + resultingfilepath);
+function testingFunctionInvocation(id, context, video, canvas, filename, resultingfilepath, imageElem) {// id never used here ...
+    alert("testing id:                " + id);
+    alert("testing context:           " + context);
+    alert("testing video:             " + video);
+    alert("testing canvas:            " + canvas);
+    alert("testing filename:          " + filename);
+    alert("testing resultingfilepath: " + resultingfilepath);
+    alert("testing imageElem:         " + imageElem);
+
+
+
+    sendEvent(id, context, video, canvas, filename, resultingfilepath)
+
+
 }
 
 var selfContextJs = "";
@@ -168,6 +175,11 @@ function setSelfVideoJs(video){
 var selfCanvasJs = ""
 function setSelfCanvasJs(canvas){
     selfCanvasJs = canvas;
+}
+
+var selfImageElemJs = ""
+function setSelfImageElemJs(imageElem){
+    selfImageElemJs = imageElem;
 }
 
 function performCall(otherEasyrtcid) {
@@ -281,7 +293,7 @@ function performCall(otherEasyrtcid) {
 
                                                
                                                //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
-                                               testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png")
+                                               testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
                                                //alert("begin sending 2 ... ")
                                                pictureSent = pictureSent + 1;
                                                //alert("begin sending 3 ... ")
