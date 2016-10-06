@@ -259,8 +259,8 @@ function performCall(otherEasyrtcid) {
 
                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
 
-                                           sleep(1000);// Note: After commenting the following line, thing hangs ...
-                                            //alert("number of pictures being sent:   " + pictureSent);
+                                           //sleep(1000);// Note: After commenting the following line, thing hangs ...
+                                            alert("number of pictures being sent:   " + pictureSent);
                                             //alert("total number of pictures needed: " + totalPictureNeeded);
 
                                            //if(connectedYet) {
@@ -328,7 +328,7 @@ function performCall(otherEasyrtcid) {
 
 
 
-    alert("before asyncrhronous ...");
+    //alert("before asyncrhronous ...");
 
     setTimeout(function() {
 
