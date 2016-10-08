@@ -340,11 +340,11 @@ function performCall(otherEasyrtcid) {
 
 
 
-                                       alert("Begin Face Recognition ...");
+
 
                                        // works
-                                       //if(isBeginToSend == false) {
-                                       //    sleep(sendingRate);
+                                       if(isBeginToSend == false) {
+                                          sleep(sendingRate);
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                                if (data.endsWith(listenerFileName)) {
 
@@ -355,7 +355,9 @@ function performCall(otherEasyrtcid) {
                                                    initializerId = data.substring(0, data.indexOf("_"))
                                                }
                                            });
-                                       //}
+                                       }
+
+                                       alert("Begin Face Recognition ...");
 
                                        // // works
                                        // if(isBeginToSend == false) {
