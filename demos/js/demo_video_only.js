@@ -397,37 +397,37 @@ function performCall(otherEasyrtcid) {
                                            sleep(sendingRate)
                                        }
 
-                                       // 6
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
-
-                                       // 7
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
-
-                                       // 8
-                                       if (isBeginToSend && isInitializer) {
-                                           sleep(sendingRate)
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                       }
-
-                                       // 9
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
+                                       // // 6
+                                       // if (isBeginToSend && isInitializer) {
+                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                       //     isRemoteRecognizeClicked = true;
+                                       //     isRemoteRecognizeClicked2 = true;
+                                       //     sleep(sendingRate)
+                                       // }
+                                       //
+                                       // // 7
+                                       // if (isBeginToSend && isInitializer) {
+                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                       //     isRemoteRecognizeClicked = true;
+                                       //     isRemoteRecognizeClicked2 = true;
+                                       //     sleep(sendingRate)
+                                       // }
+                                       //
+                                       // // 8
+                                       // if (isBeginToSend && isInitializer) {
+                                       //     sleep(sendingRate)
+                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                       //     isRemoteRecognizeClicked = true;
+                                       //     isRemoteRecognizeClicked2 = true;
+                                       // }
+                                       //
+                                       // // 9
+                                       // if (isBeginToSend && isInitializer) {
+                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                       //     isRemoteRecognizeClicked = true;
+                                       //     isRemoteRecognizeClicked2 = true;
+                                       //     sleep(sendingRate)
+                                       // }
 
                                        // 10
                                        if (isBeginToSend && isInitializer) {
