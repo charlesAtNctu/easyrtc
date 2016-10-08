@@ -252,391 +252,103 @@ function performCall(otherEasyrtcid) {
 //
                                    isBeginToSend = false;
                                    sendingRate = 1000;
-//                                    pictureSent = 0;
-//                                    totalPictureNeeded = 10;
-// //                                    listenToCookieId = ""
-//                                    //setInterval(function () {
+                                   pictureSent = 0;
+                                   totalPictureNeeded = 10;
+//                                    listenToCookieId = ""
+                                   //setInterval(function () {
+
+
+                                    alert("send yet ?" + isBeginToSend);
+
+
+
+
+                                       for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
+
+                                           //sleep(1000);// Note: After commenting the following line, thing hangs ...
+                                            alert("number of pictures being sent:   " + pictureSent);
+                                            //alert("total number of pictures needed: " + totalPictureNeeded);
+
+                                           //if(connectedYet) {
+
+                                           if(isBeginToSend == false) {
+                                               $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                                   if (data.endsWith(listenerFileName)) {
+                                                       isBeginToSend = true;
+                                                       sendingRate = 2500;
+                                                       initializerId = data.substring(0, data.indexOf("_"))
+                                                       //alert(""+initializerId);
+//                                                listenToCookieId = data;
+//                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
+                                                   }
+                                               });
+                                           }
+
+                                           //alert("after checking mapping")
+
+                                           if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
+
+                                               //alert("begin sending ... ")
+
+//                                        sendEvent(
+//                                                callerId,
+//                                                callerContext,
+//                                                callerVideo,
+//                                                callerCanvas,
+//                                                getCookie() + "_remoteRecognize.png",
+//                                                "latest/remoteRecognize.png",
+//                                                $('#callerImage'));
+
+
+                                               //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
+                                               testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                               //alert("begin sending 2 ... ")
+                                               pictureSent = pictureSent + 1;
+                                               //alert("begin sending 3 ... ")
+                                               //alert("number of pictures being sent2:   " + pictureSent);
+
+                                               isRemoteRecognizeClicked = true;
+                                               isRemoteRecognizeClicked2 = true;
+
+                                               sleep(sendingRate);
+                                           }
+
+//                                        //initializerCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
 //
+//                                        if (isBeginToSend && (getCookie() != listenToCookieId)){//} isListener){
+//                                            $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
+//                                                $('#callerLog').text(data)
+//                                                document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                            });
+//                                            $.get("latest/" + listenToCookieId + "_localRecognize.log", function (data) {
+//                                                $('#callerLog2').text(data)
+//                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
 //
-//
-//
-//
-//
-//
-//                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
-//
-//                                            //sleep(1000);// Note: After commenting the following line, thing hangs ...
-//                                             alert("number of pictures being sent:   " + pictureSent);
-//                                             //alert("total number of pictures needed: " + totalPictureNeeded);
-//
-//                                            //if(connectedYet) {
-//
-//                                            if(isBeginToSend == false) {
-//                                                $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-//                                                    if (data.endsWith(listenerFileName)) {
-//                                                        isBeginToSend = true;
-//                                                        sendingRate = 2500;
-//                                                        initializerId = data.substring(0, data.indexOf("_"))
-//                                                        //alert(""+initializerId);
-// //                                                listenToCookieId = data;
-// //                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
-//                                                    }
-//                                                });
-//                                            }
-//
-//                                            //alert("after checking mapping")
-//
-//                                            if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
-//
-//                                                //alert("begin sending ... ")
-//
-// //                                        sendEvent(
-// //                                                callerId,
-// //                                                callerContext,
-// //                                                callerVideo,
-// //                                                callerCanvas,
-// //                                                getCookie() + "_remoteRecognize.png",
-// //                                                "latest/remoteRecognize.png",
-// //                                                $('#callerImage'));
-//
-//
-//                                                //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
-//                                                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-//                                                //alert("begin sending 2 ... ")
-//                                                pictureSent = pictureSent + 1;
-//                                                //alert("begin sending 3 ... ")
-//                                                //alert("number of pictures being sent2:   " + pictureSent);
-//
-//                                                isRemoteRecognizeClicked = true;
-//                                                isRemoteRecognizeClicked2 = true;
-//
-//                                                sleep(sendingRate);
-//                                            }
-//
-// //                                        //initializerCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
-// //
-// //                                        if (isBeginToSend && (getCookie() != listenToCookieId)){//} isListener){
-// //                                            $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
-// //                                                $('#callerLog').text(data)
-// //                                                document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-// //                                            });
-// //                                            $.get("latest/" + listenToCookieId + "_localRecognize.log", function (data) {
-// //                                                $('#callerLog2').text(data)
-// //                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-// //
-// //                                            });
-// //                                        }
+//                                            });
 //                                        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
                                        }
 
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
 
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
 
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
 
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
 
-                                       // works ?
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
 
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
 
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works ?
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works ?
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       // works ?
-                                       if(isBeginToSend == false) {
-                                           sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       alert("sent yet ?" + isBeginToSend);
-
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                       }
+                                       // if(isBeginToSend == false) {
+                                       //     sleep(sendingRate);
+                                       //     $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                       //         if (data.endsWith(listenerFileName)) {
+                                       //             isBeginToSend = true;
+                                       //             sendingRate = 2500;
+                                       //             initializerId = data.substring(0, data.indexOf("_"))
+                                       //         }
+                                       //     });
+                                       // }
+                                       // if (isBeginToSend && isInitializer) {
+                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                       //     isRemoteRecognizeClicked = true;
+                                       //     isRemoteRecognizeClicked2 = true;
+                                       // }
 
 
 
