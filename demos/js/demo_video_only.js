@@ -355,7 +355,7 @@ function performCall(otherEasyrtcid) {
                                            });
                                        }
 
-                                       alert("Begin Face Recognition ...");
+                                       alert("Begin Face Recognition ...");// Note: MUST HAVE !!!
 
                                        // 1
                                        if (isBeginToSend && isInitializer) {
