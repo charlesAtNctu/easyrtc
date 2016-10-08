@@ -266,7 +266,7 @@ function performCall(otherEasyrtcid) {
                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
 
                                            //sleep(1000);// Note: After commenting the following line, thing hangs ...
-                                            alert("number of pictures being sent:   " + pictureSent);
+                                            //alert("number of pictures being sent:   " + pictureSent);
                                             //alert("total number of pictures needed: " + totalPictureNeeded);
 
                                            //if(connectedYet) {
