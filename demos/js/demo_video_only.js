@@ -342,7 +342,7 @@ function performCall(otherEasyrtcid) {
 
 
 
-
+                                       // works
                                        sleep(sendingRate);
                                        if(isBeginToSend == false) {
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
@@ -359,7 +359,22 @@ function performCall(otherEasyrtcid) {
                                            isRemoteRecognizeClicked2 = true;
                                        }
 
-
+                                       // works ?
+                                       sleep(sendingRate);
+                                       if(isBeginToSend == false) {
+                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                               if (data.endsWith(listenerFileName)) {
+                                                   isBeginToSend = true;
+                                                   sendingRate = 2500;
+                                                   initializerId = data.substring(0, data.indexOf("_"))
+                                               }
+                                           });
+                                       }
+                                       if (isBeginToSend && isInitializer) {
+                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                           isRemoteRecognizeClicked = true;
+                                           isRemoteRecognizeClicked2 = true;
+                                       }
 
 
 
