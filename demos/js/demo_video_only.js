@@ -343,8 +343,8 @@ function performCall(otherEasyrtcid) {
 
 
                                        // works
-                                       sleep(sendingRate);
                                        if(isBeginToSend == false) {
+                                           sleep(sendingRate);
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                                if (data.endsWith(listenerFileName)) {
                                                    isBeginToSend = true;
@@ -355,8 +355,32 @@ function performCall(otherEasyrtcid) {
                                        }
 
                                        // works
-                                       sleep(sendingRate);
                                        if(isBeginToSend == false) {
+                                           sleep(sendingRate);
+                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                               if (data.endsWith(listenerFileName)) {
+                                                   isBeginToSend = true;
+                                                   sendingRate = 2500;
+                                                   initializerId = data.substring(0, data.indexOf("_"))
+                                               }
+                                           });
+                                       }
+
+                                       // works
+                                       if(isBeginToSend == false) {
+                                           sleep(sendingRate);
+                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                               if (data.endsWith(listenerFileName)) {
+                                                   isBeginToSend = true;
+                                                   sendingRate = 2500;
+                                                   initializerId = data.substring(0, data.indexOf("_"))
+                                               }
+                                           });
+                                       }
+
+                                       // works
+                                       if(isBeginToSend == false) {
+                                           sleep(sendingRate);
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                                if (data.endsWith(listenerFileName)) {
                                                    isBeginToSend = true;
@@ -367,8 +391,8 @@ function performCall(otherEasyrtcid) {
                                        }
 
                                        // works 
-                                       sleep(sendingRate);
                                        if(isBeginToSend == false) {
+                                           sleep(sendingRate);
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                                if (data.endsWith(listenerFileName)) {
                                                    isBeginToSend = true;
@@ -379,8 +403,8 @@ function performCall(otherEasyrtcid) {
                                        }
 
                                        // works ?
-                                       sleep(sendingRate);
                                        if(isBeginToSend == false) {
+                                           sleep(sendingRate);
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                                if (data.endsWith(listenerFileName)) {
                                                    isBeginToSend = true;
