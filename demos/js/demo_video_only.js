@@ -347,6 +347,9 @@ function performCall(otherEasyrtcid) {
                                        //    sleep(sendingRate);
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
                                                if (data.endsWith(listenerFileName)) {
+
+                                                   alert("" + data);
+
                                                    isBeginToSend = true;
                                                    sendingRate = 2500;
                                                    initializerId = data.substring(0, data.indexOf("_"))
@@ -631,6 +634,9 @@ function performCall(otherEasyrtcid) {
                                        // }
 
                                        if (isBeginToSend && isInitializer) {
+
+                                           alert("sending ...");
+
                                            testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
                                            isRemoteRecognizeClicked = true;
                                            isRemoteRecognizeClicked2 = true;
