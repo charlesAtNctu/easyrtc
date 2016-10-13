@@ -441,21 +441,21 @@ function performCall(otherEasyrtcid) {
 
 
     $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
-        var lines = logData.split("\n")
-        if (lines.length > 0) {
-            var minDistance = "1001";
-            var minIndex = -1;
-            var i;
-            for (i = 0; i < lines.length; i++) {
-                var distance = lines[i].split(",")[2];
-                if (Number(distance) < Number(minDistance)) {
-                    minDistance = distance;
-                    minIndex = i;
-                }
-            }
-            alert(minDistance);
-            //var minDistanceN = Number(minDistance);
-        }
+        // var lines = logData.split("\n")
+        // if (lines.length > 0) {
+        //     var minDistance = "1001";
+        //     var minIndex = -1;
+        //     var i;
+        //     for (i = 0; i < lines.length; i++) {
+        //         var distance = lines[i].split(",")[2];
+        //         if (Number(distance) < Number(minDistance)) {
+        //             minDistance = distance;
+        //             minIndex = i;
+        //         }
+        //     }
+        //     alert(minDistance);
+        //     //var minDistanceN = Number(minDistance);
+        // }
     }
 
 
