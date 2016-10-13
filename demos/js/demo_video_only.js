@@ -459,7 +459,7 @@ function performCall(otherEasyrtcid) {
             if(Number(minDistance) < 100){
                 isPassed = true;
             }
-            //alert(""+isPassed);
+            alert(""+isPassed);
         }
     });
 
@@ -574,7 +574,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          else execute the following ...
 
         //alert(easyrtcid);
-        isTheCallerInTheGroup = isPassed;//false;
+        //isTheCallerInTheGroup = isPassed;//isPassed;//false;
 
 
         // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
@@ -622,7 +622,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         // }
 
 
-        if (isTheCallerInTheGroup) {
+        alert(""+isPassed);
+        if (isPassed){//isTheCallerInTheGroup) {
             acceptTheCall(true);// if it pass the face recognition test ...
         } else {
 
