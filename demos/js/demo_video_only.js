@@ -182,6 +182,7 @@ function setSelfImageElemJs(imageElem){
     selfImageElemJs = imageElem;
 }
 
+var isPassed = false;
 function performCall(otherEasyrtcid) {
     easyrtc.hangupAll();
 
@@ -453,8 +454,12 @@ function performCall(otherEasyrtcid) {
                     minIndex = i;
                 }
             }
-            alert(minDistance);
+            //alert(minDistance);
             //var minDistanceN = Number(minDistance);
+            if(Number(minDistance) < 100){
+                isPassed = true;
+            }
+            alert(""+isPassed);
         }
     });
 
