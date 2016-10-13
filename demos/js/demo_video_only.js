@@ -459,7 +459,7 @@ function performCall(otherEasyrtcid) {
             if(Number(minDistance) < 100){
                 isPassed = true;
             }
-            alert(""+isPassed);
+            //alert(""+isPassed);
         }
     });
 
@@ -574,7 +574,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          else execute the following ...
 
         //alert(easyrtcid);
-        isTheCallerInTheGroup = false;
+        isTheCallerInTheGroup = isPassed;//false;
 
 
         // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
