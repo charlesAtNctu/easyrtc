@@ -459,7 +459,7 @@ function performCall(otherEasyrtcid) {
             if(Number(minDistance) < 100){
                 isPassed = true;
             }
-            alert(""+isPassed);
+            alert(""+isPassed+"\t"+minDistance);
         }
     });
 
