@@ -343,7 +343,7 @@ function performCall(otherEasyrtcid) {
 
 
                                        // works
-                                       // sleep(2000);// Note: This one seems not necessary ...
+                                       sleep(2000);// Note: This one seems not necessary ...
                                        if(isBeginToSend == false) {
                                           sleep(sendingRate);
                                            $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
