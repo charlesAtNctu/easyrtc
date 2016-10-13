@@ -440,7 +440,9 @@ function performCall(otherEasyrtcid) {
                                }
 
 
-
+    $.get("latest/" + getCookie() + "_localRecognize.log", function (data) {
+        alert(data);
+    });
 
 
 
