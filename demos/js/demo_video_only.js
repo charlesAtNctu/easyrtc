@@ -456,7 +456,7 @@ function performCall(otherEasyrtcid) {
             alert(minDistance);
             //var minDistanceN = Number(minDistance);
         }
-    }
+    });
 
 
 
