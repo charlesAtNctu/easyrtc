@@ -66,11 +66,12 @@ httpApp.post('/pass', function(req, res)
     var form = new formidable.IncomingForm().parse(req)
         .on('file', function(name, file) {
             console.log('Got file:', name);
+            res.end('success');
         })
         .on('field', function(name, field) {
-
             console.log(' ============================================ Got a name:', name);
             console.log(' ============================================ Got a value:', field);
+            res.end('success');
         });
 });
 
