@@ -182,7 +182,7 @@ function setSelfImageElemJs(imageElem){
     selfImageElemJs = imageElem;
 }
 
-var isPassed = false;
+//var isPassed = false;
 function performCall(otherEasyrtcid) {
     easyrtc.hangupAll();
 
@@ -462,8 +462,8 @@ function performCall(otherEasyrtcid) {
 
             if(Number(minDistance) < 100){
                 alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
-                alert("1.                 : "+getCookie());// OK
-                alert("2. the other party : "+easyrtcIdentifier);// NOT OK
+                //alert("1.                 : "+getCookie());// OK
+                //alert("2. the other party : "+easyrtcIdentifier);// NOT OK (ALSO NOT COOKIE ID ...)
                 //alert("c2c_" + getCookie() + ".passed");
 
                 var data = new FormData();
@@ -476,7 +476,7 @@ function performCall(otherEasyrtcid) {
                 xhr.send(data);
 
 
-                isPassed = true;
+                //isPassed = true;
             } else  {
                 alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
             }
@@ -504,7 +504,7 @@ function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
 }
 
-var easyrtcIdentifier = "";
+//var easyrtcIdentifier = "";
 
 function loginSuccess(easyrtcid) 
 {
@@ -519,7 +519,7 @@ function loginSuccess(easyrtcid)
     // todo: remove all the existing ones that contains cookie id here !!! in latest folder ...
     // todo: remove all the existing ones that contains corresponding easyrtc id !!! in latest folder ...
 
-    easyrtcIdentifier = easyrtcid;
+    //easyrtcIdentifier = easyrtcid;
 
 
 
@@ -597,7 +597,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          else execute the following ...
 
         //alert(easyrtcid);
-        //isTheCallerInTheGroup = isPassed;//isPassed;//false;
+        isTheCallerInTheGroup = true;
 
 
         // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
@@ -645,8 +645,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         // }
 
 
-        alert(""+isPassed);
-        if (isPassed){//isTheCallerInTheGroup) {
+        //alert(""+isPassed);
+        if (isTheCallerInTheGroup) {
             acceptTheCall(true);// if it pass the face recognition test ...
         } else {
 
