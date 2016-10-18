@@ -461,11 +461,14 @@ function performCall(otherEasyrtcid) {
 
 
             if(Number(minDistance) < 100){
-                alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
+                //alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
+                alert(getCookie());
+                alert(easyrtcid);
+                alert("c2c_" + getCookie() + "_" + easyrtcid + ".mapping," + "c2c_" + easyrtcid + "_" + getCookie() + ".mapping");
 
                 var data = new FormData();
 
-                alert("c2c_" + getCookie() + "_" + easyrtcid + ".mapping," + "c2c_" + easyrtcid + "_" + getCookie() + ".mapping");
+
 
                 data.append("data", "c2c_" + getCookie() + "_" + easyrtcid + ".mapping," + "c2c_" + easyrtcid + "_" + getCookie() + ".mapping");
                 var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
