@@ -61,7 +61,7 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.log').pipe(fs.cr
 fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.latest').pipe(fs.createWriteStream(latestFolderAbsPath+'remoteRecognize.latest'));
 
 
-httpApp.post('/pass', function(req, res)
+httpApp.post('/passed', function(req, res)
 {
     var form = new formidable.IncomingForm().parse(req)
         .on('file', function(name, file) {
