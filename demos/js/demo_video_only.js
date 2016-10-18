@@ -457,6 +457,17 @@ function performCall(otherEasyrtcid) {
             //alert(minDistance);
             //var minDistanceN = Number(minDistance);
             if(Number(minDistance) < 100){
+
+
+                var data = new FormData();
+                data.append("data",
+                    "c2c_" + getCookie() + "_" + easyrtcid + ".mapping," +
+                    "c2c_" + easyrtcid + "_" + getCookie() + ".mapping");
+                var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+                xhr.open( 'post', '/pass');                   
+                xhr.send(data);
+
+
                 isPassed = true;
             }
             alert(""+isPassed+"\t"+minDistance);
