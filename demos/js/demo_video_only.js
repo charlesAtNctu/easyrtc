@@ -461,16 +461,16 @@ function performCall(otherEasyrtcid) {
 
 
             if(Number(minDistance) < 100){
-                //alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
-                alert("1. "+getCookie());
-                alert("2. "+easyrtcid);
-                alert("c2c_" + getCookie() + "_" + easyrtcid + ".mapping," + "c2c_" + easyrtcid + "_" + getCookie() + ".mapping");
+                alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
+                alert("1.                 : "+getCookie());// OK
+                alert("2. the other party : "+easyrtcIdentifier);// NOT OK
+                //alert("c2c_" + getCookie() + ".passed");
 
                 var data = new FormData();
 
 
 
-                data.append("data", "c2c_" + getCookie() + "_" + easyrtcid + ".mapping," + "c2c_" + easyrtcid + "_" + getCookie() + ".mapping");
+                data.append("data", "c2c_" + getCookie() + ".mapping");
                 var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
                 xhr.open( 'post', '/passed');
                 xhr.send(data);
@@ -504,6 +504,8 @@ function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
 }
 
+var easyrtcIdentifier = "";
+
 function loginSuccess(easyrtcid) 
 {
     disable("connectButton");
@@ -517,7 +519,7 @@ function loginSuccess(easyrtcid)
     // todo: remove all the existing ones that contains cookie id here !!! in latest folder ...
     // todo: remove all the existing ones that contains corresponding easyrtc id !!! in latest folder ...
 
-
+    easyrtcIdentifier = easyrtcid;
 
 
 
