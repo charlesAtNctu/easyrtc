@@ -456,6 +456,10 @@ function performCall(otherEasyrtcid) {
             }
             //alert(minDistance);
             //var minDistanceN = Number(minDistance);
+
+            alert("If "+minDistance+" < " + 100 + ", bypass the manual confirmation process. Otherwise, perform the manual confirmation process.");
+
+
             if(Number(minDistance) < 100){
 
 
@@ -470,7 +474,7 @@ function performCall(otherEasyrtcid) {
 
                 isPassed = true;
             }
-            alert(""+isPassed+"\t"+minDistance);
+
         }
     });
 
