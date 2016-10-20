@@ -613,7 +613,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
                         minIndex = i;
                     }
                 }
-                //alert(minDistance);
+                alert(minDistance);
                 //var minDistanceN = Number(minDistance);
 
 
