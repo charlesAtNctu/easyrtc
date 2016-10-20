@@ -356,7 +356,7 @@ function performCall(otherEasyrtcid) {
                                            });
                                        }
 
-                                       alert("FOR DEMO: Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
+                                       alert("DEMO PURPOSE: Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
 
                                        // 1
                                        if (isBeginToSend && isInitializer) {
@@ -597,7 +597,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          else execute the following ...
 
         //alert(easyrtcid);
-        isTheCallerInTheGroup = false;
+        //isTheCallerInTheGroup = false;
 
 
         $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
@@ -621,7 +621,9 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
                 if(Number(minDistance) < 100){
 
-                    isTheCallerInTheGroup = true;
+                    acceptTheCall(true);// if it pass the face recognition test ...
+
+                    //isTheCallerInTheGroup = true;
 
                     //alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
                     //alert("1.                 : "+getCookie());// OK
@@ -640,9 +642,17 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
                     //isPassed = true;
                 }
-                //else  {
-                //    alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
-                //}
+                else  {
+
+                    document.getElementById("callAcceptButton").onclick = function () {
+                        acceptTheCall(true);
+                    };
+                    document.getElementById("callRejectButton").onclick = function () {
+                        acceptTheCall(false);
+                    };
+
+                   //alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
+                }
 
             }
         });
@@ -693,21 +703,21 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         // }
 
 
-        //alert(""+isPassed);
-        if (isTheCallerInTheGroup) {
-            acceptTheCall(true);// if it pass the face recognition test ...
-        } else {
-
-
-
-
-            document.getElementById("callAcceptButton").onclick = function () {
-                acceptTheCall(true);
-            };
-            document.getElementById("callRejectButton").onclick = function () {
-                acceptTheCall(false);
-            };
-
-        }
+        // //alert(""+isPassed);
+        // if (isTheCallerInTheGroup) {
+        //     acceptTheCall(true);// if it pass the face recognition test ...
+        // } else {
+        //
+        //
+        //
+        //
+        //     document.getElementById("callAcceptButton").onclick = function () {
+        //         acceptTheCall(true);
+        //     };
+        //     document.getElementById("callRejectButton").onclick = function () {
+        //         acceptTheCall(false);
+        //     };
+        //
+        // }
     //}, 10000)
 } );
