@@ -356,7 +356,7 @@ function performCall(otherEasyrtcid) {
                                            });
                                        }
 
-                                       alert("Begin Face Recognition ...");// Note: MUST HAVE !!!
+                                       alert("FOR DEMO: Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
 
                                        // 1
                                        if (isBeginToSend && isInitializer) {
@@ -390,13 +390,13 @@ function performCall(otherEasyrtcid) {
                                            sleep(sendingRate)
                                        }
 
-                                       // 5
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
+                                       // // 5
+                                       // if (isBeginToSend && isInitializer) {
+                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                       //     isRemoteRecognizeClicked = true;
+                                       //     isRemoteRecognizeClicked2 = true;
+                                       //     sleep(sendingRate)
+                                       // }
 
                                        // // 6
                                        // if (isBeginToSend && isInitializer) {
@@ -597,7 +597,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          else execute the following ...
 
         //alert(easyrtcid);
-        isTheCallerInTheGroup = true;
+        isTheCallerInTheGroup = false;
 
 
         $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
@@ -620,7 +620,10 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
 
                 if(Number(minDistance) < 100){
-                    alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
+
+                    isTheCallerInTheGroup = true;
+
+                    //alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
                     //alert("1.                 : "+getCookie());// OK
                     //alert("2. the other party : "+easyrtcIdentifier);// NOT OK (ALSO NOT COOKIE ID ...)
                     //alert("c2c_" + getCookie() + ".passed");
@@ -636,9 +639,10 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
 
                     //isPassed = true;
-                } else  {
-                    alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
                 }
+                //else  {
+                //    alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
+                //}
 
             }
         });
