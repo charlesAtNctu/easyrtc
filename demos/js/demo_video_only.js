@@ -600,7 +600,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //isTheCallerInTheGroup = false;
 
 
-        $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
+        // $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
+        $.get("latest/20161012233550716_localRecognize.log", function (logData) {
             var lines = logData.split("\n")
             if (lines.length > 0) {
                 var minDistance = "1001";
