@@ -587,6 +587,23 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
     var minDistance = "1001";
     $.get("latest/20161012233550716_localRecognize.log", function (logData) {
+
+
+        document.getElementById('acceptCallBox').style.display = "block";
+        if (easyrtc.getConnectionCount() > 0) {
+            document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
+        }
+        else {
+            document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
+        }
+        var acceptTheCall = function (wasAccepted) {
+            document.getElementById('acceptCallBox').style.display = "none";
+            if (wasAccepted && easyrtc.getConnectionCount() > 0) {
+                easyrtc.hangupAll();
+            }
+            callback(wasAccepted);
+        };
+
         var lines = logData.split("\n")
         if (lines.length > 0) {
 
@@ -607,7 +624,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
             if(Number(minDistance) < 100){
 
-                //acceptTheCall(true);// if it pass the face recognition test ...
+                acceptTheCall(true);// if it pass the face recognition test ...
 
                 isTheCallerInTheGroup = true;
 
@@ -627,41 +644,49 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
 
                 //isPassed = true;
+
+
+
+
+
+
+
+
             }
-            // else  {
-            //
-            //     document.getElementById("callAcceptButton").onclick = function () {
-            //         acceptTheCall(true);
-            //     };
-            //     document.getElementById("callRejectButton").onclick = function () {
-            //         acceptTheCall(false);
-            //     };
-            //
-            //    //alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
-            // }
+            else  {
+
+                document.getElementById("callAcceptButton").onclick = function () {
+                    acceptTheCall(true);
+                };
+                document.getElementById("callRejectButton").onclick = function () {
+                    acceptTheCall(false);
+                };
+
+               //alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
+            }
 
         }
     });
-
-    alert("min score: " + minDistance);
-
-
-
-
-        document.getElementById('acceptCallBox').style.display = "block";
-        if (easyrtc.getConnectionCount() > 0) {
-            document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
-        }
-        else {
-            document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
-        }
-        var acceptTheCall = function (wasAccepted) {
-            document.getElementById('acceptCallBox').style.display = "none";
-            if (wasAccepted && easyrtc.getConnectionCount() > 0) {
-                easyrtc.hangupAll();
-            }
-            callback(wasAccepted);
-        };
+    //
+    // alert("min score: " + minDistance);
+    //
+    //
+    //
+    // //
+    //     document.getElementById('acceptCallBox').style.display = "block";
+    //     if (easyrtc.getConnectionCount() > 0) {
+    //         document.getElementById('acceptCallLabel').innerHTML = "Drop current call and accept new from " + easyrtc.idToName(easyrtcid) + " ?";
+    //     }
+    //     else {
+    //         document.getElementById('acceptCallLabel').innerHTML = "Accept incoming call from " + easyrtc.idToName(easyrtcid) + " ?";
+    //     }
+    //     var acceptTheCall = function (wasAccepted) {
+    //         document.getElementById('acceptCallBox').style.display = "none";
+    //         if (wasAccepted && easyrtc.getConnectionCount() > 0) {
+    //             easyrtc.hangupAll();
+    //         }
+    //         callback(wasAccepted);
+    //     };
 
         // Chu-Chi: check if the within 5 second and at least 10 picture has distance < 70
         //          if yes, call acept the call directory
@@ -716,20 +741,20 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
 
         // //alert(""+isPassed);
-        if (isTheCallerInTheGroup) {
-            acceptTheCall(true);// if it pass the face recognition test ...
-        } else {
-
-
-
-
-            document.getElementById("callAcceptButton").onclick = function () {
-                acceptTheCall(true);
-            };
-            document.getElementById("callRejectButton").onclick = function () {
-                acceptTheCall(false);
-            };
-
-        }
+        // if (isTheCallerInTheGroup) {
+        //     acceptTheCall(true);// if it pass the face recognition test ...
+        // } else {
+        //
+        //
+        //
+        //
+        //     document.getElementById("callAcceptButton").onclick = function () {
+        //         acceptTheCall(true);
+        //     };
+        //     document.getElementById("callRejectButton").onclick = function () {
+        //         acceptTheCall(false);
+        //     };
+        //
+        // }
     //}, 10000)
 } );
