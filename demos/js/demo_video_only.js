@@ -599,6 +599,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //alert(easyrtcid);
         //isTheCallerInTheGroup = false;
 
+        alert("Checking if the min score is less than 100 ...")
 
         // $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
         $.get("latest/20161012233550716_localRecognize.log", function (logData) {
