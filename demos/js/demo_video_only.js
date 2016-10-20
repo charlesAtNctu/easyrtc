@@ -642,7 +642,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //     }
     });
 
-
+    alert("min score");
 
 
 
