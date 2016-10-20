@@ -616,7 +616,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
                     minIndex = i;
                 }
             }
-            alert(minDistance);
+            //alert(minDistance);// TODO: with it, even no need to confirm ... however, still see it for a sec ...
             //var minDistanceN = Number(minDistance);
 
 
