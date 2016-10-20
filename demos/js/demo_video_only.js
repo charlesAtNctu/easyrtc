@@ -576,6 +576,73 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //     isBeginToSend = false;// NOTE: IN THE OTHER PARTY ... HENCE THIS WON'T WORK ..
 
 
+    //alert(easyrtcid);
+    isTheCallerInTheGroup = false;
+
+    alert("Checking if the min score is less than 100 ...")
+
+    // $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
+    $.get("latest/20161012233550716_localRecognize.log", function (logData) {
+        var lines = logData.split("\n")
+        if (lines.length > 0) {
+            var minDistance = "1001";
+            var minIndex = -1;
+            var i;
+            for (i = 0; i < lines.length; i++) {
+                var distance = lines[i].split(",")[2];
+                if (Number(distance) < Number(minDistance)) {
+                    minDistance = distance;
+                    minIndex = i;
+                }
+            }
+            //alert(minDistance);
+            //var minDistanceN = Number(minDistance);
+
+
+
+
+            if(Number(minDistance) < 100){
+
+                //acceptTheCall(true);// if it pass the face recognition test ...
+
+                isTheCallerInTheGroup = true;
+
+                //alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
+                //alert("1.                 : "+getCookie());// OK
+                //alert("2. the other party : "+easyrtcIdentifier);// NOT OK (ALSO NOT COOKIE ID ...)
+                //alert("c2c_" + getCookie() + ".passed");
+
+                // var data = new FormData();
+                //
+                //
+                //
+                // data.append("data", "c2c_" + getCookie() + ".mapping");
+                // var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+                // xhr.open( 'post', '/passed');
+                // xhr.send(data);
+
+
+                //isPassed = true;
+            }
+            // else  {
+            //
+            //     document.getElementById("callAcceptButton").onclick = function () {
+            //         acceptTheCall(true);
+            //     };
+            //     document.getElementById("callRejectButton").onclick = function () {
+            //         acceptTheCall(false);
+            //     };
+            //
+            //    //alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
+            // }
+
+        }
+    });
+
+
+
+
+
 
         document.getElementById('acceptCallBox').style.display = "block";
         if (easyrtc.getConnectionCount() > 0) {
@@ -596,68 +663,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         //          if yes, call acept the call directory
         //          else execute the following ...
 
-        //alert(easyrtcid);
-        //isTheCallerInTheGroup = false;
 
-        alert("Checking if the min score is less than 100 ...")
-
-        // $.get("latest/" + getCookie() + "_localRecognize.log", function (logData) {
-        $.get("latest/20161012233550716_localRecognize.log", function (logData) {
-            var lines = logData.split("\n")
-            if (lines.length > 0) {
-                var minDistance = "1001";
-                var minIndex = -1;
-                var i;
-                for (i = 0; i < lines.length; i++) {
-                    var distance = lines[i].split(",")[2];
-                    if (Number(distance) < Number(minDistance)) {
-                        minDistance = distance;
-                        minIndex = i;
-                    }
-                }
-                alert(minDistance);
-                //var minDistanceN = Number(minDistance);
-
-
-
-
-                if(Number(minDistance) < 100){
-
-                    acceptTheCall(true);// if it pass the face recognition test ...
-
-                    //isTheCallerInTheGroup = true;
-
-                    //alert(""+minDistance+" is less than " + 100 + ". Hence, bypass the confirmation popup.");
-                    //alert("1.                 : "+getCookie());// OK
-                    //alert("2. the other party : "+easyrtcIdentifier);// NOT OK (ALSO NOT COOKIE ID ...)
-                    //alert("c2c_" + getCookie() + ".passed");
-
-                    // var data = new FormData();
-                    //
-                    //
-                    //
-                    // data.append("data", "c2c_" + getCookie() + ".mapping");
-                    // var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-                    // xhr.open( 'post', '/passed');
-                    // xhr.send(data);
-
-
-                    //isPassed = true;
-                }
-                else  {
-
-                    document.getElementById("callAcceptButton").onclick = function () {
-                        acceptTheCall(true);
-                    };
-                    document.getElementById("callRejectButton").onclick = function () {
-                        acceptTheCall(false);
-                    };
-
-                   //alert(""+minDistance+" is greater than or equal to " + 100 + ". Hence, show the confirmation popup.");
-                }
-
-            }
-        });
 
 
         // alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + easyrtcid);
@@ -706,20 +712,20 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
 
         // //alert(""+isPassed);
-        // if (isTheCallerInTheGroup) {
-        //     acceptTheCall(true);// if it pass the face recognition test ...
-        // } else {
-        //
-        //
-        //
-        //
-        //     document.getElementById("callAcceptButton").onclick = function () {
-        //         acceptTheCall(true);
-        //     };
-        //     document.getElementById("callRejectButton").onclick = function () {
-        //         acceptTheCall(false);
-        //     };
-        //
-        // }
+        if (isTheCallerInTheGroup) {
+            acceptTheCall(true);// if it pass the face recognition test ...
+        } else {
+
+
+
+
+            document.getElementById("callAcceptButton").onclick = function () {
+                acceptTheCall(true);
+            };
+            document.getElementById("callRejectButton").onclick = function () {
+                acceptTheCall(false);
+            };
+
+        }
     //}, 10000)
 } );
