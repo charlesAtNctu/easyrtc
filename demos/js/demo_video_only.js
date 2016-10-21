@@ -260,7 +260,7 @@ function performCall(otherEasyrtcid) {
                 });
             }
 
-            //alert("Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
+            //alert("Begin Sending Images To The Other Party ...");// Note: MUST HAVE !!!
 
             // 1
             if (isBeginToSend && isInitializer) {
@@ -344,7 +344,7 @@ function performCall(otherEasyrtcid) {
             //}, sendingRate);
         }
 
-        setTimeout(function () {
+        //setTimeout(function () {
 
             //alert(otherEasyrtcid)
 
@@ -353,7 +353,7 @@ function performCall(otherEasyrtcid) {
 
             easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 
-        }, 5000);
+        //}, 5000);
     });
 }
 
