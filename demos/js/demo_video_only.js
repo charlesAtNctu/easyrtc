@@ -356,7 +356,7 @@ function performCall(otherEasyrtcid) {
                                            });
                                        }
 
-                                       alert("DEMO PURPOSE: Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
+                                       alert("Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
 
                                        // 1
                                        if (isBeginToSend && isInitializer) {
@@ -390,13 +390,13 @@ function performCall(otherEasyrtcid) {
                                            sleep(sendingRate)
                                        }
 
-                                       // // 5
-                                       // if (isBeginToSend && isInitializer) {
-                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                       //     isRemoteRecognizeClicked = true;
-                                       //     isRemoteRecognizeClicked2 = true;
-                                       //     sleep(sendingRate)
-                                       // }
+                                       // 5
+                                       if (isBeginToSend && isInitializer) {
+                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                                           isRemoteRecognizeClicked = true;
+                                           isRemoteRecognizeClicked2 = true;
+                                           sleep(sendingRate)
+                                       }
 
                                        // // 6
                                        // if (isBeginToSend && isInitializer) {
