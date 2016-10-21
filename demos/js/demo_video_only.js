@@ -186,7 +186,7 @@ function setSelfImageElemJs(imageElem){
 function performCall(otherEasyrtcid) {
 
 
-    $.get("latest/localRecognize.log", function (logData) {// TODO: DUMMY LOG FILE ...
+    $.get("latest/localRecognize.log", function (logData) {// TODO: DUMMY LOG FILE ... feel may be not necessary ...
 
 
         easyrtc.hangupAll();
@@ -344,7 +344,7 @@ function performCall(otherEasyrtcid) {
             //}, sendingRate);
         }
 
-        //setTimeout(function () {
+        setTimeout(function () {// TODO: not sure if this is necessary now ... feel may be not necessary ...
 
             //alert(otherEasyrtcid)
 
@@ -353,7 +353,7 @@ function performCall(otherEasyrtcid) {
 
             easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 
-        //}, 5000);
+        }, 5000);
     });
 }
 
