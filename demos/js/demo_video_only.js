@@ -184,173 +184,177 @@ function setSelfImageElemJs(imageElem){
 
 //var isPassed = false;
 function performCall(otherEasyrtcid) {
-    easyrtc.hangupAll();
 
-    var acceptedCB = function(accepted, easyrtcid) {
-        if( !accepted ) {
-            easyrtc.showError("CALL-REJECTED", "Sorry, your call to " + easyrtc.idToName(easyrtcid) + " was rejected");
+
+    $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
+
+
+        easyrtc.hangupAll();
+
+        var acceptedCB = function (accepted, easyrtcid) {
+            if (!accepted) {
+                easyrtc.showError("CALL-REJECTED", "Sorry, your call to " + easyrtc.idToName(easyrtcid) + " was rejected");
+                enable('otherClients');
+            }
+        };
+        var successCB = function () {
+            enable('hangupButton');
+        };
+        var failureCB = function () {
             enable('otherClients');
+        };
+
+
+        // todo: write it to the server ...
+        // todo: synchronusly ...
+        //alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid);// testing ...
+        // todo: in upload2, cp -p remote_recognize.png ...
+        // todo: then, log will be updated ...
+        // todo: check the log first
+        // todo: if not pass, show the popup ... otherwise, let it pass ...
+
+        // todo:
+
+
+        isInitializer = true;
+        isListener = false;
+
+
+        var data = new FormData();
+
+        //replaceAll(easyrtcid, "_", "UNDERSCORE"
+
+        data.append("data",                               // called when click connect btn ...
+            "e2e_"
+            + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE")
+            + "_"
+            + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "," +
+            "e2e_"
+            + replaceAll(otherEasyrtcid, "_", "UNDERSCORE")
+            + "_"
+            + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE"));
+
+        var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+        xhr.open('post', '/mapping');                     // todo: do the same for e2e mapping ...
+        xhr.send(data);
+
+
+        //sleep(2000);// CHU-CHI: NOT SURE IF THIS IS NECESSARY ...
+
+
+        if (true) {
+
+            isBeginToSend = false;
+            sendingRate = 1000;
+
+            // works
+            sleep(2000);// Note: This one seems not necessary ...
+            if (isBeginToSend == false) {
+                sleep(sendingRate);
+                $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                    if (data.endsWith(listenerFileName)) {
+                        isBeginToSend = true;
+                        sendingRate = 2000;//2500;
+                        initializerId = data.substring(0, data.indexOf("_"))
+                    }
+                });
+            }
+
+            alert("Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
+
+            // 1
+            if (isBeginToSend && isInitializer) {
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                isRemoteRecognizeClicked = true;
+                isRemoteRecognizeClicked2 = true;
+                sleep(sendingRate)
+            }
+
+            // 2
+            if (isBeginToSend && isInitializer) {
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                isRemoteRecognizeClicked = true;
+                isRemoteRecognizeClicked2 = true;
+                sleep(sendingRate)
+            }
+
+            // 3
+            if (isBeginToSend && isInitializer) {
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                isRemoteRecognizeClicked = true;
+                isRemoteRecognizeClicked2 = true;
+                sleep(sendingRate)
+            }
+
+            // 4
+            if (isBeginToSend && isInitializer) {
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                isRemoteRecognizeClicked = true;
+                isRemoteRecognizeClicked2 = true;
+                sleep(sendingRate)
+            }
+
+            // 5
+            if (isBeginToSend && isInitializer) {
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                isRemoteRecognizeClicked = true;
+                isRemoteRecognizeClicked2 = true;
+                sleep(sendingRate)
+            }
+
+            // // 6
+            // if (isBeginToSend && isInitializer) {
+            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+            //     isRemoteRecognizeClicked = true;
+            //     isRemoteRecognizeClicked2 = true;
+            //     sleep(sendingRate)
+            // }
+            //
+            // // 7
+            // if (isBeginToSend && isInitializer) {
+            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+            //     isRemoteRecognizeClicked = true;
+            //     isRemoteRecognizeClicked2 = true;
+            //     sleep(sendingRate)
+            // }
+            //
+            // // 8
+            // if (isBeginToSend && isInitializer) {
+            //     sleep(sendingRate)
+            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+            //     isRemoteRecognizeClicked = true;
+            //     isRemoteRecognizeClicked2 = true;
+            // }
+            //
+            // // 9
+            // if (isBeginToSend && isInitializer) {
+            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+            //     isRemoteRecognizeClicked = true;
+            //     isRemoteRecognizeClicked2 = true;
+            //     sleep(sendingRate)
+            // }
+
+            // 10
+            if (isBeginToSend && isInitializer) {
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                isRemoteRecognizeClicked = true;
+                isRemoteRecognizeClicked2 = true;
+            }
+
+            //}, sendingRate);
         }
-    };
-    var successCB = function() {
-        enable('hangupButton');
-    };
-    var failureCB = function() {
-        enable('otherClients');
-    };
+
+        setTimeout(function () {
+
+            //alert(otherEasyrtcid)
+
+            //isBeginToSend = false;
 
 
+            easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 
-
-    // todo: write it to the server ...
-    // todo: synchronusly ...
-    //alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid);// testing ...
-    // todo: in upload2, cp -p remote_recognize.png ...
-    // todo: then, log will be updated ...
-    // todo: check the log first
-    // todo: if not pass, show the popup ... otherwise, let it pass ...
-
-    // todo:
-
-
-    isInitializer = true;
-    isListener    = false;
-    
-    
-    var data = new FormData();
-
-    //replaceAll(easyrtcid, "_", "UNDERSCORE"
-
-    data.append("data" ,                               // called when click connect btn ...
-        "e2e_"
-        + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") 
-        + "_"
-        + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") + "," +
-        "e2e_" 
-        + replaceAll(otherEasyrtcid, "_", "UNDERSCORE") 
-        + "_"
-        + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE") );
-
-    var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-    xhr.open( 'post', '/mapping');                     // todo: do the same for e2e mapping ...
-    xhr.send(data);
-
-
-    //sleep(2000);// CHU-CHI: NOT SURE IF THIS IS NECESSARY ...
-
-
-                                   if(true) {
-
-                                        isBeginToSend = false;
-                                        sendingRate = 1000;
-
-                                       // works
-                                       sleep(2000);// Note: This one seems not necessary ...
-                                       if(isBeginToSend == false) {
-                                          sleep(sendingRate);
-                                           $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-                                               if (data.endsWith(listenerFileName)) {
-                                                   isBeginToSend = true;
-                                                   sendingRate = 2000;//2500;
-                                                   initializerId = data.substring(0, data.indexOf("_"))
-                                               }
-                                           });
-                                       }
-
-                                       alert("Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
-
-                                       // 1
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
-
-                                       // 2
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
-
-                                       // 3
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
-
-                                       // 4
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
-
-                                       // 5
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                           sleep(sendingRate)
-                                       }
-
-                                       // // 6
-                                       // if (isBeginToSend && isInitializer) {
-                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                       //     isRemoteRecognizeClicked = true;
-                                       //     isRemoteRecognizeClicked2 = true;
-                                       //     sleep(sendingRate)
-                                       // }
-                                       //
-                                       // // 7
-                                       // if (isBeginToSend && isInitializer) {
-                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                       //     isRemoteRecognizeClicked = true;
-                                       //     isRemoteRecognizeClicked2 = true;
-                                       //     sleep(sendingRate)
-                                       // }
-                                       //
-                                       // // 8
-                                       // if (isBeginToSend && isInitializer) {
-                                       //     sleep(sendingRate)
-                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                       //     isRemoteRecognizeClicked = true;
-                                       //     isRemoteRecognizeClicked2 = true;
-                                       // }
-                                       //
-                                       // // 9
-                                       // if (isBeginToSend && isInitializer) {
-                                       //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                       //     isRemoteRecognizeClicked = true;
-                                       //     isRemoteRecognizeClicked2 = true;
-                                       //     sleep(sendingRate)
-                                       // }
-
-                                       // 10
-                                       if (isBeginToSend && isInitializer) {
-                                           testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                                           isRemoteRecognizeClicked = true;
-                                           isRemoteRecognizeClicked2 = true;
-                                       }
-
-                                   //}, sendingRate);
-                               }
-
-    setTimeout(function() {
-
-        //alert(otherEasyrtcid)
-
-        //isBeginToSend = false;
-
-
-        easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
-
-    }, 5000);
+        }, 5000);
+    }
 }
 
 function replaceAll(str, find, replace) {
