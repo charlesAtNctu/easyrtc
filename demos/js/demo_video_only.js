@@ -186,7 +186,7 @@ function setSelfImageElemJs(imageElem){
 function performCall(otherEasyrtcid) {
 
 
-    $.get("latest/localRecognize.log", function (logData) {// TODO:
+    $.get("latest/localRecognize.log", function (logData) {// TODO: DUMMY LOG FILE ...
 
 
         easyrtc.hangupAll();
@@ -260,7 +260,7 @@ function performCall(otherEasyrtcid) {
                 });
             }
 
-            alert("Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
+            //alert("Begin Sending Caller's Images ...");// Note: MUST HAVE !!!
 
             // 1
             if (isBeginToSend && isInitializer) {
