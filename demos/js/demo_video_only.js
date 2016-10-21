@@ -241,107 +241,8 @@ function performCall(otherEasyrtcid) {
 
                                    if(true) {
 
-//                                    $.get("latest/remoteRecognize.latest", function (data) {
-//                                        $('#callerLog').text(data)
-//                                        document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-//                                    });
-//
-//                                    $.get("latest/remoteRecognize.log", function (data) {
-//                                        $('#callerLog2').text(data)
-//                                        document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-//                                    });
-//
-                                   isBeginToSend = false;
-                                   sendingRate = 1000;
-//                                    pictureSent = 0;
-//                                    totalPictureNeeded = 10;
-// //                                    listenToCookieId = ""
-//                                    //setInterval(function () {
-//
-//
-//
-//
-//
-//
-//
-//                                        for(pictureSent = 0; pictureSent < totalPictureNeeded;) {
-//
-//                                            //sleep(1000);// Note: After commenting the following line, thing hangs ...
-//                                             alert("number of pictures being sent:   " + pictureSent);
-//                                             //alert("total number of pictures needed: " + totalPictureNeeded);
-//
-//                                            //if(connectedYet) {
-//
-//                                            if(isBeginToSend == false) {
-//                                                $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
-//                                                    if (data.endsWith(listenerFileName)) {
-//                                                        isBeginToSend = true;
-//                                                        sendingRate = 2500;
-//                                                        initializerId = data.substring(0, data.indexOf("_"))
-//                                                        //alert(""+initializerId);
-// //                                                listenToCookieId = data;
-// //                                                listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
-//                                                    }
-//                                                });
-//                                            }
-//
-//                                            //alert("after checking mapping")
-//
-//                                            if (isBeginToSend && isInitializer) {// initializer keeps sending to prove himself or herself !!!
-//
-//                                                //alert("begin sending ... ")
-//
-// //                                        sendEvent(
-// //                                                callerId,
-// //                                                callerContext,
-// //                                                callerVideo,
-// //                                                callerCanvas,
-// //                                                getCookie() + "_remoteRecognize.png",
-// //                                                "latest/remoteRecognize.png",
-// //                                                $('#callerImage'));
-//
-//
-//                                                //sendEvent(selfId, selfContext, selfVideo, selfCanvas, getCookie() + "_localRecognize.png", "latest/localRecognize.png", $('#selfImage'));
-//                                                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-//                                                //alert("begin sending 2 ... ")
-//                                                pictureSent = pictureSent + 1;
-//                                                //alert("begin sending 3 ... ")
-//                                                //alert("number of pictures being sent2:   " + pictureSent);
-//
-//                                                isRemoteRecognizeClicked = true;
-//                                                isRemoteRecognizeClicked2 = true;
-//
-//                                                sleep(sendingRate);
-//                                            }
-//
-// //                                        //initializerCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
-// //
-// //                                        if (isBeginToSend && (getCookie() != listenToCookieId)){//} isListener){
-// //                                            $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
-// //                                                $('#callerLog').text(data)
-// //                                                document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-// //                                            });
-// //                                            $.get("latest/" + listenToCookieId + "_localRecognize.log", function (data) {
-// //                                                $('#callerLog2').text(data)
-// //                                                document.getElementById("callerLog2").scrollTop = document.getElementById("callerLog2").scrollHeight;
-// //
-// //                                            });
-// //                                        }
-//                                        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                        isBeginToSend = false;
+                                        sendingRate = 1000;
 
                                        // works
                                        sleep(2000);// Note: This one seems not necessary ...
@@ -538,7 +439,11 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //     alert(logData);
 
     var minDistance = "1001";
-    $.get("latest/20161012233550716_localRecognize.log", function (logData) {
+    $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
+
+        alert("from:"+from_cookie);
+        alert("to  :"+to_cookie);
+
 
 
         document.getElementById('acceptCallBox').style.display = "block";
