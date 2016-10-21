@@ -186,7 +186,7 @@ function setSelfImageElemJs(imageElem){
 function performCall(otherEasyrtcid) {
 
 
-    $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
+    $.get("latest/localRecognize.log", function (logData) {// TODO:
 
 
         easyrtc.hangupAll();
