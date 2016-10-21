@@ -438,11 +438,13 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     //
     //     alert(logData);
 
+    alert("from:"+from_cookie);
+    alert("to  :"+to_cookie);
+
+    
     var minDistance = "1001";
     $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
 
-        alert("from:"+from_cookie);
-        alert("to  :"+to_cookie);
 
 
 
