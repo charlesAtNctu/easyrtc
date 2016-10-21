@@ -354,7 +354,7 @@ function performCall(otherEasyrtcid) {
             easyrtc.call(otherEasyrtcid, successCB, failureCB, acceptedCB);
 
         }, 5000);
-    }
+    });
 }
 
 function replaceAll(str, find, replace) {
