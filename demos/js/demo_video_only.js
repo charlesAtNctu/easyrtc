@@ -260,7 +260,7 @@ function performCall(otherEasyrtcid) {
                 });
             }
 
-            //alert("Begin Sending Images To The Other Party ...");// Note: MUST HAVE !!!
+            alert("Begin Sending Images To The Other Party ...");// Note: MUST HAVE !!!
 
             // 1
             if (isBeginToSend && isInitializer) {
