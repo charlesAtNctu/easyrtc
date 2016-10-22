@@ -921,7 +921,9 @@
 
                                 setInterval(function () {
 
-                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data) {
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
+                                        data = data1234.split(",")[0];
+
                                         if (data.endsWith(listenerFileName)) {
                                             isBeginToDownload = true;
                                             askingRate = 250;
