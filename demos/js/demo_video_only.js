@@ -450,17 +450,17 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
     var minDistance = "1001";
 
-    var filenamename = "";
+    var cookieidid = "";
     $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
         alert("data 1234: " + data1234);
-        filenamename = data1234.split(",")[0];
-        alert("file name: " + filenamename);
+        cookieidid = data1234.split(",")[0].split(".");
+        alert("file name: " + cookieidid);
     });
 
 
 
-    $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
-
+    // $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
+    $.get("latest/"+cookieidid+".log", function (logData) {// TODO:
 
 
 
