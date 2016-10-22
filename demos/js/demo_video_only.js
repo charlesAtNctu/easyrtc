@@ -454,8 +454,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
         //alert("data 1234: " + data1234);
         cookieidid = data1234.split(",")[0].split(".")[0];
-        alert("file name: " + cookieidid);
-    });
+        //alert("file name: " + cookieidid);
+
 
 
 
@@ -541,6 +541,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
             }
 
         }
+    });
     });
     //
     // alert("min score: " + minDistance);
