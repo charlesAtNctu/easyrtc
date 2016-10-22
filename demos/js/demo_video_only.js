@@ -452,10 +452,12 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
     var filenamename = "";
     $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
+        alert("data 1234: " + data1234);
         filenamename = data1234.split(",")[0];
+        alert("file name: " + filenamename);
     });
 
-    alert("file name: "+filenamename);
+
 
     $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
 
