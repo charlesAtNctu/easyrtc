@@ -456,7 +456,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
         cookieidid = data1234.split(",")[0].split(".")[0];
         //alert("file name: " + cookieidid);
 
-    });
+    // });
 
 
     // $.get("latest/20161012233550716_localRecognize.log", function (logData) {// TODO:
@@ -541,7 +541,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
             }
 
         }
-
+    });
     });
     //
     // alert("min score: " + minDistance);
