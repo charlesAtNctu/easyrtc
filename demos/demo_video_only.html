@@ -972,7 +972,7 @@
                             //refreshCounter = 1;
                             //refreshScale = 1;
                             refreshIndex = 1;
-                            refreshLimit = 5;
+                            refreshLimit = 2;
                             setInterval(function(){
 
 
@@ -1010,15 +1010,15 @@
 
                                             //alert(UrlExists("latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png"));
 
-//                                            if(refreshIndex <= refreshLimit) {
-//                                                if (UrlExists("latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png") == true) {
-//                                                    $('#callerImage2').attr("src", "latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");
-//                                                    //sleep(2000);
-//                                                    refreshIndex = refreshIndex + 1;
-//                                                }
-//                                            } else {
-//                                                $('#callerImage2').attr("src", "latest/"+refreshLimit+"_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");
-//                                            }
+                                            if(refreshIndex <= refreshLimit) {
+                                                if (UrlExists("latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png") == true) {
+                                                    $('#callerImage2').attr("src", "latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");
+                                                    //sleep(2000);
+                                                    refreshIndex = refreshIndex + 1;
+                                                }
+                                            } else {
+                                                $('#callerImage2').attr("src", "latest/"+refreshLimit+"_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");
+                                            }
 
                                             //if(refreshCounter <= 6*refreshScale) {
                                             //    $('#callerImage2').attr("src", "latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");// + "?" + new Date().getTime());

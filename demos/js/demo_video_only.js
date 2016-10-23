@@ -272,30 +272,30 @@ function performCall(otherEasyrtcid) {
                 sleep(sendingRate)
             }
 
-            // 2
-            if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "2_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                isRemoteRecognizeClicked = true;
-                isRemoteRecognizeClicked2 = true;
-                sleep(sendingRate)
-            }
-
-            // 3
-            if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "3_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                isRemoteRecognizeClicked = true;
-                isRemoteRecognizeClicked2 = true;
-                sleep(sendingRate)
-            }
-
-            // 4
-            if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "4_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-                isRemoteRecognizeClicked = true;
-                isRemoteRecognizeClicked2 = true;
-                sleep(sendingRate)
-            }
-
+            // // 2
+            // if (isBeginToSend && isInitializer) {
+            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "2_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+            //     isRemoteRecognizeClicked = true;
+            //     isRemoteRecognizeClicked2 = true;
+            //     sleep(sendingRate)
+            // }
+            //
+            // // 3
+            // if (isBeginToSend && isInitializer) {
+            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "3_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+            //     isRemoteRecognizeClicked = true;
+            //     isRemoteRecognizeClicked2 = true;
+            //     sleep(sendingRate)
+            // }
+            //
+            // // 4
+            // if (isBeginToSend && isInitializer) {
+            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "4_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+            //     isRemoteRecognizeClicked = true;
+            //     isRemoteRecognizeClicked2 = true;
+            //     sleep(sendingRate)
+            // }
+            //
             // // 5
             // if (isBeginToSend && isInitializer) {
             //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "5_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
@@ -304,41 +304,9 @@ function performCall(otherEasyrtcid) {
             //     sleep(sendingRate)
             // }
 
-            // // 6
-            // if (isBeginToSend && isInitializer) {
-            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-            //     isRemoteRecognizeClicked = true;
-            //     isRemoteRecognizeClicked2 = true;
-            //     sleep(sendingRate)
-            // }
-            //
-            // // 7
-            // if (isBeginToSend && isInitializer) {
-            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-            //     isRemoteRecognizeClicked = true;
-            //     isRemoteRecognizeClicked2 = true;
-            //     sleep(sendingRate)
-            // }
-            //
-            // // 8
-            // if (isBeginToSend && isInitializer) {
-            //     sleep(sendingRate)
-            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-            //     isRemoteRecognizeClicked = true;
-            //     isRemoteRecognizeClicked2 = true;
-            // }
-            //
-            // // 9
-            // if (isBeginToSend && isInitializer) {
-            //     testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
-            //     isRemoteRecognizeClicked = true;
-            //     isRemoteRecognizeClicked2 = true;
-            //     sleep(sendingRate)
-            // }
-
-            // 10
+            // 
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "5_" + getCookie() + "_localRecognize.png", "latest/6localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "2_" + getCookie() + "_localRecognize.png", "latest/6localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
             }
