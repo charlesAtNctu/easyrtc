@@ -971,10 +971,11 @@
                                             //alert(initializerId);
                                         }
                                     });
+                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png");
                                 }
 
                                 if (initializerId == "") {
-                                    $('#callerImage2').attr("src", "latest/remoteRecognize.png");
+
                                 } else {
                                     //alert("initializerId: " + initializerId);
                                     //alert("getCookie()  : " + getCookie());
@@ -990,8 +991,9 @@
 
                                             //sleep(2000);
 
-                                            //alert(                         "latest/" + "1" + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png")// TODO: make the remote site able to see the images ...
+                                            alert(                         "latest/" + "1" + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png")// TODO: make the remote site able to see the images ...
                                             $('#callerImage2').attr("src", "latest/" + "1" + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png" + "?" + new Date().getTime());
+
                                         //}
 
                                     } else {
