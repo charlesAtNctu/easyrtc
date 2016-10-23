@@ -909,6 +909,7 @@
                                 isBeginToRefresh = false;
                                 askingRate = 100;
                                 listenToCookieId = ""
+                                callerImageFileName_haha = "";
 
                                 $.get("latest/remoteRecognize.latest", function (data) {
                                     $('#callerLog').text(data)
@@ -961,15 +962,16 @@
                             setInterval(function(){
 
 
-                                $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
-                                    data = data1234.split(",")[0];
-
-                                    if (data.endsWith(listenerFileName)) {
-                                        isBeginToRefresh = true;
-                                        alert(data);
-                                    }
-                                });
-
+                                if(isBeginToRefresh == false) {
+                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
+                                        data = data1234.split(",")[0];
+                                        if (data.endsWith(listenerFileName)) {
+                                            isBeginToRefresh = true;
+                                            callerImageFileName_haha = data;
+                                            //alert(initializerId);
+                                        }
+                                    });
+                                }
 
                                 if (initializerId == "") {
                                     $('#callerImage2').attr("src", "latest/remoteRecognize.png");
@@ -978,13 +980,16 @@
                                     //alert("getCookie()  : " + getCookie());
                                 }
 
-                                if (initializerId != "" && initializerId != getCookie()){
-                                    alert("refreshing ... ")
+                                if(isBeginToRefresh == true) {
+                                    alert("testing "+callerImageFileName_haha);
+                                    if (initializerId != "" && initializerId != getCookie()) {
+                                        alert("refreshing ... ")
 
-                                    sleep(2000);
+                                        sleep(2000);
 
-                                    alert("latest/"+initializerId + "_localRecognize.png")// TODO: make the remote site able to see the images ...
-                                    $('#callerImage2').attr("src", "latest/"+initializerId + "_localRecognize.png" + "?" + new Date().getTime());
+                                        alert("latest/" + initializerId + "_localRecognize.png")// TODO: make the remote site able to see the images ...
+                                        $('#callerImage2').attr("src", "latest/" + initializerId + "_localRecognize.png" + "?" + new Date().getTime());
+                                    }
                                 }
 
 
