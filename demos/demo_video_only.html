@@ -906,6 +906,7 @@
                             if(true){//remoteRecognizeLogEnabled == true) {
 
                                 isBeginToDownload = false;
+                                isBeginToRefresh = false;
                                 askingRate = 100;
                                 listenToCookieId = ""
 
@@ -921,19 +922,20 @@
 
                                 setInterval(function () {
 
-                                    $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
-                                        data = data1234.split(",")[0];
+                                    if(isBeginToRefresh == false) {
+                                        $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
+                                            data = data1234.split(",")[0];
+                                            if (data.endsWith(listenerFileName)) {
+                                                isBeginToRefresh = true;
+                                                alert(data);
+                                                alert(getCookie());
+                                                alert(listenToCookieId);
+                                            }
+                                        });
+                                    }
 
-                                        if (data.endsWith(listenerFileName)) {
-                                            isBeginToDownload = true;
-                                            askingRate = 250;
-                                            listenToCookieId = data;
-                                            listenToCookieId = listenToCookieId.substring(0, listenToCookieId.indexOf("_"))
-                                        }
-                                    });
 
-
-                                    if(isBeginToDownload == true && (getCookie() != listenToCookieId)){//isListener == true) {
+                                    if(isBeginToDownload == true && isBeginToRefresh == true && (getCookie() != listenToCookieId)){//isListener == true) {
 
                                         //$('#callerImage2').attr("src", "latest/" + listenToCookieId + "_localRecognize.png?" + new Date().getTime());
 
@@ -957,9 +959,18 @@
                             }
 
                             pngCounter = 0;// TODO: move from copy to latest ... move to ... one the same name and the other append counter ...
+
+
+
                             setInterval(function(){
-
-
+                                $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
+                                    data = data1234.split(",")[0];
+                                    if (data.endsWith(listenerFileName)) {
+                                        isBeginToSend = true;
+                                        sendingRate = 2000;//2500;
+                                        initializerId = data.substring(0, data.indexOf("_"))
+                                    }
+                                });
 
 
                                 if (initializerId == "") {
