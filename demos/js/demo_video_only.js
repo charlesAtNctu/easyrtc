@@ -266,7 +266,7 @@ function performCall(otherEasyrtcid) {
 
             // 1
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize1.png", "latest/localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "1_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
                 sleep(sendingRate)
@@ -274,7 +274,7 @@ function performCall(otherEasyrtcid) {
 
             // 2
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize2.png", "latest/localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "2_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
                 sleep(sendingRate)
@@ -282,7 +282,7 @@ function performCall(otherEasyrtcid) {
 
             // 3
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize3.png", "latest/localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "3_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
                 sleep(sendingRate)
@@ -290,7 +290,7 @@ function performCall(otherEasyrtcid) {
 
             // 4
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize4.png", "latest/localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "4_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
                 sleep(sendingRate)
@@ -298,7 +298,7 @@ function performCall(otherEasyrtcid) {
 
             // 5
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize5.png", "latest/localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "5_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
                 sleep(sendingRate)
@@ -338,7 +338,7 @@ function performCall(otherEasyrtcid) {
 
             // 10
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, getCookie() + "_localRecognize6.png", "latest/6localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "6_" + getCookie() + "_localRecognize.png", "latest/6localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
             }
