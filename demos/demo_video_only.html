@@ -1006,7 +1006,17 @@
 
                                             //alert(                         "latest/" + "1" + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png")// TODO: make the remote site able to see the images ...
 
-                                            alert(UrlExists("latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png"));
+
+                                            //alert(UrlExists("latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png"));
+
+                                            if(refreshIndex <= 6) {
+                                                if (UrlExists("latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png") == true) {
+                                                    $('#callerImage2').attr("src", "latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");
+                                                    refreshIndex = refreshIndex + 1;
+                                                }
+                                            } else {
+                                                $('#callerImage2').attr("src", "latest/6_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");
+                                            }
 
                                             //if(refreshCounter <= 6*refreshScale) {
                                             //    $('#callerImage2').attr("src", "latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");// + "?" + new Date().getTime());
