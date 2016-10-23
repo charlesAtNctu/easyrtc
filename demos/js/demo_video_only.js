@@ -256,7 +256,7 @@ function performCall(otherEasyrtcid) {
                     
                     if (data.endsWith(listenerFileName)) {
                         isBeginToSend = true;
-                        sendingRate = 2000;//2500;
+                        sendingRate = 3000;//2000;//2500;
                         initializerId = data.substring(0, data.indexOf("_"))
                     }
                 });
