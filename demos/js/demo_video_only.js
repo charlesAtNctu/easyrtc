@@ -305,7 +305,7 @@ function performCall(otherEasyrtcid) {
             }
 
             // 
-            if (isBeginToSend && isInitializer) {
+            if (isBeginToSend && isInitializer) {// TODO: Note: 2 places to change one is here and the other is refreshlimit ...
                 testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "6_" + getCookie() + "_localRecognize.png", "latest/6localRecognize.png", selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
