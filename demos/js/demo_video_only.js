@@ -122,18 +122,18 @@ function sendEvent(id, context, video, canvas, filename, resultingfilepath, imag
 
                 // Chu-Chi: below necessary ?
 
-                // sDetect = new Image();
-                // sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
-                // sDetect.onload = function() {
-                //     //console.info("resetting the source ... :)")
-                //
-                //     d = new Date();
-                //     imageElem.attr("src", sDetect.src + "?" + d.getTime());
-                //
-                //     //canvas.width = canvas.width;
-                //     //context.clearRect(0, 0, canvas.width, canvas.height);
-                //     //context.drawImage(sDetect,0,0, 320, 240);
-                // };
+                sDetect = new Image();
+                sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
+                sDetect.onload = function() {
+                    //console.info("resetting the source ... :)")
+
+                    d = new Date();
+                    imageElem.attr("src", sDetect.src + "?" + d.getTime());
+
+                    //canvas.width = canvas.width;
+                    //context.clearRect(0, 0, canvas.width, canvas.height);
+                    //context.drawImage(sDetect,0,0, 320, 240);
+                };
 
             } else {
                 setTimeout(showError.bind(this), 1500)
