@@ -906,6 +906,7 @@
                             if(true){//remoteRecognizeLogEnabled == true) {
 
                                 isBeginToDownload = false;
+                                isBeginToRefresh = false;
                                 askingRate = 100;
                                 listenToCookieId = ""
 
@@ -960,13 +961,21 @@
                             setInterval(function(){
 
 
+                                $.get("latest/c2c_" + getCookie() + ".mapping", function (data1234) {
+                                    data = data1234.split(",")[0];
+
+                                    if (data.endsWith(listenerFileName)) {
+                                        isBeginToRefresh = true;
+                                        alert(data);
+                                    }
+                                });
 
 
                                 if (initializerId == "") {
                                     $('#callerImage2').attr("src", "latest/remoteRecognize.png");
                                 } else {
-                                    alert("initializerId: " + initializerId);
-                                    alert("getCookie()  : " + getCookie());
+                                    //alert("initializerId: " + initializerId);
+                                    //alert("getCookie()  : " + getCookie());
                                 }
 
                                 if (initializerId != "" && initializerId != getCookie()){
