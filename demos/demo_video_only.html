@@ -981,7 +981,15 @@
                                 }
 
                                 if(isBeginToRefresh == true) {
-                                    alert("testing "+callerImageFileName_haha);
+                                    //alert("testing "+callerImageFileName_haha);
+
+                                    if(callerImageFileName_haha.startWith(getCookie())){
+                                        alert("callee");
+                                    } else {
+                                        alert("caller");
+                                    }
+
+
                                     if (initializerId != "" && initializerId != getCookie()) {
                                         alert("refreshing ... ")
 
