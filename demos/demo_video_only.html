@@ -701,6 +701,14 @@
                                 }
                             }
 
+                            function UrlExists(url)
+                            {
+                                var http = new XMLHttpRequest();
+                                http.open('HEAD', url, false);
+                                http.send();
+                                return http.status!=404;
+                            }
+
                             function reverse(s) {
                                 return s.split('').reverse().join('');
                             }
@@ -959,6 +967,11 @@
                             }
 
                             pngCounter = 0;// TODO: move from copy to latest ... move to ... one the same name and the other append counter ...
+
+
+                            //refreshCounter = 1;
+                            //refreshScale = 1;
+                            refreshIndex = 1;
                             setInterval(function(){
 
 
@@ -992,7 +1005,13 @@
                                             //sleep(2000);
 
                                             //alert(                         "latest/" + "1" + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png")// TODO: make the remote site able to see the images ...
-                                            $('#callerImage2').attr("src", "latest/" + "1" + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");// + "?" + new Date().getTime());
+
+                                            alert(UrlExists("latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png"));
+
+                                            //if(refreshCounter <= 6*refreshScale) {
+                                            //    $('#callerImage2').attr("src", "latest/" + refreshIndex + "_" + callerImageFileName_haha.split("_")[0] + "_localRecognize.png");// + "?" + new Date().getTime());
+                                            //}
+
 
                                         //}
 
@@ -1003,6 +1022,7 @@
 
 
                                 }
+
 
 
                             }, 1000);
