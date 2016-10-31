@@ -279,18 +279,18 @@
                                     <img id="callerImage2" width="320" height="240"></img>
                                 </td>
                             </tr>
-                            <tr id="recognizeLogParent">
-                                <td colspan="2">
-                                    <textarea id='selfLog' rows="3" cols="42"></textarea>
-                                    <!--<textarea id='selfLog' rows="10" cols="59"></textarea>-->
-                                    <!--<p id='selfLog'></p>-->
-                                </td>
-                                <td colspan="2">
-                                    <textarea id='callerLog' rows="3" cols="42"></textarea>
-                                    <!--<textarea id='callerLog' rows="10" cols="59"></textarea>-->
-                                    <!--<p id='callerLog'></p>-->
-                                </td>
-                            </tr>
+                            <!--<tr id="recognizeLogParent">-->
+                                <!--<td colspan="2">-->
+                                    <!--<textarea id='selfLog' rows="3" cols="42"></textarea>-->
+                                    <!--&lt;!&ndash;<textarea id='selfLog' rows="10" cols="59"></textarea>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<p id='selfLog'></p>&ndash;&gt;-->
+                                <!--</td>-->
+                                <!--<td colspan="2">-->
+                                    <!--<textarea id='callerLog' rows="3" cols="42"></textarea>-->
+                                    <!--&lt;!&ndash;<textarea id='callerLog' rows="10" cols="59"></textarea>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<p id='callerLog'></p>&ndash;&gt;-->
+                                <!--</td>-->
+                            <!--</tr>-->
 
                             <tr id="recognizeLogParent2">
                                 <td colspan="2">
@@ -919,10 +919,10 @@
                                 listenToCookieId = ""
                                 callerImageFileName_haha = "";
 
-                                $.get("latest/remoteRecognize.latest", function (data) {
-                                    $('#callerLog').text(data)
-                                    document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                });
+//                                $.get("latest/remoteRecognize.latest", function (data) {
+//                                    $('#callerLog').text(data)
+//                                    document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                });
 
                                 $.get("latest/remoteRecognize.log", function (data) {
                                     $('#callerLog2').text(data)
@@ -947,11 +947,11 @@
 
                                         //$('#callerImage2').attr("src", "latest/" + listenToCookieId + "_localRecognize.png?" + new Date().getTime());
 
-                                        //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
-                                        $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
-                                            $('#callerLog').text(data)
-                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
-                                        });
+//                                        //$('#callerLog').text(listenToCookieId.substring(0, listenToCookieId.indexOf("_")))
+//                                        $.get("latest/" + listenToCookieId + "_localRecognize.latest", function (data) {
+//                                            $('#callerLog').text(data)
+//                                            document.getElementById("callerLog").scrollTop = document.getElementById("callerLog").scrollHeight;
+//                                        });
 
                                         $.get("latest/" + listenToCookieId + "_localRecognize.log", function (data) {
                                             $('#callerLog2').text(data)
