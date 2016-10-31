@@ -76,50 +76,54 @@ fs.createReadStream(defaultLatestFolderAbsPath+'remoteRecognize.latest').pipe(fs
 // });
 
 
-httpApp.post('/mapping', function(req, res)
-{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+httpApp.post('/mapping', function(req, res) {
     var form = new formidable.IncomingForm().parse(req)
         .on('file', function(name, file) {
             console.log('Got file:', name);
         })
         .on('field', function(name, field) {
-
             console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a name:', name);
             console.log(' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a value:', field);
-
-            // TODO: remove every mapping that has this cookie id
-            //       i.e., easyrtc2Id2cookieId_*_cookieId
-            //       i.e., cookieId2easyrtcId_cookieId_*
-            //
-            // TODO: create the above again (all in latest)
-            //
-            // later, easyrtcid2easyrtcid_*_* (end user mapping ...) maybe upload3
-
-
+            
             if(field.split(",").length > 1) {
                 fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[0] + ".mapping", 'w'));
                 fs.closeSync(fs.openSync(latestFolderAbsPath + field.split(",")[1] + ".mapping", 'w'));
             } else {
                 fs.closeSync(fs.openSync(latestFolderAbsPath + field + ".mapping", 'w'));
             }
-
             if(field.startsWith("e2e_")){
-
-                from_to = field.split(",")[0];
-
-                //console.log("Connecting from_to: " + from_to);
-
-                from_start = from_to.indexOf("_");
-                to_start = from_to.lastIndexOf("_");
-
+                from_to        = field.split(",")[0];
+                from_start     = from_to.indexOf("_");
+                to_start       = from_to.lastIndexOf("_");
                 from_easyrtcid = from_to.substring(from_start+1, to_start);
-                to_easyrtcid = from_to.substring(to_start+1);
+                to_easyrtcid   = from_to.substring(to_start+1);
 
                 console.log("Connecting from " + from_easyrtcid + " to " + to_easyrtcid);
 
                 from_cookie = "";
                 to_coookie = "";
-
                 fs.readdirSync(latestFolderAbsPath).forEach(function(file) {
 
                     var last_dot_index = file.lastIndexOf('.');
@@ -131,18 +135,16 @@ httpApp.post('/mapping', function(req, res)
                         to_cookie = file.substring(("e2c_" + to_easyrtcid).length+1, last_dot_index);
                     }
                 });
-
+                
                 console.log("Connecting from " + from_cookie + " to " + to_cookie);
-
-
+                
                 want_to_have_remote = from_cookie + "_localRecognize.png";
                 want_to_have_name_as = to_cookie + "_remoteRecognize.png"
-                //console.log("cp -p demos/latest/" + want_to_have_remote + " demos/latest/" + want_to_have_remote);// want_to_have_name_as);
-
-
-
-                // var workerProcess = child_process.exec('/home/ubuntu/GitHub/face-recognition-python-opencv/start_generate_mapping.sh',
-                var workerProcess = child_process.exec('python /home/ubuntu/GitHub/face-recognition-python-opencv/generateMapping.py /var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' +  want_to_have_remote + " " + want_to_have_name_as,
+                var workerProcess = child_process.exec(
+                    'python ' +
+                    '/home/ubuntu/GitHub/face-recognition-python-opencv/generateMapping.py ' +
+                    '/var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' +  
+                    want_to_have_remote + " " + want_to_have_name_as,
                     function (error, stdout, stderr) {
                         if (error) {
                             console.log(error.stack);
@@ -152,48 +154,17 @@ httpApp.post('/mapping', function(req, res)
                         console.log('stdout: ' + stdout);
                         console.log('stderr: ' + stderr);
                     });
-
-                // // TODO: execute a child process to copy the file to 10 seconds ... NOTE: SAME AS THE ELPASED TIME FOR RECOGNIZED AS PART ...
-                //
-                // var workerProcess3 = child_process.exec('python /home/ubuntu/GitHub/face-recognition-python-opencv/generateCopying.py  /var/nodes/easyrtc/node_modules/easyrtc/demos/latest/ ' + want_to_have_remote + ' ' + want_to_have_name_as,
-                //     function (error, stdout, stderr) {
-                //         if (error) {
-                //             console.log(error.stack);
-                //             console.log('Error code: ' + error.code);
-                //             console.log('Signal received: ' + error.signal);
-                //         }
-                //         console.log('stdout: ' + stdout);
-                //         console.log('stderr: ' + stderr);
-                //     });
-                
                 workerProcess.on('exit', function (code) {
                     console.log('Child process exited with exit code ' + code);
-
                     form.on('error', function (err) {
                         console.log('error: \n' + err);
                     });
-
                     form.on('end', function () {
                         res.end('success');
                     });
                     form.parse(req);
                 });
-
-                // workerProcess3.on('exit', function (code) {
-                //     console.log('Child process 3 exited with exit code ' + code);
-                //
-                //     form.on('error', function (err) {
-                //         console.log('error: \n' + err);
-                //     });
-                //
-                //     form.on('end', function () {
-                //         res.end('success');
-                //     });
-                //     form.parse(req);
-                // });
             }
-
-
         })
         .on('error', function(err) {
             next(err);
@@ -203,126 +174,52 @@ httpApp.post('/mapping', function(req, res)
         });
 });
 
-// httpApp.post('/connect', function(req, res)
-// {
-//     var form = new formidable.IncomingForm().parse(req)
-//         .on('file', function(name, file) {
-//             console.log('Got file:', name);
-//         })
-//         .on('field', function(name, field) {
-//
-//             console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a name:', name);
-//             console.log(' CONNECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Got a value:', field);
-//
-//
-//
-//         })
-//         .on('error', function(err) {
-//             next(err);
-//         })
-//         .on('end', function() {
-//             res.end('false');
-//         });
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 httpApp.post('/upload', function(req, res){
-
-    // TODO: get action ...
 
     var form = new formidable.IncomingForm();
 
     form.multiples = true;
-
     form.uploadDir = path.join(__dirname, '/uploads');
 
     form.on('file', function(field, file) {
 
         var currentdate = new Date();
-        var datetime = "" +
-            currentdate.getFullYear() + "/" +
-            (currentdate.getMonth()+1) + "/" +
-            currentdate.getDate() + " @ "
-            + currentdate.getHours() + ":"
-            + currentdate.getMinutes() + ":"
-            + currentdate.getSeconds();
+        var datetime = "" 
+            +  currentdate.getFullYear() + "/" 
+            + (currentdate.getMonth()+1) + "/" 
+            +  currentdate.getDate()     + " @ "
+            +  currentdate.getHours()    + ":"
+            +  currentdate.getMinutes()  + ":"
+            +  currentdate.getSeconds();
         console.log(datetime + "\t-\tReceiving " + file.name);
 
         fs.rename(file.path, path.join(form.uploadDir, file.name));
 
-        // console.log("2************************************************************************************************************************" + file.name);
-        //
-        // //pngFileName = file.name;
-        //
-        // if(file.name.endsWith('localDetect.png')) {
-        //
-        //     console.log('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ' + file.name);
-        //
-        //     var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/local-detection.js ' + file.name,
-        //         function (error, stdout, stderr) {
-        //             if (error) {
-        //                 console.log(error.stack);
-        //                 console.log('Error code: ' + error.code);
-        //                 console.log('Signal received: ' + error.signal);
-        //             }
-        //             console.log('stdout: ' + stdout);
-        //             console.log('stderr: ' + stderr);
-        //         });
-        //
-        //     workerProcess.on('exit', function (code) {
-        //         console.log('Child process exited with exit code ' + code);
-        //
-        //         form.on('error', function (err) {
-        //             console.log('error: \n' + err);
-        //         });
-        //
-        //         form.on('end', function () {
-        //             res.end('success');
-        //         });
-        //
-        //         form.parse(req);
-        //
-        //     });
-        // }
-        //
-        // if(file.name.endsWith('remoteDetect.png')) {
-        //
-        //     console.log('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ' + file.name);
-        //
-        //     var workerProcess = child_process.exec('node /home/ubuntu/GitHub/face-detection-node-opencv/server/node_modules/opencv/examples/remote-detection.js ' + file.name,
-        //         function (error, stdout, stderr) {
-        //             if (error) {
-        //                 console.log(error.stack);
-        //                 console.log('Error code: ' + error.code);
-        //                 console.log('Signal received: ' + error.signal);
-        //             }
-        //             console.log('stdout: ' + stdout);
-        //             console.log('stderr: ' + stderr);
-        //         });
-        //
-        //     workerProcess.on('exit', function (code) {
-        //         console.log('Child process exited with exit code ' + code);
-        //
-        //         form.on('error', function (err) {
-        //             console.log('error: \n' + err);
-        //         });
-        //
-        //         form.on('end', function () {
-        //             res.end('success');
-        //         });
-        //
-        //         form.parse(req);
-        //
-        //     });
-        // }
-        //
-        // console.log("3************************************************************************************************************************" + file.name);
-
     });
-
-    // while(pngFileName == null){
-    //     console.log("testing ...");
-    // }
-    // console.log("*************************************************************************************************************************" + pngFileName);
 
     // Chu-Chi: without the following code ... it's not working ... no ideas ...
 
@@ -351,21 +248,6 @@ httpApp.post('/upload', function(req, res){
         form.parse(req);
 
     });
-
-
-
-
-
-    // form.on('error', function(err) {
-    //     console.log('error: \n' + err);
-    // });
-    //
-    // form.on('end', function() {
-    //     res.end('success');
-    // });
-    //
-    // form.parse(req);
-
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

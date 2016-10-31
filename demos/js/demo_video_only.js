@@ -182,47 +182,48 @@ function setSelfImageElemJs(imageElem){
     selfImageElemJs = imageElem;
 }
 
-//var isPassed = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function performCall(otherEasyrtcid) {
-
-
-    $.get("latest/localRecognize.log", function (logData) {// TODO: DUMMY LOG FILE ... feel may be not necessary ...
-
-
+    
+    $.get("latest/localRecognize.log", function (logData) {
+        
         easyrtc.hangupAll();
 
         var acceptedCB = function (accepted, easyrtcid) {
             if (!accepted) {
-                easyrtc.showError("CALL-REJECTED", "Sorry, your call to " + easyrtc.idToName(easyrtcid) + " was rejected");
+                easyrtc.showError("CALL-REJECTED", "Sorry, your call to "+easyrtc.idToName(easyrtcid)+" was rejected");
+                
                 enable('otherClients');
             }
         };
+        
         var successCB = function () {
             enable('hangupButton');
         };
+        
         var failureCB = function () {
             enable('otherClients');
         };
 
-
-        // todo: write it to the server ...
-        // todo: synchronusly ...
-        //alert("e2e_" + document.getElementById("iam").innerHTML.substring("I am ".length) + "_" + otherEasyrtcid);// testing ...
-        // todo: in upload2, cp -p remote_recognize.png ...
-        // todo: then, log will be updated ...
-        // todo: check the log first
-        // todo: if not pass, show the popup ... otherwise, let it pass ...
-
-        // todo:
-
-
         isInitializer = true;
         isListener = false;
-
-
+        
         var data = new FormData();
-
-        //replaceAll(easyrtcid, "_", "UNDERSCORE"
 
         data.append("data",                               // called when click connect btn ...
             "e2e_"
@@ -235,19 +236,14 @@ function performCall(otherEasyrtcid) {
             + replaceAll(document.getElementById("iam").innerHTML.substring("I am ".length), "_", "UNDERSCORE"));
 
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-        xhr.open('post', '/mapping');                     // todo: do the same for e2e mapping ...
+        xhr.open('post', '/mapping');                  
         xhr.send(data);
-
-
-        //sleep(2000);// CHU-CHI: NOT SURE IF THIS IS NECESSARY ...
-
 
         if (true) {
 
             isBeginToSend = false;
             sendingRate = 1000;
-
-            // works
+            
             sleep(2000);// Note: This one seems not necessary ...
             if (isBeginToSend == false) {
                 sleep(sendingRate);
@@ -266,7 +262,10 @@ function performCall(otherEasyrtcid) {
 
             // 1
             if (isBeginToSend && isInitializer) {
-                testingFunctionInvocation("", selfContextJs, selfVideoJs, selfCanvasJs, "1_" + getCookie() + "_localRecognize.png", "latest/localRecognize.png", selfImageElemJs);
+                testingFunctionInvocation("", selfContextJs, selfVideoJs, 
+                    selfCanvasJs, "1_" + getCookie() + "_localRecognize.png", 
+                    "latest/localRecognize.png", 
+                    selfImageElemJs);
                 isRemoteRecognizeClicked = true;
                 isRemoteRecognizeClicked2 = true;
                 sleep(sendingRate)

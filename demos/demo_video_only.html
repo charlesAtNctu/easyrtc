@@ -576,6 +576,8 @@
                                 this.parentElement.classList.add('img-error')
                             }
 
+
+
                             function sendEvent2(context, video, canvas, filename, resultingfilepath, imageElem) {
                                 context.drawImage(video, 0, 0, 320, 240);
 
@@ -595,19 +597,13 @@
                                         if(xhttp.status == 200) {
                                             setTimeout(showSuccess.bind(this), 1500)
 
-                                            // Chu-Chi: below necessary ?
-
                                             sDetect = new Image();
                                             sDetect.src = resultingfilepath; // can also be a remote URL e.g. http://
                                             sDetect.onload = function() {
-                                                //console.info("resetting the source ... :)")
 
                                                 d = new Date();
                                                 imageElem.attr("src", sDetect.src + "?" + d.getTime());
 
-                                                //canvas.width = canvas.width;
-                                                //context.clearRect(0, 0, canvas.width, canvas.height);
-                                                //context.drawImage(sDetect,0,0, 320, 240);
                                             };
 
                                         } else {
