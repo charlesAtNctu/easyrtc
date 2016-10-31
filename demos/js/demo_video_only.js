@@ -465,7 +465,7 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
 
 
 
-            if(Number(minDistance) < 100){
+            if(Number(minDistance) < 71){// TODO: ACCEPTED IF LESS THAN 100 ... FOR DEMO, SET IT TO 70 ...
 
                 acceptTheCall(true);// if it pass the face recognition test ...
 
